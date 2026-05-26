@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Disallow any admin or private paths if added in the future
+# Disallow: /admin/
+
+Sitemap: https://www.aiemtech.com/sitemap.xml

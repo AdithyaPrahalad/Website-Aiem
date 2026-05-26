@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://formspree.io; frame-ancestors 'none';">
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <title>Contact — Aiēm Technologies</title>
+  <meta name="description" content="Contact Aiēm Technologies — book a discovery call, request a demo, or reach our UAE and India offices directly. We respond within one business day.">
+  <link rel="canonical" href="https://www.aiemtech.com/contact.html">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+  <canvas id="particles" aria-hidden="true"></canvas>
+  <div id="navbar"></div>
+
+  <main id="main">
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+      <div class="container">
+        <span class="page-hero-eyebrow">Contact Us</span>
+        <h1>Let's Start a<br><span class="gradient-text">Conversation</span></h1>
+        <p>Whether you're planning a transformation, evaluating options, or simply want to understand what's possible — we'd love to hear from you. We respond within one business day.</p>
+      </div>
+    </section>
+
+    <!-- CONTACT FORM + INFO -->
+    <section>
+      <div class="container">
+        <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:48px;">
+
+          <!-- FORM -->
+          <div class="reveal-left">
+            <div class="card" style="padding:48px;">
+              <h3 class="mb-32">Send Us a Message</h3>
+              <!-- Connect this form to Formspree: https://formspree.io -->
+              <!-- Replace action="#" with your Formspree endpoint -->
+              <form action="#" method="POST" novalidate>
+                <input type="hidden" name="_subject" value="New enquiry from aiemtech.com">
+                <div class="form-row">
+                  <div class="form-grid-2">
+                    <div class="form-group">
+                      <label class="form-label" for="first-name">First Name <span aria-hidden="true">*</span></label>
+                      <input class="form-input" type="text" id="first-name" name="first_name" placeholder="Aditya" required autocomplete="given-name">
+                    </div>
+                    <div class="form-group">
+                      <label class="form-label" for="last-name">Last Name <span aria-hidden="true">*</span></label>
+                      <input class="form-input" type="text" id="last-name" name="last_name" placeholder="Sharma" required autocomplete="family-name">
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="email">Work Email <span aria-hidden="true">*</span></label>
+                    <input class="form-input" type="email" id="email" name="email" placeholder="you@company.com" required autocomplete="email">
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="company">Company / Organisation <span aria-hidden="true">*</span></label>
+                    <input class="form-input" type="text" id="company" name="company" placeholder="Your Company" required autocomplete="organization">
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="phone">Phone Number</label>
+                    <input class="form-input" type="tel" id="phone" name="phone" placeholder="+971 50 000 0000" autocomplete="tel">
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="interest">I'm interested in</label>
+                    <select class="form-select" id="interest" name="interest">
+                      <option value="" disabled selected>Select a topic</option>
+                      <option value="ERP Modernisation">ERP Modernisation (Oracle / SAP)</option>
+                      <option value="Revenue Governance">Revenue &amp; Financial Governance</option>
+                      <option value="AI Automation">AI &amp; Intelligent Automation</option>
+                      <option value="Cloud Infrastructure">Cloud &amp; Infrastructure</option>
+                      <option value="Application Development">Application Development</option>
+                      <option value="Managed Services">Managed Services &amp; Support</option>
+                      <option value="Revenue Intelligence Platform">Revenue Intelligence Platform (Product)</option>
+                      <option value="General Enquiry">General Enquiry</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="form-label" for="message">Tell Us About Your Challenge</label>
+                    <textarea class="form-textarea" id="message" name="message" placeholder="Briefly describe your current situation and what you're hoping to achieve..." rows="5"></textarea>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;">
+                    Send Message →
+                  </button>
+                  <p style="font-size:0.78rem;color:var(--color-dark-gray);text-align:center;margin-top:12px;">
+                    We respect your privacy. Your information is never shared with third parties.
+                  </p>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- CONTACT INFO -->
+          <div class="reveal-right">
+            <div class="contact-info-card">
+              <h3>Our Offices</h3>
+
+              <div class="contact-item">
+                <span class="contact-item-label">🇦🇪 UAE Headquarters</span>
+                <span class="contact-item-value">Sharjah, United Arab Emirates</span>
+              </div>
+              <div class="contact-item">
+                <span class="contact-item-label">UAE Phone</span>
+                <span class="contact-item-value">
+                  <a href="tel:+971402691676">+971 402691676</a><br>
+                  <a href="tel:+971504026767">+971 504026767</a>
+                </span>
+              </div>
+              <div class="contact-item">
+                <span class="contact-item-label">🇮🇳 India Delivery Centre</span>
+                <span class="contact-item-value">Hyderabad, India</span>
+              </div>
+              <div class="contact-item">
+                <span class="contact-item-label">India Phone</span>
+                <span class="contact-item-value">
+                  <a href="tel:+917569709800">+91 7569709800</a><br>
+                  <a href="tel:+917702530671">+91 7702530671</a>
+                </span>
+              </div>
+              <div class="contact-item">
+                <span class="contact-item-label">Email</span>
+                <span class="contact-item-value">
+                  <a href="mailto:contactus@aiemtech.com">contactus@aiemtech.com</a>
+                </span>
+              </div>
+              <div class="contact-item">
+                <span class="contact-item-label">Website</span>
+                <span class="contact-item-value">
+                  <a href="https://www.aiemtech.com" target="_blank" rel="noopener noreferrer">www.aiemtech.com</a>
+                </span>
+              </div>
+
+              <div class="what-next">
+                <h4>What Happens Next</h4>
+                <div class="what-next-steps">
+                  <div class="what-next-step">
+                    <div class="what-next-num">1</div>
+                    <p>We review your enquiry and assign the right specialist within one business day.</p>
+                  </div>
+                  <div class="what-next-step">
+                    <div class="what-next-num">2</div>
+                    <p>We schedule a 30-minute discovery call to understand your situation in depth.</p>
+                  </div>
+                  <div class="what-next-step">
+                    <div class="what-next-num">3</div>
+                    <p>We prepare a tailored perspective — specific to your industry, challenge, and objectives.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- QUICK ACTIONS -->
+    <section class="section-alt">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="eyebrow">Quick Actions</span>
+          <h2>Not Ready to Fill a Form? <span class="gradient-text">That's Fine.</span></h2>
+        </div>
+        <div class="grid-3">
+          <div class="card card-accent reveal delay-1" style="text-align:center;">
+            <span style="font-size:2.5rem;display:block;margin-bottom:16px;">📞</span>
+            <h3>Call Us Directly</h3>
+            <p class="mt-12">Prefer to speak with someone? Call our UAE or India office and we'll connect you with the right person.</p>
+            <div class="mt-24">
+              <a href="tel:+971402691676" class="btn btn-outline">UAE: +971 402691676</a>
+            </div>
+          </div>
+          <div class="card card-accent-gold reveal delay-2" style="text-align:center;">
+            <span style="font-size:2.5rem;display:block;margin-bottom:16px;">✉️</span>
+            <h3>Email Us</h3>
+            <p class="mt-12">Send us a brief introduction and we'll get back to you with relevant information and next steps.</p>
+            <div class="mt-24">
+              <a href="mailto:contactus@aiemtech.com" class="btn btn-outline">contactus@aiemtech.com</a>
+            </div>
+          </div>
+          <div class="card card-accent-pink reveal delay-3" style="text-align:center;">
+            <span style="font-size:2.5rem;display:block;margin-bottom:16px;">🎯</span>
+            <h3>View Our Work First</h3>
+            <p class="mt-12">See how we've delivered for enterprises similar to yours before starting a conversation.</p>
+            <div class="mt-24">
+              <a href="case-studies.html" class="btn btn-outline">View Case Studies</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="footer"></div>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
