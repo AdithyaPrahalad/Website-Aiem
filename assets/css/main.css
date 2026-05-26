@@ -756,10 +756,9 @@ section {
 }
 
 .pillar-icon {
-  font-size: 2.2rem;
   margin-bottom: 20px;
   display: block;
-  line-height: 1;
+  line-height: 0;
 }
 
 .pillar-card h3 {
@@ -858,7 +857,6 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1rem;
   flex-shrink: 0;
   margin-top: 2px;
 }
@@ -1201,9 +1199,9 @@ section {
 .location-card:hover { border-color: var(--color-border-hover); }
 
 .location-flag {
-  font-size: 2rem;
   margin-bottom: 16px;
   display: block;
+  line-height: 0;
 }
 
 .location-card h3 {
@@ -1236,9 +1234,10 @@ section {
 
 .location-detail .icon {
   color: var(--color-orchid);
-  font-size: 0.9rem;
   width: 16px;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
 }
 
 /* --------------------------------------------------------------------------
@@ -1592,7 +1591,6 @@ section {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 6rem;
   position: relative;
   overflow: hidden;
 }
