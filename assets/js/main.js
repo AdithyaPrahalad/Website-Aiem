@@ -11,29 +11,33 @@
 const LOGO_SVG = `<svg width="56" height="56" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
   <rect width="56" height="56" rx="12" fill="#100d20"/>
   <g transform="translate(28,28)">
-    <ellipse rx="22" ry="9" fill="none" stroke="#c06dc4" stroke-width="1.6" opacity="0.95"/>
-    <ellipse rx="22" ry="9" fill="none" stroke="#c06dc4" stroke-width="1.6" opacity="0.95" transform="rotate(45)"/>
-    <ellipse rx="22" ry="9" fill="none" stroke="#c06dc4" stroke-width="1.6" opacity="0.95" transform="rotate(90)"/>
-    <ellipse rx="22" ry="9" fill="none" stroke="#c06dc4" stroke-width="1.6" opacity="0.95" transform="rotate(135)"/>
-    <circle cx="22" cy="0" r="2.2" fill="#e879c0" opacity="0.9"/>
-    <circle cx="-22" cy="0" r="2.2" fill="#e879c0" opacity="0.9"/>
-    <circle cx="0" cy="22" r="2.2" fill="#e879c0" opacity="0.9"/>
-    <circle cx="0" cy="-22" r="2.2" fill="#e879c0" opacity="0.9"/>
-    <circle cx="15.5" cy="15.5" r="1.8" fill="#e879c0" opacity="0.8"/>
-    <circle cx="-15.5" cy="-15.5" r="1.8" fill="#e879c0" opacity="0.8"/>
-    <circle cx="15.5" cy="-15.5" r="1.8" fill="#e879c0" opacity="0.8"/>
-    <circle cx="-15.5" cy="15.5" r="1.8" fill="#e879c0" opacity="0.8"/>
-    <circle cx="11" cy="-6" r="1.3" fill="#e879c0" opacity="0.7"/>
-    <circle cx="-11" cy="6" r="1.3" fill="#e879c0" opacity="0.7"/>
-    <circle cx="6" cy="11" r="1.3" fill="#e879c0" opacity="0.7"/>
-    <circle cx="-6" cy="-11" r="1.3" fill="#e879c0" opacity="0.7"/>
-    <circle cx="0" cy="0" r="8" fill="#100d20" stroke="#c06dc4" stroke-width="1.2"/>
-    <path d="M0,-5.5 L0,5.5 M-5.5,0 L5.5,0 M-3.5,-3.5 L3.5,3.5 M3.5,-3.5 L-3.5,3.5" stroke="#d4a644" stroke-width="0.9" opacity="0.9"/>
-    <circle cx="0" cy="0" r="2.2" fill="#d4a644"/>
-    <circle cx="0" cy="-4.5" r="1.3" fill="#d4a644" opacity="0.85"/>
-    <circle cx="0" cy="4.5" r="1.3" fill="#d4a644" opacity="0.85"/>
-    <circle cx="-4.5" cy="0" r="1.3" fill="#d4a644" opacity="0.85"/>
-    <circle cx="4.5" cy="0" r="1.3" fill="#d4a644" opacity="0.85"/>
+    <ellipse rx="22" ry="9" fill="none" stroke="#c06dc4" stroke-width="1.9" opacity="0.92"/>
+    <ellipse rx="22" ry="9" fill="none" stroke="#c06dc4" stroke-width="1.9" opacity="0.92" transform="rotate(45)"/>
+    <ellipse rx="22" ry="9" fill="none" stroke="#c06dc4" stroke-width="1.9" opacity="0.92" transform="rotate(90)"/>
+    <ellipse rx="22" ry="9" fill="none" stroke="#c06dc4" stroke-width="1.9" opacity="0.92" transform="rotate(135)"/>
+    <circle cx="22"  cy="0"   r="2.6" fill="#e879c0"/>
+    <circle cx="-22" cy="0"   r="2.6" fill="#e879c0"/>
+    <circle cx="0"   cy="22"  r="2.6" fill="#e879c0"/>
+    <circle cx="0"   cy="-22" r="2.6" fill="#e879c0"/>
+    <circle cx="15.6"  cy="15.6"  r="2.6" fill="#e879c0"/>
+    <circle cx="-15.6" cy="-15.6" r="2.6" fill="#e879c0"/>
+    <circle cx="15.6"  cy="-15.6" r="2.6" fill="#e879c0"/>
+    <circle cx="-15.6" cy="15.6"  r="2.6" fill="#e879c0"/>
+    <circle cx="10"  cy="-6"  r="1.2" fill="#e879c0" opacity="0.55"/>
+    <circle cx="-10" cy="6"   r="1.2" fill="#e879c0" opacity="0.55"/>
+    <circle cx="6"   cy="10"  r="1.2" fill="#e879c0" opacity="0.55"/>
+    <circle cx="-6"  cy="-10" r="1.2" fill="#e879c0" opacity="0.55"/>
+    <circle cx="0" cy="0" r="8.5" fill="#100d20" stroke="#c06dc4" stroke-width="1.0" opacity="0.85"/>
+    <path d="M 0,-2 C -1.9,-2.4 -2.6,-5.6 0,-6.6 C 2.6,-5.6 1.9,-2.4 0,-2 Z" fill="#d4a644"/>
+    <path d="M 0,2 C -1.9,2.4 -2.6,5.6 0,6.6 C 2.6,5.6 1.9,2.4 0,2 Z" fill="#d4a644"/>
+    <path d="M -2,0 C -2.4,-1.9 -5.6,-2.6 -6.6,0 C -5.6,2.6 -2.4,1.9 -2,0 Z" fill="#d4a644"/>
+    <path d="M 2,0 C 2.4,-1.9 5.6,-2.6 6.6,0 C 5.6,2.6 2.4,1.9 2,0 Z" fill="#d4a644"/>
+    <polygon points="0,-2.5 2.5,0 0,2.5 -2.5,0" fill="#d4a644"/>
+    <circle cx="3.0"  cy="-3.0" r="0.68" fill="#d4a644" opacity="0.88"/>
+    <circle cx="-3.0" cy="-3.0" r="0.68" fill="#d4a644" opacity="0.88"/>
+    <circle cx="3.0"  cy="3.0"  r="0.68" fill="#d4a644" opacity="0.88"/>
+    <circle cx="-3.0" cy="3.0"  r="0.68" fill="#d4a644" opacity="0.88"/>
+    <circle cx="0" cy="0" r="0.95" fill="#100d20"/>
   </g>
 </svg>`;
 
@@ -166,10 +170,10 @@ function buildFooter() {
             <span class="footer-tagline">Innovate · Transform · Lead</span>
             <p>Governance-led digital solutions that improve efficiency, strengthen compliance, and accelerate enterprise transformation.</p>
             <div class="footer-social" aria-label="Social media links">
-              <a href="#" aria-label="LinkedIn" rel="noopener noreferrer">in</a>
-              <a href="#" aria-label="YouTube" rel="noopener noreferrer">▶</a>
-              <a href="#" aria-label="X (Twitter)" rel="noopener noreferrer">𝕏</a>
-              <a href="#" aria-label="Instagram" rel="noopener noreferrer">◉</a>
+              <a href="#" aria-label="LinkedIn" rel="noopener noreferrer"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+              <a href="#" aria-label="YouTube" rel="noopener noreferrer"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#100d20"/></svg></a>
+              <a href="#" aria-label="X" rel="noopener noreferrer"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.259 5.631 5.905-5.631zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+              <a href="#" aria-label="Instagram" rel="noopener noreferrer"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
             </div>
           </div>
 
