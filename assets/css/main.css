@@ -391,6 +391,202 @@ section {
 .nav-mobile a:hover { color: var(--color-orchid); }
 .nav-mobile .btn { margin-top: 16px; justify-content: center; }
 
+/* Mobile accordion for "What We Do" */
+.nav-mobile-dropdown-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-gray);
+  padding: 12px 0;
+  border-bottom: 1px solid var(--color-border);
+  cursor: pointer;
+  background: none;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  width: 100%;
+  text-align: left;
+  transition: color var(--transition);
+}
+.nav-mobile-dropdown-toggle svg {
+  flex-shrink: 0;
+  transition: transform var(--transition);
+}
+.nav-mobile-dropdown-toggle.open svg { transform: rotate(180deg); }
+.nav-mobile-dropdown-toggle:hover { color: var(--color-orchid); }
+
+.nav-mobile-dropdown-panel {
+  display: none;
+  flex-direction: column;
+  gap: 0;
+  padding-left: 12px;
+}
+.nav-mobile-dropdown-panel.open { display: flex; }
+
+.nav-mobile-dropdown-panel .mobile-mega-col-head {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--color-orchid);
+  padding: 12px 0 6px;
+}
+.nav-mobile-dropdown-panel a {
+  font-size: 0.88rem;
+  color: var(--color-gray);
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(168, 85, 200, 0.07);
+  transition: color var(--transition);
+}
+.nav-mobile-dropdown-panel a:last-child { border-bottom: none; }
+.nav-mobile-dropdown-panel a:hover { color: var(--color-white); }
+
+/* --------------------------------------------------------------------------
+   7b. MEGA-MENU DROPDOWN
+   -------------------------------------------------------------------------- */
+.nav-has-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-trigger {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--color-gray);
+  padding: 8px 14px;
+  border-radius: var(--radius-sm);
+  position: relative;
+  transition: color var(--transition);
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-family: inherit;
+}
+
+.nav-dropdown-trigger::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 14px;
+  right: 14px;
+  height: 1px;
+  background: var(--gradient-primary);
+  transform: scaleX(0);
+  transition: transform var(--transition);
+  transform-origin: left;
+}
+
+.nav-has-dropdown:hover .nav-dropdown-trigger,
+.nav-has-dropdown.open .nav-dropdown-trigger {
+  color: var(--color-white);
+}
+.nav-has-dropdown:hover .nav-dropdown-trigger::after,
+.nav-has-dropdown.open .nav-dropdown-trigger::after {
+  transform: scaleX(1);
+}
+
+.nav-dropdown-trigger .chevron {
+  transition: transform var(--transition);
+}
+.nav-has-dropdown:hover .chevron,
+.nav-has-dropdown.open .chevron {
+  transform: rotate(180deg);
+}
+
+/* The mega-menu panel */
+.nav-mega-menu {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+  min-width: 560px;
+  background: rgba(16, 13, 32, 0.97);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 28px 32px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 48px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s ease, transform 0.22s ease;
+  z-index: 1001;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(168, 85, 200, 0.08);
+}
+
+.nav-has-dropdown:hover .nav-mega-menu,
+.nav-has-dropdown.open .nav-mega-menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.mega-col-head {
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-orchid);
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.mega-col-divider {
+  width: 1px;
+  background: var(--color-border);
+  position: absolute;
+  top: 28px;
+  bottom: 28px;
+  left: 50%;
+}
+
+.mega-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 9px 10px 9px 0;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-gray-light);
+  border-radius: var(--radius-sm);
+  transition: color var(--transition), background var(--transition), padding-left var(--transition);
+  border-bottom: 1px solid rgba(168, 85, 200, 0.06);
+}
+.mega-link:last-child { border-bottom: none; }
+
+.mega-link:hover {
+  color: var(--color-white);
+  padding-left: 6px;
+}
+.mega-link:hover .mega-arrow {
+  opacity: 1;
+  transform: translateX(2px);
+}
+
+.mega-link .mega-label { flex: 1; }
+.mega-link .mega-sub {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: var(--color-gray);
+  margin-top: 1px;
+}
+
+.mega-arrow {
+  flex-shrink: 0;
+  opacity: 0;
+  color: var(--color-orchid);
+  transition: opacity var(--transition), transform var(--transition);
+}
+
 /* --------------------------------------------------------------------------
    8. BUTTONS
    -------------------------------------------------------------------------- */

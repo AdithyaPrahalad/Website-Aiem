@@ -58,22 +58,90 @@ function buildNavbar() {
 
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
 
-  const links = [
+  /* Simple nav links (no dropdown) */
+  const simpleLinks = [
     { href: 'about.html',        label: 'About' },
     { href: 'services.html',     label: 'Services' },
-    { href: 'capabilities.html', label: 'Capabilities' },
     { href: 'products.html',     label: 'Products' },
     { href: 'case-studies.html', label: 'Case Studies' },
   ];
 
-  const navLinksHTML = links.map(l => {
+  /* Mega-menu data */
+  const capabilities = [
+    { href: 'capabilities.html#erp',     label: 'ERP Modernization',      sub: 'Oracle · SAP · ServiceNow' },
+    { href: 'capabilities.html#revenue', label: 'Revenue Governance',     sub: 'Billing · Collections · AR' },
+    { href: 'capabilities.html#capital', label: 'Capital Projects',       sub: 'PMIS · Cost Control' },
+    { href: 'capabilities.html#ai',      label: 'AI & Automation',        sub: 'Intelligent workflows' },
+    { href: 'capabilities.html#cyber',   label: 'Cybersecurity',          sub: 'Compliance · Zero Trust' },
+    { href: 'capabilities.html#managed', label: 'Managed Services',       sub: 'AMS · Support · SLA' },
+  ];
+
+  const industries = [
+    { href: 'capabilities.html#public-sector',  label: 'Public Sector',   sub: 'Government & Municipalities' },
+    { href: 'capabilities.html#private-sector', label: 'Private Sector',  sub: 'Enterprise & Corporates' },
+    { href: 'capabilities.html#education',      label: 'Education',       sub: 'Universities & Schools' },
+    { href: 'capabilities.html#healthcare',     label: 'Healthcare',      sub: 'Hospitals & Clinics' },
+  ];
+
+  const chevronSVG = `<svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>`;
+  const arrowSVG   = `<svg class="mega-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>`;
+
+  const capLinksHTML = capabilities.map(c => `
+    <a href="${c.href}" class="mega-link">
+      <span class="mega-label">${c.label}<span class="mega-sub">${c.sub}</span></span>
+      ${arrowSVG}
+    </a>`).join('');
+
+  const indLinksHTML = industries.map(i => `
+    <a href="${i.href}" class="mega-link">
+      <span class="mega-label">${i.label}<span class="mega-sub">${i.sub}</span></span>
+      ${arrowSVG}
+    </a>`).join('');
+
+  /* Check if current page is capabilities */
+  const whatWeDoActive = currentPage === 'capabilities.html' ? ' active' : '';
+
+  const megaMenuHTML = `
+    <div class="nav-has-dropdown" id="whatWeDoDropdown">
+      <button class="nav-dropdown-trigger${whatWeDoActive}" aria-haspopup="true" aria-expanded="false" aria-controls="megaMenu">
+        What We Do ${chevronSVG}
+      </button>
+      <div class="nav-mega-menu" id="megaMenu" role="menu">
+        <div class="mega-col">
+          <div class="mega-col-head">Capabilities</div>
+          ${capLinksHTML}
+        </div>
+        <div class="mega-col">
+          <div class="mega-col-head">Industries</div>
+          ${indLinksHTML}
+        </div>
+      </div>
+    </div>`;
+
+  const navLinksHTML = simpleLinks.map(l => {
     const active = currentPage === l.href ? ' class="active"' : '';
     return `<a href="${l.href}"${active}>${l.label}</a>`;
   }).join('');
 
-  const mobileLinksHTML = links.map(l =>
+  /* Mobile: simple links */
+  const mobileSimpleHTML = simpleLinks.map(l =>
     `<a href="${l.href}">${l.label}</a>`
-  ).join('') + `<a href="contact.html" class="btn btn-primary btn-sm">Get in Touch</a>`;
+  ).join('');
+
+  /* Mobile: accordion for "What We Do" */
+  const mobileCapHTML = capabilities.map(c => `<a href="${c.href}">${c.label}</a>`).join('');
+  const mobileIndHTML = industries.map(i => `<a href="${i.href}">${i.label}</a>`).join('');
+  const mobileDropHTML = `
+    <button class="nav-mobile-dropdown-toggle" id="mobileWhatWeDoToggle" aria-expanded="false">
+      What We Do
+      ${chevronSVG}
+    </button>
+    <div class="nav-mobile-dropdown-panel" id="mobileWhatWeDoPanel">
+      <span class="mobile-mega-col-head">Capabilities</span>
+      ${mobileCapHTML}
+      <span class="mobile-mega-col-head">Industries</span>
+      ${mobileIndHTML}
+    </div>`;
 
   el.innerHTML = `
     <div class="nav-wrap" id="navWrap">
@@ -86,7 +154,11 @@ function buildNavbar() {
           </div>
         </a>
         <nav class="nav-links" aria-label="Primary navigation">
-          ${navLinksHTML}
+          <a href="about.html"${currentPage === 'about.html' ? ' class="active"' : ''}>About</a>
+          ${megaMenuHTML}
+          <a href="services.html"${currentPage === 'services.html' ? ' class="active"' : ''}>Services</a>
+          <a href="products.html"${currentPage === 'products.html' ? ' class="active"' : ''}>Products</a>
+          <a href="case-studies.html"${currentPage === 'case-studies.html' ? ' class="active"' : ''}>Case Studies</a>
         </nav>
         <div class="nav-cta">
           <a href="contact.html" class="btn btn-primary btn-sm">Get in Touch</a>
@@ -98,12 +170,18 @@ function buildNavbar() {
         </button>
       </div>
       <nav class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
-        ${mobileLinksHTML}
+        <a href="about.html">About</a>
+        ${mobileDropHTML}
+        <a href="services.html">Services</a>
+        <a href="products.html">Products</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="contact.html" class="btn btn-primary btn-sm">Get in Touch</a>
       </nav>
     </div>
   `;
 
   initMobileMenu();
+  initMegaMenu();
   initScrolledState();
 }
 
@@ -129,6 +207,73 @@ function initMobileMenu() {
       hamburger.setAttribute('aria-expanded', 'false');
     }
   });
+}
+
+/* --------------------------------------------------------------------------
+   MEGA-MENU (desktop hover + keyboard; mobile accordion)
+   -------------------------------------------------------------------------- */
+function initMegaMenu() {
+  /* ── Desktop: hover-based ── */
+  const dropdown = document.getElementById('whatWeDoDropdown');
+  const trigger  = dropdown && dropdown.querySelector('.nav-dropdown-trigger');
+  const menu     = document.getElementById('megaMenu');
+
+  if (dropdown && trigger && menu) {
+    let closeTimer = null;
+
+    const openMenu = () => {
+      clearTimeout(closeTimer);
+      dropdown.classList.add('open');
+      trigger.setAttribute('aria-expanded', 'true');
+    };
+
+    const closeMenu = () => {
+      closeTimer = setTimeout(() => {
+        dropdown.classList.remove('open');
+        trigger.setAttribute('aria-expanded', 'false');
+      }, 120);
+    };
+
+    dropdown.addEventListener('mouseenter', openMenu);
+    dropdown.addEventListener('mouseleave', closeMenu);
+    menu.addEventListener('mouseenter', openMenu);
+    menu.addEventListener('mouseleave', closeMenu);
+
+    /* Click toggle for touch/keyboard */
+    trigger.addEventListener('click', () => {
+      const isOpen = dropdown.classList.toggle('open');
+      trigger.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    /* Close on Escape */
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && dropdown.classList.contains('open')) {
+        dropdown.classList.remove('open');
+        trigger.setAttribute('aria-expanded', 'false');
+        trigger.focus();
+      }
+    });
+
+    /* Close on outside click */
+    document.addEventListener('click', (e) => {
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove('open');
+        trigger.setAttribute('aria-expanded', 'false');
+      }
+    });
+  }
+
+  /* ── Mobile: accordion ── */
+  const mobileToggle = document.getElementById('mobileWhatWeDoToggle');
+  const mobilePanel  = document.getElementById('mobileWhatWeDoPanel');
+
+  if (mobileToggle && mobilePanel) {
+    mobileToggle.addEventListener('click', () => {
+      const isOpen = mobilePanel.classList.toggle('open');
+      mobileToggle.classList.toggle('open', isOpen);
+      mobileToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+  }
 }
 
 /* --------------------------------------------------------------------------
