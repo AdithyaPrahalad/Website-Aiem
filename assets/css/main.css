@@ -1399,6 +1399,63 @@ section {
   line-height: 1.6;
 }
 
+/* Locked / proprietary module cards */
+.module-locked {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  min-height: 130px;
+  justify-content: center;
+}
+
+.module-lock {
+  color: var(--color-border-hover);
+  opacity: 0.7;
+}
+
+.module-locked:hover .module-lock {
+  opacity: 1;
+  color: var(--color-orchid);
+}
+
+.module-locked-label {
+  font-size: 0.65rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  color: var(--color-dark-gray) !important;
+  line-height: 1 !important;
+}
+
+/* NDA notice bar below module grid */
+.module-nda-notice {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 22px;
+  background: rgba(168, 85, 200, 0.05);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 0.85rem;
+  color: var(--color-gray);
+}
+
+.module-nda-notice svg {
+  flex-shrink: 0;
+  color: var(--color-orchid);
+}
+
+.module-nda-notice a {
+  color: var(--color-orchid);
+  font-weight: 600;
+  transition: color var(--transition);
+}
+
+.module-nda-notice a:hover {
+  color: var(--color-pink);
+}
+
 /* --------------------------------------------------------------------------
    20. OUTCOMES / RESULTS LIST
    -------------------------------------------------------------------------- */

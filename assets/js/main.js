@@ -1,6 +1,6 @@
 /* ==========================================================================
-   AIĒM TECHNOLOGIES — MAIN.JS
-   Navbar · Footer · Particles · Scroll Reveal · Counters · Mobile Menu
+   AIĒM TECHNOLOGIES — MAIN.JS  v3.0
+   Navbar · Footer · Mega-menu · Particles · Scroll Reveal · Counters
    ========================================================================== */
 
 'use strict';
