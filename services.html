@@ -8,13 +8,365 @@
   <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>Services — Aiēm Technologies</title>
-  <meta name="description" content="Application development, ERP & enterprise solutions, AI/GenAI/IoT, and QA — Aiēm Technologies' four core service lines for enterprise digital transformation.">
+  <meta name="description" content="Four enterprise service lines — Application Development, ERP & Enterprise Solutions, AI/GenAI/IoT, and Quality Assurance — delivered with accountability and precision.">
   <link rel="canonical" href="https://www.aiemtech.com/services.html">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/main.css">
+  <style>
+    /* ── Services page–specific styles ── */
+    .svc-hero {
+      padding: 180px 0 100px;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    .svc-hero::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 900px; height: 500px;
+      background: radial-gradient(ellipse at 50% 0%, rgba(168,85,200,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .svc-hero-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-orchid);
+      margin-bottom: 1.2rem;
+      display: block;
+      animation: hero-fade-up 0.6s 0.1s both;
+    }
+    .svc-hero h1 {
+      animation: hero-fade-up 0.7s 0.25s both;
+      margin-bottom: 1.4rem;
+    }
+    .svc-hero p {
+      font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto 3rem;
+      line-height: 1.75;
+      animation: hero-fade-up 0.7s 0.4s both;
+    }
+
+    /* Service quick-jump tabs */
+    .svc-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      animation: hero-fade-up 0.6s 0.55s both;
+    }
+    .svc-tab {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 8px 20px;
+      border: 1px solid var(--color-border);
+      border-radius: 100px;
+      color: var(--color-gray);
+      transition: all var(--transition);
+      background: rgba(255,255,255,0.02);
+    }
+    .svc-tab:hover {
+      border-color: var(--color-orchid);
+      color: var(--color-white);
+      background: rgba(168,85,200,0.08);
+    }
+
+    /* ── Service block ── */
+    .svc-block {
+      padding: 100px 0;
+      position: relative;
+      border-top: 1px solid var(--color-border);
+    }
+    .svc-block.alt { background: var(--color-bg2); }
+
+    .svc-block-inner {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .svc-block-inner.flip { grid-template-columns: 1fr 380px; }
+    .svc-block-inner.flip .svc-panel { order: 2; }
+    .svc-block-inner.flip .svc-body  { order: 1; }
+
+    /* Left panel */
+    .svc-panel {
+      position: sticky;
+      top: 100px;
+    }
+    .svc-number {
+      font-size: clamp(5rem, 10vw, 8rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      opacity: 0.25;
+      margin-bottom: 24px;
+      display: block;
+    }
+    .svc-panel-card {
+      background: var(--color-glass);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .svc-panel-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--gradient-primary);
+    }
+    .svc-icon-wrap {
+      width: 64px; height: 64px;
+      background: rgba(168,85,200,0.1);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      color: var(--color-orchid);
+    }
+    .svc-panel-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      color: var(--color-white);
+    }
+    .svc-panel-card p {
+      font-size: 0.9rem;
+      line-height: 1.65;
+      color: var(--color-gray);
+      margin-bottom: 24px;
+    }
+    .svc-stat-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .svc-stat {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      text-align: center;
+    }
+    .svc-stat-val {
+      display: block;
+      font-size: 1.6rem;
+      font-weight: 900;
+      letter-spacing: -0.02em;
+      color: var(--color-white);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .svc-stat-val.gold  { color: var(--color-gold); }
+    .svc-stat-val.orchid { background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .svc-stat-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-gray);
+    }
+
+    /* Right body */
+    .svc-body { padding-top: 8px; }
+
+    .svc-eyebrow {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--color-orchid);
+      margin-bottom: 12px;
+      display: block;
+    }
+    .svc-body h2 {
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      margin-bottom: 1.2rem;
+      line-height: 1.15;
+    }
+    .svc-body > p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--color-gray);
+      max-width: 580px;
+      margin-bottom: 2rem;
+    }
+
+    /* Feature grid */
+    .svc-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 2.5rem;
+    }
+    .svc-feature {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 20px 22px;
+      transition: border-color var(--transition), transform var(--transition), background var(--transition);
+    }
+    .svc-feature:hover {
+      border-color: var(--color-border-hover);
+      background: rgba(168,85,200,0.06);
+      transform: translateY(-2px);
+    }
+    .svc-feature-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--gradient-primary);
+      margin-bottom: 10px;
+    }
+    .svc-feature h5 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--color-white);
+      margin-bottom: 4px;
+      letter-spacing: -0.01em;
+    }
+    .svc-feature p {
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: var(--color-gray);
+    }
+
+    /* Tech tags */
+    .svc-tech-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 2rem;
+    }
+    .svc-tech {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border: 1px solid var(--color-border);
+      border-radius: 100px;
+      color: var(--color-gray);
+      background: rgba(255,255,255,0.02);
+      transition: all var(--transition);
+    }
+    .svc-tech:hover {
+      border-color: var(--color-orchid);
+      color: var(--color-orchid);
+    }
+
+    /* ── Delivery steps ── */
+    .delivery-section {
+      padding: 100px 0;
+      background: var(--color-bg3);
+      border-top: 1px solid var(--color-border);
+    }
+    .delivery-timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      position: relative;
+      margin-top: 60px;
+    }
+    .delivery-timeline::before {
+      content: '';
+      position: absolute;
+      top: 32px;
+      left: calc(12.5%);
+      right: calc(12.5%);
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--color-orchid), var(--color-pink), var(--color-gold), transparent);
+      opacity: 0.35;
+    }
+    .delivery-step {
+      padding: 0 24px;
+      text-align: center;
+    }
+    .delivery-step-num {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: var(--color-bg2);
+      border: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: var(--color-orchid);
+      position: relative;
+      z-index: 1;
+      transition: all var(--transition);
+    }
+    .delivery-step:hover .delivery-step-num {
+      background: rgba(168,85,200,0.15);
+      border-color: var(--color-orchid);
+      transform: scale(1.1);
+    }
+    .delivery-step h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--color-white);
+      margin-bottom: 8px;
+    }
+    .delivery-step p {
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: var(--color-gray);
+    }
+
+    /* ── CTA ── */
+    .svc-cta {
+      padding: 120px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border-top: 1px solid var(--color-border);
+    }
+    .svc-cta::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px; height: 400px;
+      background: radial-gradient(ellipse, rgba(168,85,200,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* responsive */
+    @media (max-width: 1024px) {
+      .svc-block-inner, .svc-block-inner.flip {
+        grid-template-columns: 1fr;
+      }
+      .svc-block-inner.flip .svc-panel,
+      .svc-block-inner.flip .svc-body { order: unset; }
+      .svc-panel { position: static; }
+      .delivery-timeline { grid-template-columns: 1fr 1fr; gap: 48px; }
+      .delivery-timeline::before { display: none; }
+    }
+    @media (max-width: 640px) {
+      .svc-features { grid-template-columns: 1fr; }
+      .svc-stat-row { grid-template-columns: 1fr; }
+      .delivery-timeline { grid-template-columns: 1fr; gap: 32px; }
+      .svc-tabs { flex-direction: column; align-items: center; }
+    }
+  </style>
 </head>
 <body>
   <a href="#main" class="skip-link">Skip to main content</a>
@@ -23,242 +375,384 @@
 
   <main id="main">
 
-    <!-- PAGE HERO -->
-    <section class="page-hero">
+    <!-- ══ HERO ══ -->
+    <section class="svc-hero">
       <div class="container">
-        <span class="page-hero-eyebrow">Our Services</span>
+        <span class="svc-hero-eyebrow">Our Services</span>
         <h1>Four Service Lines.<br><span class="gradient-text">One Direction.</span></h1>
-        <p>From legacy modernisation to AI-driven automation, our service lines are designed to take enterprises from where they are to where they need to be.</p>
+        <p>We don't sell technology. We solve business problems — using the right platforms, the right people, and a delivery model built around outcomes, not hours.</p>
+        <div class="svc-tabs">
+          <a href="#app-dev"  class="svc-tab">01 — App Development</a>
+          <a href="#erp"      class="svc-tab">02 — ERP & Enterprise</a>
+          <a href="#ai"       class="svc-tab">03 — AI, GenAI & IoT</a>
+          <a href="#qa"       class="svc-tab">04 — QA & Support</a>
+        </div>
       </div>
     </section>
 
-    <!-- SERVICE 1: APP DEV & MODERNISATION -->
-    <section class="service-section">
+    <!-- ══ SERVICE 01: APP DEVELOPMENT ══ -->
+    <section id="app-dev" class="svc-block">
       <div class="container">
-        <div class="service-inner">
-          <div class="service-visual reveal-left">
-            <div class="service-icon-block" style="color:var(--color-orchid);"><svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+        <div class="svc-block-inner">
+
+          <div class="svc-panel reveal-left">
+            <span class="svc-number">01</span>
+            <div class="svc-panel-card">
+              <div class="svc-icon-wrap">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              </div>
+              <h3>Application Development &amp; Modernisation</h3>
+              <p>We architect, build, and modernise enterprise applications — moving organisations off legacy systems and onto scalable, cloud-native platforms that grow with them.</p>
+              <div class="svc-stat-row">
+                <div class="svc-stat">
+                  <span class="svc-stat-val orchid">40+</span>
+                  <span class="svc-stat-label">Apps delivered</span>
+                </div>
+                <div class="svc-stat">
+                  <span class="svc-stat-val gold">99.9%</span>
+                  <span class="svc-stat-label">Uptime SLA</span>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="service-content reveal-right">
-            <span class="eyebrow">Service 01</span>
-            <h2>Application Development &amp; Modernisation</h2>
-            <p>We architect, build, and modernise enterprise applications — moving organisations off legacy systems and onto scalable, cloud-native platforms that support rapid growth.</p>
-            <div class="outcomes-list mt-24">
-              <div class="outcome-item">
-                <span class="outcome-check">→</span>
-                <p>Custom enterprise application development on modern stacks</p>
+
+          <div class="svc-body reveal-right">
+            <span class="svc-eyebrow">Service 01</span>
+            <h2>Built for scale.<br><span class="gradient-text">Not just today.</span></h2>
+            <p>Legacy systems don't just slow you down — they carry risk. Every workaround is a liability, every integration point a potential failure. We replace that fragility with architecture designed to last: API-first, cloud-native, and built around how your teams actually work.</p>
+
+            <div class="svc-features">
+              <div class="svc-feature reveal-up">
+                <div class="svc-feature-dot"></div>
+                <h5>Custom Enterprise Applications</h5>
+                <p>Bespoke systems designed around your workflows, not generic templates. Built to integrate, not isolate.</p>
               </div>
-              <div class="outcome-item">
-                <span class="outcome-check">→</span>
-                <p>Legacy system modernisation and technical debt elimination</p>
+              <div class="svc-feature reveal-up">
+                <div class="svc-feature-dot"></div>
+                <h5>Legacy Modernisation</h5>
+                <p>Retire technical debt without disrupting operations. We migrate, re-platform, and re-architect with zero-downtime strategies.</p>
               </div>
-              <div class="outcome-item">
-                <span class="outcome-check">→</span>
-                <p>API-first architecture for seamless integrations</p>
+              <div class="svc-feature reveal-up">
+                <div class="svc-feature-dot"></div>
+                <h5>API-First Architecture</h5>
+                <p>Every system we build exposes clean, documented APIs — so your ecosystem can connect, extend, and evolve.</p>
               </div>
-              <div class="outcome-item">
-                <span class="outcome-check">→</span>
-                <p>Cloud-native deployments on Azure, AWS, and GCP</p>
+              <div class="svc-feature reveal-up">
+                <div class="svc-feature-dot"></div>
+                <h5>Cloud-Native Deployment</h5>
+                <p>Azure, AWS, and GCP deployments with containerisation, auto-scaling, and observability built in from day one.</p>
               </div>
-              <div class="outcome-item">
-                <span class="outcome-check">→</span>
-                <p>Mobile and web application development</p>
+              <div class="svc-feature reveal-up">
+                <div class="svc-feature-dot"></div>
+                <h5>Mobile & Web Interfaces</h5>
+                <p>Responsive web apps and cross-platform mobile solutions that meet users where they are — without compromise.</p>
+              </div>
+              <div class="svc-feature reveal-up">
+                <div class="svc-feature-dot"></div>
+                <h5>DevSecOps Integration</h5>
+                <p>Security embedded in the pipeline — automated scanning, code review gates, and continuous compliance validation.</p>
               </div>
             </div>
-            <div class="platform-tags mt-24">
-              <span class="platform-tag">React</span>
-              <span class="platform-tag">Node.js</span>
-              <span class="platform-tag">Python</span>
-              <span class="platform-tag">Azure</span>
-              <span class="platform-tag">AWS</span>
-              <span class="platform-tag">Kubernetes</span>
-              <span class="platform-tag">Docker</span>
+
+            <div class="svc-tech-row">
+              <span class="svc-tech">React</span>
+              <span class="svc-tech">Node.js</span>
+              <span class="svc-tech">Python</span>
+              <span class="svc-tech">Azure</span>
+              <span class="svc-tech">AWS</span>
+              <span class="svc-tech">Kubernetes</span>
+              <span class="svc-tech">Docker</span>
+              <span class="svc-tech">PostgreSQL</span>
+              <span class="svc-tech">Redis</span>
             </div>
-            <a href="contact.html" class="btn btn-primary mt-32">Discuss Your Project</a>
+            <a href="contact.html" class="btn btn-primary">Start a Project Conversation</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SERVICE 02: ERP ══ -->
+    <section id="erp" class="svc-block alt">
+      <div class="container">
+        <div class="svc-block-inner flip">
+
+          <div class="svc-panel reveal-right">
+            <span class="svc-number">02</span>
+            <div class="svc-panel-card">
+              <div class="svc-icon-wrap">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+              </div>
+              <h3>ERP &amp; Enterprise Solutions</h3>
+              <p>Oracle, SAP, and ServiceNow — implemented, integrated, and optimised by specialists who have done it before at enterprise scale.</p>
+              <div class="svc-stat-row">
+                <div class="svc-stat">
+                  <span class="svc-stat-val gold">3</span>
+                  <span class="svc-stat-label">Platforms certified</span>
+                </div>
+                <div class="svc-stat">
+                  <span class="svc-stat-val orchid">30%</span>
+                  <span class="svc-stat-label">Avg. process gain</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="svc-body reveal-left">
+            <span class="svc-eyebrow">Service 02</span>
+            <h2>ERP done right<br><span class="gradient-text">means done once.</span></h2>
+            <p>Most ERP projects fail not because of the software, but because of the implementation. Configuration decisions made in week two haunt organisations for years. We've seen it, fixed it, and built a methodology that prevents it — outcome-defined from the start, governance-led throughout.</p>
+
+            <div class="svc-features">
+              <div class="svc-feature reveal-up">
+                <div class="svc-feature-dot"></div>
+                <h5>Oracle Fusion Cloud</h5>
+                <p>Full-cycle implementation across Financials, SCM, HCM, and Projects. We don't just configure — we align the system to your business logic.</p>
+              </div>
+              <div class="svc-feature reveal-up">
+                <div class="svc-feature-dot"></div>
+                <h5>SAP S/4HANA</h5>
+                <p>Greenfield deployments and Brownfield migrations from SAP ECC. Real-time analytics and simplified data models from day one.</p>
+              </div>
+              <div class="svc-feature reveal-up">
+                <div class="svc-feature-dot"></div>
+                <h5>ServiceNow ITSM / ITOM</h5>
+                <p>Workflow automation, service catalogue design, and CMDB structuring that turns ServiceNow into an operational command centre.</p>
+              </div>
+              <div class="svc-feature reveal-up">
+                <div class="svc-feature-dot"></div>
+                <h5>Multi-System Integration</h5>
+                <p>Connecting ERP with your data warehouse, CRM, HRIS, and custom applications — cleanly, with audit trails and error handling.</p>
+              </div>
+              <div class="svc-feature reveal-up">
+                <div class="svc-feature-dot"></div>
+                <h5>Finance & Compliance Modules</h5>
+                <p>IFRS 15/16 revenue recognition, multi-entity consolidation, VAT/GST compliance, and regulatory reporting frameworks.</p>
+              </div>
+              <div class="svc-feature reveal-up">
+                <div class="svc-feature-dot"></div>
+                <h5>Post-Go-Live Optimisation</h5>
+                <p>We stay. Performance tuning, user adoption, reporting refinement — the work that turns a go-live into a genuine outcome.</p>
+              </div>
+            </div>
+
+            <div class="svc-tech-row">
+              <span class="svc-tech">Oracle Fusion</span>
+              <span class="svc-tech">SAP S/4HANA</span>
+              <span class="svc-tech">ServiceNow</span>
+              <span class="svc-tech">Salesforce</span>
+              <span class="svc-tech">Microsoft 365</span>
+              <span class="svc-tech">Dell Boomi</span>
+              <span class="svc-tech">MuleSoft</span>
+            </div>
+            <a href="contact.html" class="btn btn-primary">Discuss Your ERP Project</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SERVICE 03: AI / GenAI / IoT ══ -->
+    <section id="ai" class="svc-block">
+      <div class="container">
+        <div class="svc-block-inner">
+
+          <div class="svc-panel reveal-left">
+            <span class="svc-number">03</span>
+            <div class="svc-panel-card">
+              <div class="svc-icon-wrap">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg>
+              </div>
+              <h3>AI, GenAI &amp; IoT</h3>
+              <p>Not AI for the sake of AI. We identify where intelligence actually reduces cost, accelerates decisions, or surfaces insight that wasn't accessible before.</p>
+              <div class="svc-stat-row">
+                <div class="svc-stat">
+                  <span class="svc-stat-val orchid">60%</span>
+                  <span class="svc-stat-label">Manual work eliminated</span>
+                </div>
+                <div class="svc-stat">
+                  <span class="svc-stat-val gold">8x</span>
+                  <span class="svc-stat-label">Faster data processing</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="svc-body reveal-right">
+            <span class="svc-eyebrow">Service 03</span>
+            <h2>Intelligence that<br><span class="gradient-text">changes operations.</span></h2>
+            <p>Generative AI is not a strategy — it's a capability. The organisations extracting real value from it are the ones who started with a problem and worked backwards to the technology. That's how we approach every AI engagement: define the outcome, instrument the data, deploy the model, measure the result.</p>
+
+            <div class="svc-features">
+              <div class="svc-feature reveal-up">
+                <div class="svc-feature-dot"></div>
+                <h5>GenAI Document Intelligence</h5>
+                <p>Extract, classify, and summarise contracts, invoices, reports, and regulatory filings — at scale, with audit trails and confidence scoring.</p>
+              </div>
+              <div class="svc-feature reveal-up">
+                <div class="svc-feature-dot"></div>
+                <h5>Predictive Analytics</h5>
+                <p>Demand forecasting, churn prediction, maintenance scheduling, and fraud detection — models trained on your data, not generic benchmarks.</p>
+              </div>
+              <div class="svc-feature reveal-up">
+                <div class="svc-feature-dot"></div>
+                <h5>Intelligent Workflow Automation</h5>
+                <p>RPA and AI-driven orchestration that handles repetitive, rule-based processes — freeing your team for work that requires judgment.</p>
+              </div>
+              <div class="svc-feature reveal-up">
+                <div class="svc-feature-dot"></div>
+                <h5>IoT Device Integration</h5>
+                <p>Connect physical assets to digital workflows: real-time telemetry, predictive maintenance, and operational dashboards that show the factory floor live.</p>
+              </div>
+              <div class="svc-feature reveal-up">
+                <div class="svc-feature-dot"></div>
+                <h5>Computer Vision & NLP</h5>
+                <p>Visual inspection, OCR pipelines, multilingual NLP, and sentiment analysis — deployed where the data lives, not in a separate silo.</p>
+              </div>
+              <div class="svc-feature reveal-up">
+                <div class="svc-feature-dot"></div>
+                <h5>AI Governance & Ethics</h5>
+                <p>Model explainability, bias auditing, and data lineage documentation — so your AI deployments hold up to regulatory scrutiny and internal review.</p>
+              </div>
+            </div>
+
+            <div class="svc-tech-row">
+              <span class="svc-tech">Azure OpenAI</span>
+              <span class="svc-tech">LangChain</span>
+              <span class="svc-tech">TensorFlow</span>
+              <span class="svc-tech">PyTorch</span>
+              <span class="svc-tech">AWS IoT</span>
+              <span class="svc-tech">Databricks</span>
+              <span class="svc-tech">Power BI</span>
+              <span class="svc-tech">Snowflake</span>
+            </div>
+            <a href="contact.html" class="btn btn-primary">Explore AI Solutions</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SERVICE 04: QA & SUPPORT ══ -->
+    <section id="qa" class="svc-block alt">
+      <div class="container">
+        <div class="svc-block-inner flip">
+
+          <div class="svc-panel reveal-right">
+            <span class="svc-number">04</span>
+            <div class="svc-panel-card">
+              <div class="svc-icon-wrap">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <h3>Quality Assurance &amp; Enterprise Support</h3>
+              <p>Your system is only as good as what happens after go-live. Rigorous QA before launch. Proactive support after it. SLAs that mean something.</p>
+              <div class="svc-stat-row">
+                <div class="svc-stat">
+                  <span class="svc-stat-val orchid">24/7</span>
+                  <span class="svc-stat-label">Monitoring coverage</span>
+                </div>
+                <div class="svc-stat">
+                  <span class="svc-stat-val gold">&lt;2h</span>
+                  <span class="svc-stat-label">P1 response SLA</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="svc-body reveal-left">
+            <span class="svc-eyebrow">Service 04</span>
+            <h2>Quality isn't a phase.<br><span class="gradient-text">It's a standard.</span></h2>
+            <p>QA that starts at go-live is already too late. We embed testing at every sprint, define acceptance criteria before the first line of code is written, and treat each release gate as a business decision, not a checkbox. Then we stay — because the most expensive bugs are the ones you find in production.</p>
+
+            <div class="svc-features">
+              <div class="svc-feature reveal-up">
+                <div class="svc-feature-dot"></div>
+                <h5>Automated Test Frameworks</h5>
+                <p>Selenium, Cypress, and Playwright test suites integrated into your CI/CD pipeline — so regressions are caught before they reach users.</p>
+              </div>
+              <div class="svc-feature reveal-up">
+                <div class="svc-feature-dot"></div>
+                <h5>Performance & Load Testing</h5>
+                <p>JMeter and k6 load simulations that validate your system under real traffic conditions — before Black Friday, not during it.</p>
+              </div>
+              <div class="svc-feature reveal-up">
+                <div class="svc-feature-dot"></div>
+                <h5>Security & Penetration Testing</h5>
+                <p>Vulnerability assessments, OWASP Top 10 validation, and pen testing that identifies exposure before attackers do.</p>
+              </div>
+              <div class="svc-feature reveal-up">
+                <div class="svc-feature-dot"></div>
+                <h5>Managed Application Support</h5>
+                <p>AMS retainers with defined SLAs: P1 response under 2 hours, P2 under 4, root-cause analysis within 24, with monthly health reports.</p>
+              </div>
+              <div class="svc-feature reveal-up">
+                <div class="svc-feature-dot"></div>
+                <h5>Proactive Monitoring</h5>
+                <p>Datadog and PagerDuty integration with custom alerting thresholds — we know about problems before your users do.</p>
+              </div>
+              <div class="svc-feature reveal-up">
+                <div class="svc-feature-dot"></div>
+                <h5>Continuous Optimisation</h5>
+                <p>Quarterly performance reviews, query optimisation, infrastructure right-sizing, and user adoption analysis to keep systems performing at their best.</p>
+              </div>
+            </div>
+
+            <div class="svc-tech-row">
+              <span class="svc-tech">Selenium</span>
+              <span class="svc-tech">Cypress</span>
+              <span class="svc-tech">Playwright</span>
+              <span class="svc-tech">JMeter</span>
+              <span class="svc-tech">Datadog</span>
+              <span class="svc-tech">PagerDuty</span>
+              <span class="svc-tech">JIRA</span>
+              <span class="svc-tech">Grafana</span>
+            </div>
+            <a href="contact.html" class="btn btn-primary">Talk About Support</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ DELIVERY PROCESS ══ -->
+    <section class="delivery-section">
+      <div class="container">
+        <div class="section-header reveal" style="text-align:center; margin-bottom: 0;">
+          <span class="eyebrow">How We Work</span>
+          <h2>A process built for<br><span class="gradient-text">real outcomes</span></h2>
+          <p style="max-width:520px; margin: 1rem auto 0;">Every engagement follows a structured framework — clear milestones, transparent communication, and zero tolerance for scope drift.</p>
+        </div>
+        <div class="delivery-timeline reveal">
+          <div class="delivery-step">
+            <div class="delivery-step-num">01</div>
+            <h4>Discovery</h4>
+            <p>We start by understanding your current state, constraints, and measurable objectives — before we propose anything.</p>
+          </div>
+          <div class="delivery-step">
+            <div class="delivery-step-num">02</div>
+            <h4>Design</h4>
+            <p>Architecture, platform selection, and a phased roadmap agreed before configuration begins. No surprises mid-delivery.</p>
+          </div>
+          <div class="delivery-step">
+            <div class="delivery-step-num">03</div>
+            <h4>Deliver</h4>
+            <p>Sprint-based execution with weekly check-ins, milestone reviews, and continuous client visibility. You see progress, not promises.</p>
+          </div>
+          <div class="delivery-step">
+            <div class="delivery-step-num">04</div>
+            <h4>Optimise</h4>
+            <p>Post-launch support, knowledge transfer, and ongoing optimisation. We measure against the outcomes we agreed on at the start.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SERVICE 2: ERP & ENTERPRISE SOLUTIONS -->
-    <section class="service-section section-alt">
-      <div class="container">
-        <div class="service-inner reverse">
-          <div class="service-visual reveal-right">
-            <div class="service-icon-block" style="color:var(--color-orchid);"><svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></div>
-          </div>
-          <div class="service-content reveal-left">
-            <span class="eyebrow">Service 02</span>
-            <h2>ERP &amp; Enterprise Solutions</h2>
-            <p>We implement, integrate, and optimise Oracle, SAP, and ServiceNow platforms — bringing order to complex enterprise operations and unlocking the full value of your technology investments.</p>
-            <div class="outcomes-list mt-24">
-              <div class="outcome-item gold">
-                <span class="outcome-check">→</span>
-                <p>Oracle Fusion Cloud — full lifecycle implementation and support</p>
-              </div>
-              <div class="outcome-item gold">
-                <span class="outcome-check">→</span>
-                <p>SAP S/4HANA deployment and migration from legacy SAP</p>
-              </div>
-              <div class="outcome-item gold">
-                <span class="outcome-check">→</span>
-                <p>ServiceNow ITSM, ITOM, and workflow automation</p>
-              </div>
-              <div class="outcome-item gold">
-                <span class="outcome-check">→</span>
-                <p>Multi-system ERP integration and data harmonisation</p>
-              </div>
-              <div class="outcome-item gold">
-                <span class="outcome-check">→</span>
-                <p>Finance, HR, procurement, and supply chain modules</p>
-              </div>
-            </div>
-            <div class="platform-tags mt-24">
-              <span class="platform-tag">Oracle Fusion</span>
-              <span class="platform-tag">SAP S/4HANA</span>
-              <span class="platform-tag">ServiceNow</span>
-              <span class="platform-tag">Salesforce</span>
-              <span class="platform-tag">Microsoft 365</span>
-            </div>
-            <a href="contact.html" class="btn btn-primary mt-32">Start an ERP Conversation</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SERVICE 3: AI / GEN AI / IOT -->
-    <section class="service-section">
-      <div class="container">
-        <div class="service-inner">
-          <div class="service-visual reveal-left">
-            <div class="service-icon-block" style="color:var(--color-orchid);"><svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg></div>
-          </div>
-          <div class="service-content reveal-right">
-            <span class="eyebrow">Service 03</span>
-            <h2>AI, GenAI &amp; IoT</h2>
-            <p>We apply artificial intelligence, generative AI, and IoT integration to solve real operational problems — automating repetitive work, surfacing actionable insights, and connecting physical assets to digital workflows.</p>
-            <div class="outcomes-list mt-24">
-              <div class="outcome-item pink">
-                <span class="outcome-check">→</span>
-                <p>GenAI-powered document processing, summarisation, and extraction</p>
-              </div>
-              <div class="outcome-item pink">
-                <span class="outcome-check">→</span>
-                <p>Predictive analytics and AI-driven decision support</p>
-              </div>
-              <div class="outcome-item pink">
-                <span class="outcome-check">→</span>
-                <p>Intelligent workflow automation reducing manual effort</p>
-              </div>
-              <div class="outcome-item pink">
-                <span class="outcome-check">→</span>
-                <p>IoT device integration and real-time monitoring dashboards</p>
-              </div>
-              <div class="outcome-item pink">
-                <span class="outcome-check">→</span>
-                <p>Computer vision and NLP solutions for enterprise use cases</p>
-              </div>
-            </div>
-            <div class="platform-tags mt-24">
-              <span class="platform-tag">Azure OpenAI</span>
-              <span class="platform-tag">LangChain</span>
-              <span class="platform-tag">TensorFlow</span>
-              <span class="platform-tag">AWS IoT</span>
-              <span class="platform-tag">Power BI</span>
-              <span class="platform-tag">Databricks</span>
-            </div>
-            <a href="contact.html" class="btn btn-primary mt-32">Explore AI Solutions</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SERVICE 4: QA & SUPPORT -->
-    <section class="service-section section-alt">
-      <div class="container">
-        <div class="service-inner reverse">
-          <div class="service-visual reveal-right">
-            <div class="service-icon-block" style="color:var(--color-orchid);"><svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
-          </div>
-          <div class="service-content reveal-left">
-            <span class="eyebrow">Service 04</span>
-            <h2>Quality Assurance &amp; Enterprise Support</h2>
-            <p>We ensure your enterprise systems perform at their best — through rigorous QA testing, proactive monitoring, and managed support that prevents problems before they impact your business.</p>
-            <div class="outcomes-list mt-24">
-              <div class="outcome-item">
-                <span class="outcome-check">→</span>
-                <p>Automated and manual QA testing for enterprise applications</p>
-              </div>
-              <div class="outcome-item">
-                <span class="outcome-check">→</span>
-                <p>Performance, load, and security testing frameworks</p>
-              </div>
-              <div class="outcome-item">
-                <span class="outcome-check">→</span>
-                <p>24/7 managed support with defined SLAs</p>
-              </div>
-              <div class="outcome-item">
-                <span class="outcome-check">→</span>
-                <p>Proactive monitoring, alerting, and incident response</p>
-              </div>
-              <div class="outcome-item">
-                <span class="outcome-check">→</span>
-                <p>Continuous optimisation and performance tuning</p>
-              </div>
-            </div>
-            <div class="platform-tags mt-24">
-              <span class="platform-tag">Selenium</span>
-              <span class="platform-tag">Cypress</span>
-              <span class="platform-tag">JMeter</span>
-              <span class="platform-tag">Datadog</span>
-              <span class="platform-tag">PagerDuty</span>
-              <span class="platform-tag">JIRA</span>
-            </div>
-            <a href="contact.html" class="btn btn-primary mt-32">Talk About Support</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- HOW WE DELIVER -->
-    <section>
-      <div class="container">
-        <div class="section-header reveal">
-          <span class="eyebrow">How We Deliver</span>
-          <h2>A Process Built for <span class="gradient-text">Results</span></h2>
-          <p>Every engagement follows a structured yet adaptable delivery framework — clear milestones, transparent communication, and zero tolerance for scope drift.</p>
-        </div>
-        <div class="steps-horizontal reveal">
-          <div class="step-h">
-            <div class="step-h-number">01</div>
-            <h4>Discovery &amp; Assessment</h4>
-            <p>We start by understanding your current state, challenges, and business objectives — before we propose anything.</p>
-          </div>
-          <div class="step-h">
-            <div class="step-h-number">02</div>
-            <h4>Solution Design</h4>
-            <p>Architecture, technology selection, and a phased roadmap built around your budget, timeline, and risk appetite.</p>
-          </div>
-          <div class="step-h">
-            <div class="step-h-number">03</div>
-            <h4>Agile Delivery</h4>
-            <p>Sprint-based execution with weekly check-ins, milestone reviews, and continuous client visibility into progress.</p>
-          </div>
-          <div class="step-h">
-            <div class="step-h-number">04</div>
-            <h4>Optimise &amp; Scale</h4>
-            <p>Post-launch optimisation, knowledge transfer, and ongoing support to ensure long-term success and adaptability.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="cta-section section-alt">
-      <div class="container">
+    <!-- ══ CTA ══ -->
+    <section class="svc-cta">
+      <div class="container" style="position:relative; z-index:1;">
         <span class="eyebrow reveal">Take the Next Step</span>
-        <h2 class="reveal delay-1">Which Service Is Right<br><span class="gradient-text">for Your Organisation?</span></h2>
-        <p class="reveal delay-2">Let's have a 30-minute discovery conversation. We'll help you identify the right starting point.</p>
+        <h2 class="reveal delay-1">Which service fits<br><span class="gradient-text">your organisation?</span></h2>
+        <p class="reveal delay-2" style="max-width:500px; margin: 1.5rem auto 2.5rem;">Let's have a 30-minute discovery conversation. We'll help you identify where to start and what success looks like in numbers.</p>
         <div class="cta-actions reveal delay-3">
           <a href="contact.html" class="btn btn-primary btn-lg">Book a Discovery Call</a>
           <a href="capabilities.html" class="btn btn-outline btn-lg">View Capabilities</a>

@@ -11,10 +11,12 @@
 const LOGO_SVG = `<svg width="56" height="56" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
   <rect width="56" height="56" rx="12" fill="#100d20"/>
   <g transform="translate(28,28)">
+    <!-- 4 orbital rings -->
     <ellipse rx="22" ry="9" fill="none" stroke="#c06dc4" stroke-width="1.9" opacity="0.92"/>
     <ellipse rx="22" ry="9" fill="none" stroke="#c06dc4" stroke-width="1.9" opacity="0.92" transform="rotate(45)"/>
     <ellipse rx="22" ry="9" fill="none" stroke="#c06dc4" stroke-width="1.9" opacity="0.92" transform="rotate(90)"/>
     <ellipse rx="22" ry="9" fill="none" stroke="#c06dc4" stroke-width="1.9" opacity="0.92" transform="rotate(135)"/>
+    <!-- Orbital tip dots -->
     <circle cx="22"  cy="0"   r="2.6" fill="#e879c0"/>
     <circle cx="-22" cy="0"   r="2.6" fill="#e879c0"/>
     <circle cx="0"   cy="22"  r="2.6" fill="#e879c0"/>
@@ -23,21 +25,31 @@ const LOGO_SVG = `<svg width="56" height="56" viewBox="0 0 56 56" xmlns="http://
     <circle cx="-15.6" cy="-15.6" r="2.6" fill="#e879c0"/>
     <circle cx="15.6"  cy="-15.6" r="2.6" fill="#e879c0"/>
     <circle cx="-15.6" cy="15.6"  r="2.6" fill="#e879c0"/>
+    <!-- Accent dots -->
     <circle cx="10"  cy="-6"  r="1.2" fill="#e879c0" opacity="0.55"/>
     <circle cx="-10" cy="6"   r="1.2" fill="#e879c0" opacity="0.55"/>
     <circle cx="6"   cy="10"  r="1.2" fill="#e879c0" opacity="0.55"/>
     <circle cx="-6"  cy="-10" r="1.2" fill="#e879c0" opacity="0.55"/>
+    <!-- Inner sanctum -->
     <circle cx="0" cy="0" r="8.5" fill="#100d20" stroke="#c06dc4" stroke-width="1.0" opacity="0.85"/>
-    <path d="M 0,-2 C -1.9,-2.4 -2.6,-5.6 0,-6.6 C 2.6,-5.6 1.9,-2.4 0,-2 Z" fill="#d4a644"/>
-    <path d="M 0,2 C -1.9,2.4 -2.6,5.6 0,6.6 C 2.6,5.6 1.9,2.4 0,2 Z" fill="#d4a644"/>
-    <path d="M -2,0 C -2.4,-1.9 -5.6,-2.6 -6.6,0 C -5.6,2.6 -2.4,1.9 -2,0 Z" fill="#d4a644"/>
-    <path d="M 2,0 C 2.4,-1.9 5.6,-2.6 6.6,0 C 5.6,2.6 2.4,1.9 2,0 Z" fill="#d4a644"/>
-    <polygon points="0,-2.5 2.5,0 0,2.5 -2.5,0" fill="#d4a644"/>
-    <circle cx="3.0"  cy="-3.0" r="0.68" fill="#d4a644" opacity="0.88"/>
-    <circle cx="-3.0" cy="-3.0" r="0.68" fill="#d4a644" opacity="0.88"/>
-    <circle cx="3.0"  cy="3.0"  r="0.68" fill="#d4a644" opacity="0.88"/>
-    <circle cx="-3.0" cy="3.0"  r="0.68" fill="#d4a644" opacity="0.88"/>
-    <circle cx="0" cy="0" r="0.95" fill="#100d20"/>
+    <!-- Soundarya Lahari chaturdala yantra — 4 lotus petals, each pointed at outer tip -->
+    <!-- Top petal (pointing up) — wider, more prominent -->
+    <path d="M 0,-2 C -3.2,-3.8 -3,-7.2 0,-7.8 C 3,-7.2 3.2,-3.8 0,-2 Z" fill="#d4a644"/>
+    <!-- Bottom petal -->
+    <path d="M 0,2 C -3.2,3.8 -3,7.2 0,7.8 C 3,7.2 3.2,3.8 0,2 Z" fill="#d4a644"/>
+    <!-- Left petal -->
+    <path d="M -2,0 C -3.8,-3.2 -7.2,-3 -7.8,0 C -7.2,3 -3.8,3.2 -2,0 Z" fill="#d4a644"/>
+    <!-- Right petal -->
+    <path d="M 2,0 C 3.8,-3.2 7.2,-3 7.8,0 C 7.2,3 3.8,3.2 2,0 Z" fill="#d4a644"/>
+    <!-- Central diamond -->
+    <polygon points="0,-2.8 2.8,0 0,2.8 -2.8,0" fill="#d4a644"/>
+    <!-- Corner bindus (between petals, at diagonals) -->
+    <circle cx="3.2"  cy="-3.2" r="0.8" fill="#d4a644" opacity="0.9"/>
+    <circle cx="-3.2" cy="-3.2" r="0.8" fill="#d4a644" opacity="0.9"/>
+    <circle cx="3.2"  cy="3.2"  r="0.8" fill="#d4a644" opacity="0.9"/>
+    <circle cx="-3.2" cy="3.2"  r="0.8" fill="#d4a644" opacity="0.9"/>
+    <!-- Central bindu -->
+    <circle cx="0" cy="0" r="1.1" fill="#100d20"/>
   </g>
 </svg>`;
 
@@ -66,21 +78,25 @@ function buildNavbar() {
     { href: 'case-studies.html', label: 'Case Studies' },
   ];
 
-  /* Mega-menu data */
+  /* Mega-menu data — headings only, no sub-descriptions */
   const capabilities = [
-    { href: 'capabilities.html#erp',     label: 'ERP Modernization',      sub: 'Oracle · SAP · ServiceNow' },
-    { href: 'capabilities.html#revenue', label: 'Revenue Governance',     sub: 'Billing · Collections · AR' },
-    { href: 'capabilities.html#capital', label: 'Capital Projects',       sub: 'PMIS · Cost Control' },
-    { href: 'capabilities.html#ai',      label: 'AI & Automation',        sub: 'Intelligent workflows' },
-    { href: 'capabilities.html#cyber',   label: 'Cybersecurity',          sub: 'Compliance · Zero Trust' },
-    { href: 'capabilities.html#managed', label: 'Managed Services',       sub: 'AMS · Support · SLA' },
+    { href: 'capabilities.html#erp',     label: 'ERP Modernization' },
+    { href: 'capabilities.html#revenue', label: 'Revenue Governance' },
+    { href: 'capabilities.html#capital', label: 'Capital Projects' },
+    { href: 'capabilities.html#ai',      label: 'AI & Automation' },
+    { href: 'capabilities.html#cyber',   label: 'Cybersecurity' },
+    { href: 'capabilities.html#managed', label: 'Managed Services' },
   ];
 
   const industries = [
-    { href: 'capabilities.html#public-sector',  label: 'Public Sector',   sub: 'Government & Municipalities' },
-    { href: 'capabilities.html#private-sector', label: 'Private Sector',  sub: 'Enterprise & Corporates' },
-    { href: 'capabilities.html#education',      label: 'Education',       sub: 'Universities & Schools' },
-    { href: 'capabilities.html#healthcare',     label: 'Healthcare',      sub: 'Hospitals & Clinics' },
+    { href: 'capabilities.html#public-sector',  label: 'Public Sector' },
+    { href: 'capabilities.html#private-sector', label: 'Private Sector' },
+    { href: 'capabilities.html#education',      label: 'Education' },
+    { href: 'capabilities.html#healthcare',     label: 'Healthcare' },
+    { href: 'capabilities.html#energy',         label: 'Energy & Utilities' },
+    { href: 'capabilities.html#financial',      label: 'Financial Services' },
+    { href: 'capabilities.html#realestate',     label: 'Real Estate & Construction' },
+    { href: 'capabilities.html#other',          label: 'Other Sectors' },
   ];
 
   const chevronSVG = `<svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>`;
@@ -88,13 +104,13 @@ function buildNavbar() {
 
   const capLinksHTML = capabilities.map(c => `
     <a href="${c.href}" class="mega-link">
-      <span class="mega-label">${c.label}<span class="mega-sub">${c.sub}</span></span>
+      <span class="mega-label">${c.label}</span>
       ${arrowSVG}
     </a>`).join('');
 
   const indLinksHTML = industries.map(i => `
     <a href="${i.href}" class="mega-link">
-      <span class="mega-label">${i.label}<span class="mega-sub">${i.sub}</span></span>
+      <span class="mega-label">${i.label}</span>
       ${arrowSVG}
     </a>`).join('');
 
@@ -552,9 +568,20 @@ function initCounters() {
 }
 
 /* --------------------------------------------------------------------------
+   GLOBAL GRID OVERLAY (injected into every page)
+   -------------------------------------------------------------------------- */
+function injectGridOverlay() {
+  const grid = document.createElement('div');
+  grid.className = 'site-grid';
+  grid.setAttribute('aria-hidden', 'true');
+  document.body.prepend(grid);
+}
+
+/* --------------------------------------------------------------------------
    INIT ON DOM READY
    -------------------------------------------------------------------------- */
 document.addEventListener('DOMContentLoaded', () => {
+  injectGridOverlay();
   buildNavbar();
   buildFooter();
   initParticles();

@@ -89,7 +89,32 @@ input, textarea, select { font-family: inherit; }
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.5;
+  opacity: 0.65;
+}
+
+/* --------------------------------------------------------------------------
+   3b. GLOBAL GRID OVERLAY (injected by JS on every page)
+   -------------------------------------------------------------------------- */
+.site-grid {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 59px,
+      rgba(168, 85, 200, 0.04) 59px,
+      rgba(168, 85, 200, 0.04) 60px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 59px,
+      rgba(168, 85, 200, 0.04) 59px,
+      rgba(168, 85, 200, 0.04) 60px
+    );
 }
 
 /* --------------------------------------------------------------------------
@@ -552,33 +577,26 @@ section {
   align-items: center;
   justify-content: space-between;
   gap: 8px;
-  padding: 9px 10px 9px 0;
-  font-size: 0.875rem;
+  padding: 8px 4px 8px 0;
+  font-size: 0.9rem;
   font-weight: 500;
   color: var(--color-gray-light);
   border-radius: var(--radius-sm);
-  transition: color var(--transition), background var(--transition), padding-left var(--transition);
+  transition: color var(--transition), padding-left var(--transition);
   border-bottom: 1px solid rgba(168, 85, 200, 0.06);
 }
 .mega-link:last-child { border-bottom: none; }
 
 .mega-link:hover {
   color: var(--color-white);
-  padding-left: 6px;
+  padding-left: 8px;
 }
 .mega-link:hover .mega-arrow {
   opacity: 1;
-  transform: translateX(2px);
+  transform: translateX(3px);
 }
 
 .mega-link .mega-label { flex: 1; }
-.mega-link .mega-sub {
-  display: block;
-  font-size: 0.72rem;
-  font-weight: 400;
-  color: var(--color-gray);
-  margin-top: 1px;
-}
 
 .mega-arrow {
   flex-shrink: 0;
@@ -742,23 +760,34 @@ section {
 .hero::before {
   content: '';
   position: absolute;
-  top: -20%;
-  left: -10%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(ellipse, rgba(168,85,200,0.12) 0%, transparent 70%);
+  top: -25%;
+  left: -15%;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(ellipse, rgba(168,85,200,0.18) 0%, rgba(168,85,200,0.06) 45%, transparent 70%);
   pointer-events: none;
+  animation: orb-drift-a 18s ease-in-out infinite alternate;
 }
 
 .hero::after {
   content: '';
   position: absolute;
-  bottom: -10%;
+  bottom: -15%;
   right: -5%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(ellipse, rgba(232,121,192,0.08) 0%, transparent 70%);
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(ellipse, rgba(232,121,192,0.14) 0%, rgba(212,166,68,0.04) 50%, transparent 70%);
   pointer-events: none;
+  animation: orb-drift-b 22s ease-in-out infinite alternate;
+}
+
+@keyframes orb-drift-a {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(40px, 30px) scale(1.12); }
+}
+@keyframes orb-drift-b {
+  from { transform: translate(0, 0) scale(1); }
+  to   { transform: translate(-30px, -20px) scale(1.08); }
 }
 
 .hero-inner {
@@ -816,13 +845,42 @@ section {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  position: relative;
+}
+
+/* Glowing concentric rings behind the hero logo */
+.hero-visual::before,
+.hero-visual::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.hero-visual::before {
+  width: 320px;
+  height: 320px;
+  border: 1px solid rgba(168, 85, 200, 0.18);
+  animation: ring-pulse 4s ease-in-out infinite;
+}
+.hero-visual::after {
+  width: 440px;
+  height: 440px;
+  border: 1px solid rgba(168, 85, 200, 0.08);
+  animation: ring-pulse 4s ease-in-out 1s infinite;
+}
+
+@keyframes ring-pulse {
+  0%, 100% { transform: scale(1);   opacity: 0.7; }
+  50%       { transform: scale(1.04); opacity: 1; }
 }
 
 .hero-logo-float {
-  width: 200px;
-  height: 200px;
+  width: 240px;
+  height: 240px;
   animation: float 6s ease-in-out infinite;
-  filter: drop-shadow(0 0 40px rgba(168,85,200,0.4));
+  filter: drop-shadow(0 0 60px rgba(168,85,200,0.55)) drop-shadow(0 0 20px rgba(232,121,192,0.3));
+  position: relative;
+  z-index: 1;
 }
 
 /* --------------------------------------------------------------------------
