@@ -32,24 +32,29 @@ const LOGO_SVG = `<svg width="56" height="56" viewBox="0 0 56 56" xmlns="http://
     <circle cx="-6"  cy="-10" r="1.2" fill="#e879c0" opacity="0.55"/>
     <!-- Inner sanctum -->
     <circle cx="0" cy="0" r="8.5" fill="#100d20" stroke="#c06dc4" stroke-width="1.0" opacity="0.85"/>
-    <!-- Soundarya Lahari chaturdala yantra — 4 lotus petals, each pointed at outer tip -->
-    <!-- Top petal (pointing up) — wider, more prominent -->
-    <path d="M 0,-2 C -3.2,-3.8 -3,-7.2 0,-7.8 C 3,-7.2 3.2,-3.8 0,-2 Z" fill="#d4a644"/>
-    <!-- Bottom petal -->
-    <path d="M 0,2 C -3.2,3.8 -3,7.2 0,7.8 C 3,7.2 3.2,3.8 0,2 Z" fill="#d4a644"/>
-    <!-- Left petal -->
-    <path d="M -2,0 C -3.8,-3.2 -7.2,-3 -7.8,0 C -7.2,3 -3.8,3.2 -2,0 Z" fill="#d4a644"/>
-    <!-- Right petal -->
-    <path d="M 2,0 C 3.8,-3.2 7.2,-3 7.8,0 C 7.2,3 3.8,3.2 2,0 Z" fill="#d4a644"/>
-    <!-- Central diamond -->
-    <polygon points="0,-2.8 2.8,0 0,2.8 -2.8,0" fill="#d4a644"/>
-    <!-- Corner bindus (between petals, at diagonals) -->
-    <circle cx="3.2"  cy="-3.2" r="0.8" fill="#d4a644" opacity="0.9"/>
-    <circle cx="-3.2" cy="-3.2" r="0.8" fill="#d4a644" opacity="0.9"/>
-    <circle cx="3.2"  cy="3.2"  r="0.8" fill="#d4a644" opacity="0.9"/>
-    <circle cx="-3.2" cy="3.2"  r="0.8" fill="#d4a644" opacity="0.9"/>
+    <!-- Yantra: diamond with crossing arms and 4 looped cardinal extensions -->
+    <!-- Diamond outline -->
+    <line x1="0"    y1="-4.6" x2="4.6"  y2="0"    stroke="#d4a644" stroke-width="0.95" stroke-linecap="round"/>
+    <line x1="4.6"  y1="0"    x2="0"    y2="4.6"  stroke="#d4a644" stroke-width="0.95" stroke-linecap="round"/>
+    <line x1="0"    y1="4.6"  x2="-4.6" y2="0"    stroke="#d4a644" stroke-width="0.95" stroke-linecap="round"/>
+    <line x1="-4.6" y1="0"    x2="0"    y2="-4.6" stroke="#d4a644" stroke-width="0.95" stroke-linecap="round"/>
+    <!-- Inner cross N-S and W-E -->
+    <line x1="0"    y1="-4.6" x2="0"    y2="4.6"  stroke="#d4a644" stroke-width="0.8"  stroke-linecap="round"/>
+    <line x1="-4.6" y1="0"    x2="4.6"  y2="0"    stroke="#d4a644" stroke-width="0.8"  stroke-linecap="round"/>
+    <!-- North arm and loop -->
+    <line x1="0" y1="-4.6" x2="0" y2="-5.75" stroke="#d4a644" stroke-width="0.95"/>
+    <circle cx="0"    cy="-6.85" r="1.1"  fill="none" stroke="#d4a644" stroke-width="0.95"/>
+    <!-- South arm and loop -->
+    <line x1="0" y1="4.6"  x2="0" y2="5.75"  stroke="#d4a644" stroke-width="0.95"/>
+    <circle cx="0"    cy="6.85"  r="1.1"  fill="none" stroke="#d4a644" stroke-width="0.95"/>
+    <!-- East arm and loop -->
+    <line x1="4.6"  y1="0"  x2="5.7"  y2="0" stroke="#d4a644" stroke-width="0.95"/>
+    <circle cx="6.7"  cy="0"     r="0.95" fill="none" stroke="#d4a644" stroke-width="0.95"/>
+    <!-- West arm and loop -->
+    <line x1="-4.6" y1="0"  x2="-5.7" y2="0" stroke="#d4a644" stroke-width="0.95"/>
+    <circle cx="-6.7" cy="0"     r="0.95" fill="none" stroke="#d4a644" stroke-width="0.95"/>
     <!-- Central bindu -->
-    <circle cx="0" cy="0" r="1.1" fill="#100d20"/>
+    <circle cx="0" cy="0" r="1.05" fill="#d4a644"/>
   </g>
 </svg>`;
 
