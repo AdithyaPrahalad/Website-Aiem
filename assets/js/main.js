@@ -89,14 +89,14 @@ function buildNavbar() {
   ];
 
   const industries = [
-    { href: 'case-studies.html#ind-public-sector',  label: 'Public Sector' },
-    { href: 'case-studies.html#ind-private-sector', label: 'Private Sector' },
-    { href: 'case-studies.html#ind-education',      label: 'Education' },
-    { href: 'case-studies.html#ind-healthcare',     label: 'Healthcare' },
-    { href: 'case-studies.html#ind-energy',         label: 'Energy & Utilities' },
-    { href: 'case-studies.html#ind-financial',      label: 'Financial Services' },
-    { href: 'case-studies.html#ind-realestate',     label: 'Real Estate & Construction' },
-    { href: 'case-studies.html#ind-other',          label: 'Manufacturing & Other Sectors' },
+    { href: 'industries.html#public-sector',  label: 'Public Sector' },
+    { href: 'industries.html#private-sector', label: 'Private Sector' },
+    { href: 'industries.html#education',      label: 'Education' },
+    { href: 'industries.html#healthcare',     label: 'Healthcare' },
+    { href: 'industries.html#energy',         label: 'Energy & Utilities' },
+    { href: 'industries.html#financial',      label: 'Financial Services' },
+    { href: 'industries.html#realestate',     label: 'Real Estate & Construction' },
+    { href: 'industries.html#other',          label: 'Manufacturing & Other Sectors' },
   ];
 
   const chevronSVG = `<svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>`;
@@ -345,6 +345,7 @@ function buildFooter() {
               <li><a href="about.html">About Aiēm</a></li>
               <li><a href="services.html">Our Services</a></li>
               <li><a href="capabilities.html">Capabilities</a></li>
+              <li><a href="industries.html">Industries</a></li>
               <li><a href="products.html">Products</a></li>
               <li><a href="case-studies.html">Case Studies</a></li>
               <li><a href="contact.html">Contact Us</a></li>
