@@ -89,14 +89,14 @@ function buildNavbar() {
   ];
 
   const industries = [
-    { href: 'capabilities.html#public-sector',  label: 'Public Sector' },
-    { href: 'capabilities.html#private-sector', label: 'Private Sector' },
-    { href: 'capabilities.html#education',      label: 'Education' },
-    { href: 'capabilities.html#healthcare',     label: 'Healthcare' },
-    { href: 'capabilities.html#energy',         label: 'Energy & Utilities' },
-    { href: 'capabilities.html#financial',      label: 'Financial Services' },
-    { href: 'capabilities.html#realestate',     label: 'Real Estate & Construction' },
-    { href: 'capabilities.html#other',          label: 'Other Sectors' },
+    { href: 'case-studies.html#industries', label: 'Public Sector' },
+    { href: 'case-studies.html#industries', label: 'Private Sector' },
+    { href: 'case-studies.html#industries', label: 'Education' },
+    { href: 'case-studies.html#industries', label: 'Healthcare' },
+    { href: 'case-studies.html#industries', label: 'Energy & Utilities' },
+    { href: 'case-studies.html#industries', label: 'Financial Services' },
+    { href: 'case-studies.html#industries', label: 'Real Estate & Construction' },
+    { href: 'case-studies.html#industries', label: 'Manufacturing & Other Sectors' },
   ];
 
   const chevronSVG = `<svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>`;
