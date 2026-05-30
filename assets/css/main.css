@@ -2375,19 +2375,39 @@ section {
    40. MARQUEE TICKER STRIP
    -------------------------------------------------------------------------- */
 .marquee-strip {
-  border-top: 1px solid var(--color-border);
-  border-bottom: 1px solid var(--color-border);
+  border-top: 1px solid rgba(168,85,200,0.25);
+  border-bottom: 1px solid rgba(168,85,200,0.25);
   overflow: hidden;
-  padding: 13px 0;
-  background: var(--color-bg2);
+  padding: 18px 0;
+  background: linear-gradient(90deg, rgba(168,85,200,0.07) 0%, rgba(16,13,32,0.95) 40%, rgba(16,13,32,0.95) 60%, rgba(168,85,200,0.07) 100%);
   user-select: none;
+  position: relative;
+}
+
+/* Fade edges */
+.marquee-strip::before,
+.marquee-strip::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 120px;
+  z-index: 2;
+  pointer-events: none;
+}
+.marquee-strip::before {
+  left: 0;
+  background: linear-gradient(to right, var(--color-bg), transparent);
+}
+.marquee-strip::after {
+  right: 0;
+  background: linear-gradient(to left, var(--color-bg), transparent);
 }
 
 .marquee-track {
   display: flex;
   align-items: center;
   width: max-content;
-  animation: marquee-scroll 38s linear infinite;
+  animation: marquee-scroll 28s linear infinite;
 }
 
 .marquee-strip:hover .marquee-track {
@@ -2395,21 +2415,24 @@ section {
 }
 
 .marquee-item {
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-weight: 700;
-  letter-spacing: 0.13em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--color-dark-gray);
+  color: rgba(255,255,255,0.65);
   white-space: nowrap;
-  padding: 0 32px;
-  transition: color 0.25s;
+  padding: 0 36px;
+  transition: color 0.25s, text-shadow 0.25s;
 }
-.marquee-item:hover { color: var(--color-orchid); }
+.marquee-item:hover {
+  color: var(--color-orchid);
+  text-shadow: 0 0 12px rgba(168,85,200,0.6);
+}
 
 .marquee-sep {
   color: var(--color-orchid);
-  font-size: 0.6rem;
-  opacity: 0.45;
+  font-size: 0.55rem;
+  opacity: 0.7;
   flex-shrink: 0;
 }
 
