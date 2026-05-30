@@ -28,29 +28,27 @@
     <!-- Inner sanctum circle -->
     <circle cx="0" cy="0" r="8.5" fill="#100d20" stroke="#c06dc4" stroke-width="1.0" opacity="0.85"/>
 
-    <!-- ══ Yantra: diamond with crossing arms and 4 looped cardinal extensions ══ -->
-    <!-- Diamond outline (rhombus, corners at N/E/S/W) -->
-    <line x1="0"    y1="-4.6" x2="4.6"  y2="0"    stroke="#d4a644" stroke-width="0.95" stroke-linecap="round"/>
-    <line x1="4.6"  y1="0"    x2="0"    y2="4.6"  stroke="#d4a644" stroke-width="0.95" stroke-linecap="round"/>
-    <line x1="0"    y1="4.6"  x2="-4.6" y2="0"    stroke="#d4a644" stroke-width="0.95" stroke-linecap="round"/>
-    <line x1="-4.6" y1="0"    x2="0"    y2="-4.6" stroke="#d4a644" stroke-width="0.95" stroke-linecap="round"/>
-    <!-- Inner cross — N to S and W to E — crossing at centre -->
-    <line x1="0"    y1="-4.6" x2="0"    y2="4.6"  stroke="#d4a644" stroke-width="0.8"  stroke-linecap="round"/>
-    <line x1="-4.6" y1="0"    x2="4.6"  y2="0"    stroke="#d4a644" stroke-width="0.8"  stroke-linecap="round"/>
-    <!-- North arm and loop -->
-    <line x1="0" y1="-4.6" x2="0" y2="-5.75" stroke="#d4a644" stroke-width="0.95"/>
-    <circle cx="0"    cy="-6.85" r="1.1"  fill="none" stroke="#d4a644" stroke-width="0.95"/>
-    <!-- South arm and loop -->
-    <line x1="0" y1="4.6"  x2="0" y2="5.75"  stroke="#d4a644" stroke-width="0.95"/>
-    <circle cx="0"    cy="6.85"  r="1.1"  fill="none" stroke="#d4a644" stroke-width="0.95"/>
-    <!-- East arm and loop -->
-    <line x1="4.6"  y1="0"  x2="5.7"  y2="0" stroke="#d4a644" stroke-width="0.95"/>
-    <circle cx="6.7"  cy="0"     r="0.95" fill="none" stroke="#d4a644" stroke-width="0.95"/>
-    <!-- West arm and loop -->
-    <line x1="-4.6" y1="0"  x2="-5.7" y2="0" stroke="#d4a644" stroke-width="0.95"/>
-    <circle cx="-6.7" cy="0"     r="0.95" fill="none" stroke="#d4a644" stroke-width="0.95"/>
+    <!-- ══ Yantra: two interlocked curved teardrops — large N/S circles, curved diamond, E/W scroll hooks ══ -->
+    <!-- N circle (large, prominent) -->
+    <circle cx="0" cy="-6.8" r="1.3" fill="none" stroke="#d4a644" stroke-width="1.0"/>
+    <!-- N-bottom → W crossing (top-left diamond arm, curved) -->
+    <path d="M 0,-5.5 C -1.6,-3.4 -2.9,-1.7 -3.8,0" fill="none" stroke="#d4a644" stroke-width="1.0" stroke-linecap="round"/>
+    <!-- N-bottom → E crossing (top-right diamond arm, curved) -->
+    <path d="M 0,-5.5 C 1.6,-3.4 2.9,-1.7 3.8,0" fill="none" stroke="#d4a644" stroke-width="1.0" stroke-linecap="round"/>
+    <!-- W crossing → S-top (bottom-left diamond arm, curved) -->
+    <path d="M -3.8,0 C -2.9,1.7 -1.6,3.4 0,5.5" fill="none" stroke="#d4a644" stroke-width="1.0" stroke-linecap="round"/>
+    <!-- E crossing → S-top (bottom-right diamond arm, curved) -->
+    <path d="M 3.8,0 C 2.9,1.7 1.6,3.4 0,5.5" fill="none" stroke="#d4a644" stroke-width="1.0" stroke-linecap="round"/>
+    <!-- S circle (large, prominent) -->
+    <circle cx="0" cy="6.8" r="1.3" fill="none" stroke="#d4a644" stroke-width="1.0"/>
+    <!-- W scroll hook (from W crossing, curves out and curls back) -->
+    <path d="M -3.8,0 C -5.5,-0.3 -7.3,0.2 -7.3,1.5 C -7.3,2.8 -6.2,3.4 -5.2,3.0 C -4.2,2.6 -4.1,1.6 -4.9,1.3"
+          fill="none" stroke="#d4a644" stroke-width="1.0" stroke-linecap="round"/>
+    <!-- E scroll hook (mirrored) -->
+    <path d="M 3.8,0 C 5.5,-0.3 7.3,0.2 7.3,1.5 C 7.3,2.8 6.2,3.4 5.2,3.0 C 4.2,2.6 4.1,1.6 4.9,1.3"
+          fill="none" stroke="#d4a644" stroke-width="1.0" stroke-linecap="round"/>
     <!-- Central bindu -->
-    <circle cx="0" cy="0" r="1.05" fill="#d4a644"/>
+    <circle cx="0" cy="0" r="0.9" fill="#d4a644"/>
 
   </g>
 </svg>
