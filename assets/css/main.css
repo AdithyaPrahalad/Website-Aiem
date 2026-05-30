@@ -985,26 +985,28 @@ section {
   padding: 48px 40px;
   position: relative;
   overflow: hidden;
-  transition: background var(--transition);
+  transition: background var(--transition), transform var(--transition), box-shadow var(--transition), border-left-color var(--transition);
   border-left: 3px solid transparent;
 }
 
 .pillar-card:hover {
   background: var(--color-bg2);
   border-left-color: var(--color-orchid);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(168,85,200,0.15);
 }
 
 .pillar-number {
   position: absolute;
   top: 20px;
   right: 24px;
-  font-size: 4rem;
+  font-size: 5rem;
   font-weight: 900;
   background: var(--gradient-primary);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  opacity: 0.15;
+  opacity: 0.22;
   line-height: 1;
   letter-spacing: -0.05em;
 }
@@ -1052,12 +1054,15 @@ section {
   text-align: center;
   border-right: 1px solid var(--color-border);
   position: relative;
+  transition: background var(--transition);
 }
+
+.stat-item:hover { background: rgba(168,85,200,0.04); }
 
 .stat-item:last-child { border-right: none; }
 
 .stat-number {
-  font-size: 3rem;
+  font-size: 3.75rem;
   font-weight: 900;
   background: var(--gradient-primary);
   -webkit-background-clip: text;
@@ -1104,15 +1109,22 @@ section {
 .diff-item:last-child { border-bottom: none; }
 
 .diff-icon {
-  width: 36px;
-  height: 36px;
-  background: rgba(168,85,200,0.12);
+  width: 44px;
+  height: 44px;
+  background: rgba(168,85,200,0.18);
+  border: 1px solid rgba(168,85,200,0.25);
   border-radius: var(--radius-sm);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
   margin-top: 2px;
+  transition: background var(--transition), border-color var(--transition);
+}
+
+.diff-item:hover .diff-icon {
+  background: rgba(168,85,200,0.28);
+  border-color: rgba(168,85,200,0.45);
 }
 
 .diff-item h4 {
@@ -1295,12 +1307,13 @@ section {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
   overflow: hidden;
-  transition: border-color var(--transition), transform var(--transition);
+  transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
 }
 
 .case-card:hover {
-  border-color: var(--color-border-hover);
-  transform: translateY(-2px);
+  border-color: rgba(168,85,200,0.45);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(168,85,200,0.12);
 }
 
 .case-card-header {
