@@ -89,14 +89,14 @@ function buildNavbar() {
   ];
 
   const industries = [
-    { href: 'case-studies.html#industries', label: 'Public Sector' },
-    { href: 'case-studies.html#industries', label: 'Private Sector' },
-    { href: 'case-studies.html#industries', label: 'Education' },
-    { href: 'case-studies.html#industries', label: 'Healthcare' },
-    { href: 'case-studies.html#industries', label: 'Energy & Utilities' },
-    { href: 'case-studies.html#industries', label: 'Financial Services' },
-    { href: 'case-studies.html#industries', label: 'Real Estate & Construction' },
-    { href: 'case-studies.html#industries', label: 'Manufacturing & Other Sectors' },
+    { href: 'case-studies.html#ind-public-sector',  label: 'Public Sector' },
+    { href: 'case-studies.html#ind-private-sector', label: 'Private Sector' },
+    { href: 'case-studies.html#ind-education',      label: 'Education' },
+    { href: 'case-studies.html#ind-healthcare',     label: 'Healthcare' },
+    { href: 'case-studies.html#ind-energy',         label: 'Energy & Utilities' },
+    { href: 'case-studies.html#ind-financial',      label: 'Financial Services' },
+    { href: 'case-studies.html#ind-realestate',     label: 'Real Estate & Construction' },
+    { href: 'case-studies.html#ind-other',          label: 'Manufacturing & Other Sectors' },
   ];
 
   const chevronSVG = `<svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>`;
