@@ -28,31 +28,36 @@
     <!-- Inner sanctum circle -->
     <circle cx="0" cy="0" r="8.5" fill="#100d20" stroke="#c06dc4" stroke-width="1.0" opacity="0.85"/>
 
-    <!-- ══ Yantra: open N/S rings, curved diamond arms, four closed teardrop scroll loops ══ -->
-    <!-- N open ring (large, prominent — teardrop apex) -->
+    <!-- ══ YANTRA — 4 continuous crossing paths, N/S lasso rings, 4 scroll tip circles ══
+         Each path: ring-side → crosses diamond vertex → left/right crossing → scroll tip circle
+         Path A (\): N-ring-left → upper-vertex X → right-crossing → E-lower-tip
+         Path B (/): N-ring-right → upper-vertex X → left-crossing  → W-lower-tip
+         Path C (\): S-ring-right → lower-vertex X → left-crossing  → W-upper-tip
+         Path D (/): S-ring-left  → lower-vertex X → right-crossing → E-upper-tip        -->
+
+    <!-- Path A: N-left → right-crossing → E-lower -->
+    <path d="M -1.0,-5.5 C 0.5,-4.5 2.0,-2.0 3.5,0 C 4.5,0.8 5.5,2.0 6.0,3.2"
+          fill="none" stroke="#d4a644" stroke-width="1.2" stroke-linecap="round"/>
+    <!-- Path B: N-right → left-crossing → W-lower -->
+    <path d="M 1.0,-5.5 C -0.5,-4.5 -2.0,-2.0 -3.5,0 C -4.5,0.8 -5.5,2.0 -6.0,3.2"
+          fill="none" stroke="#d4a644" stroke-width="1.2" stroke-linecap="round"/>
+    <!-- Path C: S-right → left-crossing → W-upper -->
+    <path d="M 1.0,5.5 C -0.5,4.5 -2.0,2.0 -3.5,0 C -4.5,-0.8 -5.5,-2.0 -6.0,-3.2"
+          fill="none" stroke="#d4a644" stroke-width="1.2" stroke-linecap="round"/>
+    <!-- Path D: S-left → right-crossing → E-upper -->
+    <path d="M -1.0,5.5 C 0.5,4.5 2.0,2.0 3.5,0 C 4.5,-0.8 5.5,-2.0 6.0,-3.2"
+          fill="none" stroke="#d4a644" stroke-width="1.2" stroke-linecap="round"/>
+
+    <!-- N lasso ring (drawn last — covers path start points) -->
     <circle cx="0" cy="-6.5" r="1.35" fill="#100d20" stroke="#d4a644" stroke-width="1.2"/>
-    <!-- NW arm: N-bottom to left crossing -->
-    <path d="M 0,-5.15 C -1.0,-3.8 -2.5,-2.0 -3.5,0" fill="none" stroke="#d4a644" stroke-width="1.2" stroke-linecap="round"/>
-    <!-- NE arm: N-bottom to right crossing -->
-    <path d="M 0,-5.15 C 1.0,-3.8 2.5,-2.0 3.5,0" fill="none" stroke="#d4a644" stroke-width="1.2" stroke-linecap="round"/>
-    <!-- SW arm: left crossing to S-top -->
-    <path d="M -3.5,0 C -2.5,2.0 -1.0,3.8 0,5.15" fill="none" stroke="#d4a644" stroke-width="1.2" stroke-linecap="round"/>
-    <!-- SE arm: right crossing to S-top -->
-    <path d="M 3.5,0 C 2.5,2.0 1.0,3.8 0,5.15" fill="none" stroke="#d4a644" stroke-width="1.2" stroke-linecap="round"/>
-    <!-- S open ring (large, prominent — teardrop base) -->
+    <!-- S lasso ring -->
     <circle cx="0" cy="6.5" r="1.35" fill="#100d20" stroke="#d4a644" stroke-width="1.2"/>
-    <!-- W-upper scroll: closed teardrop loop extending NW from left crossing -->
-    <path d="M -3.5,0 C -4.5,-1.0 -6.0,-2.5 -6.0,-4.0 C -6.0,-5.0 -4.5,-4.8 -4.0,-3.5 C -4.2,-2.0 -3.8,-0.8 -3.5,0 Z"
-          fill="none" stroke="#d4a644" stroke-width="1.2" stroke-linejoin="round"/>
-    <!-- W-lower scroll: closed teardrop loop extending SW from left crossing -->
-    <path d="M -3.5,0 C -4.5,1.0 -6.0,2.5 -6.0,4.0 C -6.0,5.0 -4.5,4.8 -4.0,3.5 C -4.2,2.0 -3.8,0.8 -3.5,0 Z"
-          fill="none" stroke="#d4a644" stroke-width="1.2" stroke-linejoin="round"/>
-    <!-- E-upper scroll: closed teardrop loop extending NE from right crossing -->
-    <path d="M 3.5,0 C 4.5,-1.0 6.0,-2.5 6.0,-4.0 C 6.0,-5.0 4.5,-4.8 4.0,-3.5 C 4.2,-2.0 3.8,-0.8 3.5,0 Z"
-          fill="none" stroke="#d4a644" stroke-width="1.2" stroke-linejoin="round"/>
-    <!-- E-lower scroll: closed teardrop loop extending SE from right crossing -->
-    <path d="M 3.5,0 C 4.5,1.0 6.0,2.5 6.0,4.0 C 6.0,5.0 4.5,4.8 4.0,3.5 C 4.2,2.0 3.8,0.8 3.5,0 Z"
-          fill="none" stroke="#d4a644" stroke-width="1.2" stroke-linejoin="round"/>
+
+    <!-- Scroll tip circles (small open rings at each arm end) -->
+    <circle cx="6.0"  cy="3.2"  r="0.75" fill="#100d20" stroke="#d4a644" stroke-width="1.0"/>
+    <circle cx="-6.0" cy="3.2"  r="0.75" fill="#100d20" stroke="#d4a644" stroke-width="1.0"/>
+    <circle cx="-6.0" cy="-3.2" r="0.75" fill="#100d20" stroke="#d4a644" stroke-width="1.0"/>
+    <circle cx="6.0"  cy="-3.2" r="0.75" fill="#100d20" stroke="#d4a644" stroke-width="1.0"/>
 
   </g>
 </svg>
