@@ -32,29 +32,31 @@ const LOGO_SVG = `<svg width="56" height="56" viewBox="0 0 56 56" xmlns="http://
     <circle cx="-6"  cy="-10" r="1.2" fill="#e879c0" opacity="0.55"/>
     <!-- Inner sanctum -->
     <circle cx="0" cy="0" r="8.5" fill="#100d20" stroke="#c06dc4" stroke-width="1.0" opacity="0.85"/>
-    <!-- Yantra: open N/S rings, curved diamond arms, large E/W scroll hooks with closed-loop tips -->
-    <!-- N ring (large open circle — teardrop apex) -->
+    <!-- Yantra: open N/S rings, curved diamond arms, four closed teardrop scroll loops -->
+    <!-- N open ring (large, prominent — teardrop apex) -->
     <circle cx="0" cy="-6.5" r="1.35" fill="#100d20" stroke="#d4a644" stroke-width="1.2"/>
-    <!-- NW diamond arm (N-bottom to left crossing, slight outward bow) -->
-    <path d="M 0,-5.15 Q -2.2,-2.6 -3.5,0" fill="none" stroke="#d4a644" stroke-width="1.2" stroke-linecap="round"/>
-    <!-- NE diamond arm (N-bottom to right crossing) -->
-    <path d="M 0,-5.15 Q 2.2,-2.6 3.5,0" fill="none" stroke="#d4a644" stroke-width="1.2" stroke-linecap="round"/>
-    <!-- SW diamond arm (left crossing to S-top) -->
-    <path d="M -3.5,0 Q -2.2,2.6 0,5.15" fill="none" stroke="#d4a644" stroke-width="1.2" stroke-linecap="round"/>
-    <!-- SE diamond arm (right crossing to S-top) -->
-    <path d="M 3.5,0 Q 2.2,2.6 0,5.15" fill="none" stroke="#d4a644" stroke-width="1.2" stroke-linecap="round"/>
-    <!-- S ring (large open circle — teardrop base) -->
+    <!-- NW arm: N-bottom to left crossing -->
+    <path d="M 0,-5.15 C -1.0,-3.8 -2.5,-2.0 -3.5,0" fill="none" stroke="#d4a644" stroke-width="1.2" stroke-linecap="round"/>
+    <!-- NE arm: N-bottom to right crossing -->
+    <path d="M 0,-5.15 C 1.0,-3.8 2.5,-2.0 3.5,0" fill="none" stroke="#d4a644" stroke-width="1.2" stroke-linecap="round"/>
+    <!-- SW arm: left crossing to S-top -->
+    <path d="M -3.5,0 C -2.5,2.0 -1.0,3.8 0,5.15" fill="none" stroke="#d4a644" stroke-width="1.2" stroke-linecap="round"/>
+    <!-- SE arm: right crossing to S-top -->
+    <path d="M 3.5,0 C 2.5,2.0 1.0,3.8 0,5.15" fill="none" stroke="#d4a644" stroke-width="1.2" stroke-linecap="round"/>
+    <!-- S open ring (large, prominent — teardrop base) -->
     <circle cx="0" cy="6.5" r="1.35" fill="#100d20" stroke="#d4a644" stroke-width="1.2"/>
-    <!-- W scroll hook: sweeps left, arcs down, curls inward — large fishhook with closed loop at tip -->
-    <path d="M -3.5,0 C -5.8,0 -7.5,1.8 -7.0,3.5 C -6.5,5.2 -5.0,5.5 -4.0,4.5 C -3.0,3.5 -3.3,2.0 -4.8,2.0"
-          fill="none" stroke="#d4a644" stroke-width="1.2" stroke-linecap="round"/>
-    <!-- W scroll closed-loop tip (small open ring at spiral centre) -->
-    <circle cx="-5.5" cy="2.8" r="0.85" fill="#100d20" stroke="#d4a644" stroke-width="1.0"/>
-    <!-- E scroll hook (mirrored) -->
-    <path d="M 3.5,0 C 5.8,0 7.5,1.8 7.0,3.5 C 6.5,5.2 5.0,5.5 4.0,4.5 C 3.0,3.5 3.3,2.0 4.8,2.0"
-          fill="none" stroke="#d4a644" stroke-width="1.2" stroke-linecap="round"/>
-    <!-- E scroll closed-loop tip -->
-    <circle cx="5.5" cy="2.8" r="0.85" fill="#100d20" stroke="#d4a644" stroke-width="1.0"/>
+    <!-- W-upper scroll: closed teardrop loop extending NW from left crossing -->
+    <path d="M -3.5,0 C -4.5,-1.0 -6.0,-2.5 -6.0,-4.0 C -6.0,-5.0 -4.5,-4.8 -4.0,-3.5 C -4.2,-2.0 -3.8,-0.8 -3.5,0 Z"
+          fill="none" stroke="#d4a644" stroke-width="1.2" stroke-linejoin="round"/>
+    <!-- W-lower scroll: closed teardrop loop extending SW from left crossing -->
+    <path d="M -3.5,0 C -4.5,1.0 -6.0,2.5 -6.0,4.0 C -6.0,5.0 -4.5,4.8 -4.0,3.5 C -4.2,2.0 -3.8,0.8 -3.5,0 Z"
+          fill="none" stroke="#d4a644" stroke-width="1.2" stroke-linejoin="round"/>
+    <!-- E-upper scroll: closed teardrop loop extending NE from right crossing -->
+    <path d="M 3.5,0 C 4.5,-1.0 6.0,-2.5 6.0,-4.0 C 6.0,-5.0 4.5,-4.8 4.0,-3.5 C 4.2,-2.0 3.8,-0.8 3.5,0 Z"
+          fill="none" stroke="#d4a644" stroke-width="1.2" stroke-linejoin="round"/>
+    <!-- E-lower scroll: closed teardrop loop extending SE from right crossing -->
+    <path d="M 3.5,0 C 4.5,1.0 6.0,2.5 6.0,4.0 C 6.0,5.0 4.5,4.8 4.0,3.5 C 4.2,2.0 3.8,0.8 3.5,0 Z"
+          fill="none" stroke="#d4a644" stroke-width="1.2" stroke-linejoin="round"/>
   </g>
 </svg>`;
 
