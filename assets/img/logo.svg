@@ -28,27 +28,29 @@
     <!-- Inner sanctum circle -->
     <circle cx="0" cy="0" r="8.5" fill="#100d20" stroke="#c06dc4" stroke-width="1.0" opacity="0.85"/>
 
-    <!-- ══ Yantra: two interlocked curved teardrops — large N/S circles, curved diamond, E/W scroll hooks ══ -->
-    <!-- N circle (large, prominent) -->
-    <circle cx="0" cy="-6.8" r="1.3" fill="none" stroke="#d4a644" stroke-width="1.0"/>
-    <!-- N-bottom → W crossing (top-left diamond arm, curved) -->
-    <path d="M 0,-5.5 C -1.6,-3.4 -2.9,-1.7 -3.8,0" fill="none" stroke="#d4a644" stroke-width="1.0" stroke-linecap="round"/>
-    <!-- N-bottom → E crossing (top-right diamond arm, curved) -->
-    <path d="M 0,-5.5 C 1.6,-3.4 2.9,-1.7 3.8,0" fill="none" stroke="#d4a644" stroke-width="1.0" stroke-linecap="round"/>
-    <!-- W crossing → S-top (bottom-left diamond arm, curved) -->
-    <path d="M -3.8,0 C -2.9,1.7 -1.6,3.4 0,5.5" fill="none" stroke="#d4a644" stroke-width="1.0" stroke-linecap="round"/>
-    <!-- E crossing → S-top (bottom-right diamond arm, curved) -->
-    <path d="M 3.8,0 C 2.9,1.7 1.6,3.4 0,5.5" fill="none" stroke="#d4a644" stroke-width="1.0" stroke-linecap="round"/>
-    <!-- S circle (large, prominent) -->
-    <circle cx="0" cy="6.8" r="1.3" fill="none" stroke="#d4a644" stroke-width="1.0"/>
-    <!-- W scroll hook (from W crossing, curves out and curls back) -->
-    <path d="M -3.8,0 C -5.5,-0.3 -7.3,0.2 -7.3,1.5 C -7.3,2.8 -6.2,3.4 -5.2,3.0 C -4.2,2.6 -4.1,1.6 -4.9,1.3"
-          fill="none" stroke="#d4a644" stroke-width="1.0" stroke-linecap="round"/>
+    <!-- ══ Yantra: open N/S rings, curved diamond arms, large E/W scroll hooks with closed-loop tips ══ -->
+    <!-- N ring (large open circle — teardrop apex) -->
+    <circle cx="0" cy="-6.5" r="1.35" fill="#100d20" stroke="#d4a644" stroke-width="1.2"/>
+    <!-- NW diamond arm (N-bottom to left crossing, slight outward bow) -->
+    <path d="M 0,-5.15 Q -2.2,-2.6 -3.5,0" fill="none" stroke="#d4a644" stroke-width="1.2" stroke-linecap="round"/>
+    <!-- NE diamond arm (N-bottom to right crossing) -->
+    <path d="M 0,-5.15 Q 2.2,-2.6 3.5,0" fill="none" stroke="#d4a644" stroke-width="1.2" stroke-linecap="round"/>
+    <!-- SW diamond arm (left crossing to S-top) -->
+    <path d="M -3.5,0 Q -2.2,2.6 0,5.15" fill="none" stroke="#d4a644" stroke-width="1.2" stroke-linecap="round"/>
+    <!-- SE diamond arm (right crossing to S-top) -->
+    <path d="M 3.5,0 Q 2.2,2.6 0,5.15" fill="none" stroke="#d4a644" stroke-width="1.2" stroke-linecap="round"/>
+    <!-- S ring (large open circle — teardrop base) -->
+    <circle cx="0" cy="6.5" r="1.35" fill="#100d20" stroke="#d4a644" stroke-width="1.2"/>
+    <!-- W scroll hook: sweeps left, arcs down, curls inward — large fishhook with closed loop at tip -->
+    <path d="M -3.5,0 C -5.8,0 -7.5,1.8 -7.0,3.5 C -6.5,5.2 -5.0,5.5 -4.0,4.5 C -3.0,3.5 -3.3,2.0 -4.8,2.0"
+          fill="none" stroke="#d4a644" stroke-width="1.2" stroke-linecap="round"/>
+    <!-- W scroll closed-loop tip (small open ring at spiral centre) -->
+    <circle cx="-5.5" cy="2.8" r="0.85" fill="#100d20" stroke="#d4a644" stroke-width="1.0"/>
     <!-- E scroll hook (mirrored) -->
-    <path d="M 3.8,0 C 5.5,-0.3 7.3,0.2 7.3,1.5 C 7.3,2.8 6.2,3.4 5.2,3.0 C 4.2,2.6 4.1,1.6 4.9,1.3"
-          fill="none" stroke="#d4a644" stroke-width="1.0" stroke-linecap="round"/>
-    <!-- Central bindu -->
-    <circle cx="0" cy="0" r="0.9" fill="#d4a644"/>
+    <path d="M 3.5,0 C 5.8,0 7.5,1.8 7.0,3.5 C 6.5,5.2 5.0,5.5 4.0,4.5 C 3.0,3.5 3.3,2.0 4.8,2.0"
+          fill="none" stroke="#d4a644" stroke-width="1.2" stroke-linecap="round"/>
+    <!-- E scroll closed-loop tip -->
+    <circle cx="5.5" cy="2.8" r="0.85" fill="#100d20" stroke="#d4a644" stroke-width="1.0"/>
 
   </g>
 </svg>
