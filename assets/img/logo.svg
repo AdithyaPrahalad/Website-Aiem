@@ -28,36 +28,42 @@
     <!-- Inner sanctum circle -->
     <circle cx="0" cy="0" r="8.5" fill="#100d20" stroke="#c06dc4" stroke-width="1.0" opacity="0.85"/>
 
-    <!-- ══ YANTRA — 4 continuous crossing paths, N/S lasso rings, 4 scroll tip circles ══
-         Each path: ring-side → crosses diamond vertex → left/right crossing → scroll tip circle
-         Path A (\): N-ring-left → upper-vertex X → right-crossing → E-lower-tip
-         Path B (/): N-ring-right → upper-vertex X → left-crossing  → W-lower-tip
-         Path C (\): S-ring-right → lower-vertex X → left-crossing  → W-upper-tip
-         Path D (/): S-ring-left  → lower-vertex X → right-crossing → E-upper-tip        -->
+    <!-- ══ YANTRA ══
+         4 crossing arms drawn first (below teardrops).
+         Each arm: exits teardrop inner-oval side → crosses at teardrop tip (lasso knot) →
+                   continues to left/right crossing → continues to scroll tip.
+         N/S teardrops drawn on top — fill covers arm starts, leaving knot + diamond visible. -->
 
-    <!-- Path A: N-left → right-crossing → E-lower -->
-    <path d="M -1.0,-5.5 C 0.5,-4.5 2.0,-2.0 3.5,0 C 4.5,0.8 5.5,2.0 6.0,3.2"
+    <!-- Path A (\): N-inner-left → crosses knot (0,−3.8) → right-cross → E-lower tip -->
+    <path d="M -0.7,-4.2 C 0.5,-3.6 2.3,-1.8 3.8,0 C 4.8,0.8 5.5,2.0 5.8,2.5"
           fill="none" stroke="#d4a644" stroke-width="1.2" stroke-linecap="round"/>
-    <!-- Path B: N-right → left-crossing → W-lower -->
-    <path d="M 1.0,-5.5 C -0.5,-4.5 -2.0,-2.0 -3.5,0 C -4.5,0.8 -5.5,2.0 -6.0,3.2"
+    <!-- Path B (/): N-inner-right → crosses knot → left-cross → W-lower tip -->
+    <path d="M 0.7,-4.2 C -0.5,-3.6 -2.3,-1.8 -3.8,0 C -4.8,0.8 -5.5,2.0 -5.8,2.5"
           fill="none" stroke="#d4a644" stroke-width="1.2" stroke-linecap="round"/>
-    <!-- Path C: S-right → left-crossing → W-upper -->
-    <path d="M 1.0,5.5 C -0.5,4.5 -2.0,2.0 -3.5,0 C -4.5,-0.8 -5.5,-2.0 -6.0,-3.2"
+    <!-- Path C (\): S-inner-right → crosses knot (0,3.8) → left-cross → W-upper tip -->
+    <path d="M 0.7,4.2 C -0.5,3.6 -2.3,1.8 -3.8,0 C -4.8,-0.8 -5.5,-2.0 -5.8,-2.5"
           fill="none" stroke="#d4a644" stroke-width="1.2" stroke-linecap="round"/>
-    <!-- Path D: S-left → right-crossing → E-upper -->
-    <path d="M -1.0,5.5 C 0.5,4.5 2.0,2.0 3.5,0 C 4.5,-0.8 5.5,-2.0 6.0,-3.2"
+    <!-- Path D (/): S-inner-left → crosses knot → right-cross → E-upper tip -->
+    <path d="M -0.7,4.2 C 0.5,3.6 2.3,1.8 3.8,0 C 4.8,-0.8 5.5,-2.0 5.8,-2.5"
           fill="none" stroke="#d4a644" stroke-width="1.2" stroke-linecap="round"/>
 
-    <!-- N lasso ring (drawn last — covers path start points) -->
-    <circle cx="0" cy="-6.5" r="1.35" fill="#100d20" stroke="#d4a644" stroke-width="1.2"/>
-    <!-- S lasso ring -->
-    <circle cx="0" cy="6.5" r="1.35" fill="#100d20" stroke="#d4a644" stroke-width="1.2"/>
+    <!-- N teardrop outer (map-pin shape, tip at lasso knot) — fill covers arm starts -->
+    <path d="M 0,-3.8 C -2.5,-4.2 -3.5,-6.0 -2.8,-7.2 C -2.0,-7.8 2.0,-7.8 2.8,-7.2 C 3.5,-6.0 2.5,-4.2 0,-3.8 Z"
+          fill="#100d20" stroke="#d4a644" stroke-width="1.2" stroke-linejoin="round"/>
+    <!-- N inner oval (creates double-ring hole-in-teardrop visual) -->
+    <ellipse cx="0" cy="-5.9" rx="0.9" ry="1.0" fill="#100d20" stroke="#d4a644" stroke-width="1.0"/>
 
-    <!-- Scroll tip circles (small open rings at each arm end) -->
-    <circle cx="6.0"  cy="3.2"  r="0.75" fill="#100d20" stroke="#d4a644" stroke-width="1.0"/>
-    <circle cx="-6.0" cy="3.2"  r="0.75" fill="#100d20" stroke="#d4a644" stroke-width="1.0"/>
-    <circle cx="-6.0" cy="-3.2" r="0.75" fill="#100d20" stroke="#d4a644" stroke-width="1.0"/>
-    <circle cx="6.0"  cy="-3.2" r="0.75" fill="#100d20" stroke="#d4a644" stroke-width="1.0"/>
+    <!-- S teardrop outer (mirrored) -->
+    <path d="M 0,3.8 C -2.5,4.2 -3.5,6.0 -2.8,7.2 C -2.0,7.8 2.0,7.8 2.8,7.2 C 3.5,6.0 2.5,4.2 0,3.8 Z"
+          fill="#100d20" stroke="#d4a644" stroke-width="1.2" stroke-linejoin="round"/>
+    <!-- S inner oval -->
+    <ellipse cx="0" cy="5.9" rx="0.9" ry="1.0" fill="#100d20" stroke="#d4a644" stroke-width="1.0"/>
+
+    <!-- Scroll tip circles (small open rings — drawn on top of arm ends) -->
+    <circle cx="5.8"  cy="2.5"  r="0.65" fill="#100d20" stroke="#d4a644" stroke-width="0.9"/>
+    <circle cx="-5.8" cy="2.5"  r="0.65" fill="#100d20" stroke="#d4a644" stroke-width="0.9"/>
+    <circle cx="-5.8" cy="-2.5" r="0.65" fill="#100d20" stroke="#d4a644" stroke-width="0.9"/>
+    <circle cx="5.8"  cy="-2.5" r="0.65" fill="#100d20" stroke="#d4a644" stroke-width="0.9"/>
 
   </g>
 </svg>
