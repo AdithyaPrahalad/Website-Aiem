@@ -5,73 +5,7 @@
 
 'use strict';
 
-/* --------------------------------------------------------------------------
-   LOGO SVG (inline, so navbar can use it without an extra request)
-   -------------------------------------------------------------------------- */
-const LOGO_SVG = `<svg width="56" height="56" viewBox="0 0 56 56" xmlns="http://www.w3.org/2000/svg">
-  <rect width="56" height="56" rx="12" fill="#100d20"/>
-  <g transform="translate(28,28)">
-    <!-- 4 orbital rings -->
-    <ellipse rx="22" ry="9" fill="none" stroke="#c06dc4" stroke-width="1.9" opacity="0.92"/>
-    <ellipse rx="22" ry="9" fill="none" stroke="#c06dc4" stroke-width="1.9" opacity="0.92" transform="rotate(45)"/>
-    <ellipse rx="22" ry="9" fill="none" stroke="#c06dc4" stroke-width="1.9" opacity="0.92" transform="rotate(90)"/>
-    <ellipse rx="22" ry="9" fill="none" stroke="#c06dc4" stroke-width="1.9" opacity="0.92" transform="rotate(135)"/>
-    <!-- Orbital tip dots -->
-    <circle cx="22"  cy="0"   r="2.6" fill="#e879c0"/>
-    <circle cx="-22" cy="0"   r="2.6" fill="#e879c0"/>
-    <circle cx="0"   cy="22"  r="2.6" fill="#e879c0"/>
-    <circle cx="0"   cy="-22" r="2.6" fill="#e879c0"/>
-    <circle cx="15.6"  cy="15.6"  r="2.6" fill="#e879c0"/>
-    <circle cx="-15.6" cy="-15.6" r="2.6" fill="#e879c0"/>
-    <circle cx="15.6"  cy="-15.6" r="2.6" fill="#e879c0"/>
-    <circle cx="-15.6" cy="15.6"  r="2.6" fill="#e879c0"/>
-    <!-- Accent dots -->
-    <circle cx="10"  cy="-6"  r="1.2" fill="#e879c0" opacity="0.55"/>
-    <circle cx="-10" cy="6"   r="1.2" fill="#e879c0" opacity="0.55"/>
-    <circle cx="6"   cy="10"  r="1.2" fill="#e879c0" opacity="0.55"/>
-    <circle cx="-6"  cy="-10" r="1.2" fill="#e879c0" opacity="0.55"/>
-    <!-- Inner sanctum circle -->
-    <circle cx="0" cy="0" r="8.5" fill="#100d20" stroke="#c06dc4" stroke-width="1.0" opacity="0.85"/>
-
-    <!-- ══ YANTRA ══
-         4 straight-arm paths drawn first (below teardrops).
-         Each arm: exits teardrop tip (crossing there as lasso knot X) →
-                   straight line to left/right diamond vertex (crossing there as X) →
-                   short arm to scroll tip circle.
-         N/S teardrops drawn on top — dark fill covers arm starts. -->
-
-    <!-- Path A (\): N-left-inner → right vertex (5.5,0) → SE scroll -->
-    <path d="M -0.6,-4.0 L 5.5,0 L 6.2,1.8"
-          fill="none" stroke="#d4a644" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-    <!-- Path B (/): N-right-inner → left vertex (-5.5,0) → SW scroll -->
-    <path d="M 0.6,-4.0 L -5.5,0 L -6.2,1.8"
-          fill="none" stroke="#d4a644" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-    <!-- Path C (/): S-right-inner → left vertex (-5.5,0) → NW scroll -->
-    <path d="M 0.6,4.0 L -5.5,0 L -6.2,-1.8"
-          fill="none" stroke="#d4a644" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-    <!-- Path D (\): S-left-inner → right vertex (5.5,0) → NE scroll -->
-    <path d="M -0.6,4.0 L 5.5,0 L 6.2,-1.8"
-          fill="none" stroke="#d4a644" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-
-    <!-- N teardrop outer — fill covers arm starts, stroke reveals lasso knot X -->
-    <path d="M 0,-3.8 C -2.8,-4.3 -3.5,-6.2 -2.6,-7.3 C -1.8,-7.9 1.8,-7.9 2.6,-7.3 C 3.5,-6.2 2.8,-4.3 0,-3.8 Z"
-          fill="#100d20" stroke="#d4a644" stroke-width="1.2" stroke-linejoin="round"/>
-    <!-- N inner oval (double-ring effect) -->
-    <ellipse cx="0" cy="-6.1" rx="0.85" ry="1.05" fill="#100d20" stroke="#d4a644" stroke-width="1.0"/>
-
-    <!-- S teardrop outer (mirrored) -->
-    <path d="M 0,3.8 C -2.8,4.3 -3.5,6.2 -2.6,7.3 C -1.8,7.9 1.8,7.9 2.6,7.3 C 3.5,6.2 2.8,4.3 0,3.8 Z"
-          fill="#100d20" stroke="#d4a644" stroke-width="1.2" stroke-linejoin="round"/>
-    <!-- S inner oval -->
-    <ellipse cx="0" cy="6.1" rx="0.85" ry="1.05" fill="#100d20" stroke="#d4a644" stroke-width="1.0"/>
-
-    <!-- Scroll tip circles (drawn on top of arm ends) -->
-    <circle cx="6.2"  cy="1.8"  r="0.8" fill="#100d20" stroke="#d4a644" stroke-width="0.95"/>
-    <circle cx="-6.2" cy="1.8"  r="0.8" fill="#100d20" stroke="#d4a644" stroke-width="0.95"/>
-    <circle cx="-6.2" cy="-1.8" r="0.8" fill="#100d20" stroke="#d4a644" stroke-width="0.95"/>
-    <circle cx="6.2"  cy="-1.8" r="0.8" fill="#100d20" stroke="#d4a644" stroke-width="0.95"/>
-  </g>
-</svg>`;
+/* Logo is served as assets/img/logo.png */
 
 /* --------------------------------------------------------------------------
    UTILITY: resolve relative path from current page to root
@@ -183,7 +117,7 @@ function buildNavbar() {
     <div class="nav-wrap" id="navWrap">
       <div class="nav-inner">
         <a href="index.html" class="nav-logo" aria-label="Aiēm Technologies home">
-          <img src="assets/img/logo.svg" alt="Aiēm Technologies logo" width="40" height="40">
+          <img src="assets/img/logo.png" alt="Aiēm Technologies logo" width="40" height="40">
           <div class="nav-logo-text">
             <span class="brand">Aiēm Technologies</span>
             <span class="tagline">Innovate · Transform · Lead</span>
@@ -345,7 +279,7 @@ function buildFooter() {
           <!-- Brand column -->
           <div class="footer-brand">
             <a href="index.html" class="footer-logo" aria-label="Aiēm Technologies home">
-              <img src="assets/img/logo.svg" alt="Aiēm Technologies" width="36" height="36">
+              <img src="assets/img/logo.png" alt="Aiēm Technologies" width="36" height="36">
               <span class="brand">Aiēm Technologies</span>
             </a>
             <span class="footer-tagline">Innovate · Transform · Lead</span>
