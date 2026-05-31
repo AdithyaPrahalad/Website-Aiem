@@ -29,41 +29,42 @@
     <circle cx="0" cy="0" r="8.5" fill="#100d20" stroke="#c06dc4" stroke-width="1.0" opacity="0.85"/>
 
     <!-- ══ YANTRA ══
-         4 crossing arms drawn first (below teardrops).
-         Each arm: exits teardrop inner-oval side → crosses at teardrop tip (lasso knot) →
-                   continues to left/right crossing → continues to scroll tip.
-         N/S teardrops drawn on top — fill covers arm starts, leaving knot + diamond visible. -->
+         4 straight-arm paths drawn first (below teardrops).
+         Each arm: exits teardrop tip (crossing there as lasso knot X) →
+                   straight line to left/right diamond vertex (crossing there as X) →
+                   short arm to scroll tip circle.
+         N/S teardrops drawn on top — dark fill covers arm starts. -->
 
-    <!-- Path A (\): N-inner-left → crosses knot (0,−3.8) → right-cross → E-lower tip -->
-    <path d="M -0.7,-4.2 C 0.5,-3.6 2.3,-1.8 3.8,0 C 4.8,0.8 5.5,2.0 5.8,2.5"
-          fill="none" stroke="#d4a644" stroke-width="1.2" stroke-linecap="round"/>
-    <!-- Path B (/): N-inner-right → crosses knot → left-cross → W-lower tip -->
-    <path d="M 0.7,-4.2 C -0.5,-3.6 -2.3,-1.8 -3.8,0 C -4.8,0.8 -5.5,2.0 -5.8,2.5"
-          fill="none" stroke="#d4a644" stroke-width="1.2" stroke-linecap="round"/>
-    <!-- Path C (\): S-inner-right → crosses knot (0,3.8) → left-cross → W-upper tip -->
-    <path d="M 0.7,4.2 C -0.5,3.6 -2.3,1.8 -3.8,0 C -4.8,-0.8 -5.5,-2.0 -5.8,-2.5"
-          fill="none" stroke="#d4a644" stroke-width="1.2" stroke-linecap="round"/>
-    <!-- Path D (/): S-inner-left → crosses knot → right-cross → E-upper tip -->
-    <path d="M -0.7,4.2 C 0.5,3.6 2.3,1.8 3.8,0 C 4.8,-0.8 5.5,-2.0 5.8,-2.5"
-          fill="none" stroke="#d4a644" stroke-width="1.2" stroke-linecap="round"/>
+    <!-- Path A (\): N-left-inner → right vertex (5.5,0) → SE scroll -->
+    <path d="M -0.6,-4.0 L 5.5,0 L 6.2,1.8"
+          fill="none" stroke="#d4a644" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Path B (/): N-right-inner → left vertex (-5.5,0) → SW scroll -->
+    <path d="M 0.6,-4.0 L -5.5,0 L -6.2,1.8"
+          fill="none" stroke="#d4a644" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Path C (/): S-right-inner → left vertex (-5.5,0) → NW scroll -->
+    <path d="M 0.6,4.0 L -5.5,0 L -6.2,-1.8"
+          fill="none" stroke="#d4a644" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- Path D (\): S-left-inner → right vertex (5.5,0) → NE scroll -->
+    <path d="M -0.6,4.0 L 5.5,0 L 6.2,-1.8"
+          fill="none" stroke="#d4a644" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
 
-    <!-- N teardrop outer (map-pin shape, tip at lasso knot) — fill covers arm starts -->
-    <path d="M 0,-3.8 C -2.5,-4.2 -3.5,-6.0 -2.8,-7.2 C -2.0,-7.8 2.0,-7.8 2.8,-7.2 C 3.5,-6.0 2.5,-4.2 0,-3.8 Z"
+    <!-- N teardrop outer — fill covers arm starts, stroke reveals lasso knot X -->
+    <path d="M 0,-3.8 C -2.8,-4.3 -3.5,-6.2 -2.6,-7.3 C -1.8,-7.9 1.8,-7.9 2.6,-7.3 C 3.5,-6.2 2.8,-4.3 0,-3.8 Z"
           fill="#100d20" stroke="#d4a644" stroke-width="1.2" stroke-linejoin="round"/>
-    <!-- N inner oval (creates double-ring hole-in-teardrop visual) -->
-    <ellipse cx="0" cy="-5.9" rx="0.9" ry="1.0" fill="#100d20" stroke="#d4a644" stroke-width="1.0"/>
+    <!-- N inner oval (double-ring effect) -->
+    <ellipse cx="0" cy="-6.1" rx="0.85" ry="1.05" fill="#100d20" stroke="#d4a644" stroke-width="1.0"/>
 
     <!-- S teardrop outer (mirrored) -->
-    <path d="M 0,3.8 C -2.5,4.2 -3.5,6.0 -2.8,7.2 C -2.0,7.8 2.0,7.8 2.8,7.2 C 3.5,6.0 2.5,4.2 0,3.8 Z"
+    <path d="M 0,3.8 C -2.8,4.3 -3.5,6.2 -2.6,7.3 C -1.8,7.9 1.8,7.9 2.6,7.3 C 3.5,6.2 2.8,4.3 0,3.8 Z"
           fill="#100d20" stroke="#d4a644" stroke-width="1.2" stroke-linejoin="round"/>
     <!-- S inner oval -->
-    <ellipse cx="0" cy="5.9" rx="0.9" ry="1.0" fill="#100d20" stroke="#d4a644" stroke-width="1.0"/>
+    <ellipse cx="0" cy="6.1" rx="0.85" ry="1.05" fill="#100d20" stroke="#d4a644" stroke-width="1.0"/>
 
-    <!-- Scroll tip circles (small open rings — drawn on top of arm ends) -->
-    <circle cx="5.8"  cy="2.5"  r="0.65" fill="#100d20" stroke="#d4a644" stroke-width="0.9"/>
-    <circle cx="-5.8" cy="2.5"  r="0.65" fill="#100d20" stroke="#d4a644" stroke-width="0.9"/>
-    <circle cx="-5.8" cy="-2.5" r="0.65" fill="#100d20" stroke="#d4a644" stroke-width="0.9"/>
-    <circle cx="5.8"  cy="-2.5" r="0.65" fill="#100d20" stroke="#d4a644" stroke-width="0.9"/>
+    <!-- Scroll tip circles (drawn on top of arm ends) -->
+    <circle cx="6.2"  cy="1.8"  r="0.8" fill="#100d20" stroke="#d4a644" stroke-width="0.95"/>
+    <circle cx="-6.2" cy="1.8"  r="0.8" fill="#100d20" stroke="#d4a644" stroke-width="0.95"/>
+    <circle cx="-6.2" cy="-1.8" r="0.8" fill="#100d20" stroke="#d4a644" stroke-width="0.95"/>
+    <circle cx="6.2"  cy="-1.8" r="0.8" fill="#100d20" stroke="#d4a644" stroke-width="0.95"/>
 
   </g>
 </svg>
