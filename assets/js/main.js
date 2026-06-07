@@ -533,13 +533,287 @@ function injectGridOverlay() {
 }
 
 /* --------------------------------------------------------------------------
+   INJECT PREMIUM CSS
+   -------------------------------------------------------------------------- */
+function injectPremiumCSS() {
+  const link = document.createElement('link');
+  link.rel = 'stylesheet';
+  link.href = 'assets/css/premium.css?v=1';
+  document.head.appendChild(link);
+}
+
+/* --------------------------------------------------------------------------
+   PAGE TRANSITION
+   -------------------------------------------------------------------------- */
+function initPageTransition() {
+  // Create overlay
+  const overlay = document.createElement('div');
+  overlay.id = 'page-transition';
+  document.body.prepend(overlay);
+
+  // Fade out on load
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      overlay.classList.add('done');
+    });
+  });
+
+  // Fade in on link click (same origin only)
+  document.addEventListener('click', (e) => {
+    const a = e.target.closest('a[href]');
+    if (!a) return;
+    const href = a.getAttribute('href');
+    if (!href || href.startsWith('#') || href.startsWith('mailto:') ||
+        href.startsWith('tel:') || href.startsWith('http') ||
+        a.target === '_blank') return;
+
+    e.preventDefault();
+    overlay.classList.remove('done');
+    setTimeout(() => { window.location = href; }, 400);
+  });
+}
+
+/* --------------------------------------------------------------------------
+   CUSTOM CURSOR
+   -------------------------------------------------------------------------- */
+function initCursor() {
+  // Only on pointer-fine (desktop mouse) devices
+  if (!window.matchMedia('(pointer: fine)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const dot  = document.createElement('div'); dot.id  = 'cursor-dot';
+  const ring = document.createElement('div'); ring.id = 'cursor-ring';
+  document.body.append(dot, ring);
+
+  let mx = -100, my = -100;
+  let rx = -100, ry = -100;
+  let raf;
+
+  document.addEventListener('mousemove', (e) => {
+    mx = e.clientX;
+    my = e.clientY;
+  });
+
+  function loop() {
+    // Dot follows instantly
+    dot.style.left = mx + 'px';
+    dot.style.top  = my + 'px';
+
+    // Ring lags slightly
+    rx += (mx - rx) * 0.18;
+    ry += (my - ry) * 0.18;
+    ring.style.left = rx + 'px';
+    ring.style.top  = ry + 'px';
+
+    raf = requestAnimationFrame(loop);
+  }
+
+  loop();
+
+  // Hover state on interactive elements
+  const interactiveSelector = 'a, button, [role="button"], label, .card, .pillar-card, .case-card';
+  document.addEventListener('mouseover', (e) => {
+    if (e.target.closest(interactiveSelector)) {
+      document.body.classList.add('cursor-hover');
+    }
+  });
+  document.addEventListener('mouseout', (e) => {
+    if (e.target.closest(interactiveSelector)) {
+      document.body.classList.remove('cursor-hover');
+    }
+  });
+
+  // Hide when leaving window
+  document.addEventListener('mouseleave', () => {
+    dot.style.opacity = '0';
+    ring.style.opacity = '0';
+  });
+  document.addEventListener('mouseenter', () => {
+    dot.style.opacity = '1';
+    ring.style.opacity = '1';
+  });
+}
+
+/* --------------------------------------------------------------------------
+   SCROLL PROGRESS BAR
+   -------------------------------------------------------------------------- */
+function initScrollProgress() {
+  const bar = document.createElement('div');
+  bar.id = 'scroll-progress';
+  document.body.prepend(bar);
+
+  function update() {
+    const scrolled = window.scrollY;
+    const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+    const pct = maxScroll > 0 ? (scrolled / maxScroll) * 100 : 0;
+    bar.style.width = pct + '%';
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+}
+
+/* --------------------------------------------------------------------------
+   MAGNETIC BUTTONS (subtle pull effect on primary buttons)
+   -------------------------------------------------------------------------- */
+function initMagneticButtons() {
+  if (!window.matchMedia('(pointer: fine)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const btns = document.querySelectorAll('.btn-primary');
+  btns.forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+      const rect = btn.getBoundingClientRect();
+      const cx = rect.left + rect.width  / 2;
+      const cy = rect.top  + rect.height / 2;
+      const dx = (e.clientX - cx) * 0.22;
+      const dy = (e.clientY - cy) * 0.22;
+      btn.style.transform = `translate(${dx}px, ${dy}px) translateY(-2px)`;
+    });
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = '';
+    });
+  });
+}
+
+/* --------------------------------------------------------------------------
+   HERO ORB (third ambient light)
+   -------------------------------------------------------------------------- */
+function injectHeroOrb() {
+  const hero = document.querySelector('.hero');
+  if (!hero) return;
+  const orb = document.createElement('div');
+  orb.className = 'hero-orb-3';
+  orb.setAttribute('aria-hidden', 'true');
+  hero.appendChild(orb);
+}
+
+/* --------------------------------------------------------------------------
+   ENHANCED PARTICLES — Interactive with mouse
+   -------------------------------------------------------------------------- */
+function initParticles() {
+  const canvas = document.getElementById('particles');
+  if (!canvas) return;
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    canvas.style.display = 'none';
+    return;
+  }
+
+  const ctx = canvas.getContext('2d');
+  const COUNT = window.innerWidth < 768 ? 25 : 55;
+  let W, H, particles;
+  let mouse = { x: -1000, y: -1000 };
+
+  // Track mouse for interactivity
+  window.addEventListener('mousemove', (e) => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+  }, { passive: true });
+
+  function resize() {
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+
+  function createParticles() {
+    particles = Array.from({ length: COUNT }, () => ({
+      x:  Math.random() * W,
+      y:  Math.random() * H,
+      vx: (Math.random() - 0.5) * 0.35,
+      vy: (Math.random() - 0.5) * 0.35,
+      r:  Math.random() * 1.5 + 0.5,
+      // Color variation: orchid, pink, or gold
+      hue: [168, 232, 212][Math.floor(Math.random() * 3)],
+      sat: [85, 121, 166][Math.floor(Math.random() * 3)],
+      lit: [200, 192, 68][Math.floor(Math.random() * 3)],
+    }));
+  }
+
+  function drawParticle(p) {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(${p.hue}, ${p.sat}, ${p.lit}, 0.25)`;
+    ctx.fill();
+  }
+
+  function drawLine(a, b, dist) {
+    const alpha = (1 - dist / 140) * 0.1;
+    ctx.beginPath();
+    ctx.moveTo(a.x, a.y);
+    ctx.lineTo(b.x, b.y);
+    ctx.strokeStyle = `rgba(168, 85, 200, ${alpha})`;
+    ctx.lineWidth = 0.5;
+    ctx.stroke();
+  }
+
+  function tick() {
+    ctx.clearRect(0, 0, W, H);
+
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+
+      // Subtle mouse repulsion
+      const mdx = p.x - mouse.x;
+      const mdy = p.y - mouse.y;
+      const md  = Math.sqrt(mdx * mdx + mdy * mdy);
+      if (md < 120) {
+        const force = (120 - md) / 120 * 0.012;
+        p.vx += mdx / md * force;
+        p.vy += mdy / md * force;
+      }
+
+      // Dampen velocity
+      p.vx *= 0.998;
+      p.vy *= 0.998;
+
+      p.x += p.vx;
+      p.y += p.vy;
+
+      if (p.x < 0) p.x = W;
+      if (p.x > W) p.x = 0;
+      if (p.y < 0) p.y = H;
+      if (p.y > H) p.y = 0;
+
+      drawParticle(p);
+
+      for (let j = i + 1; j < particles.length; j++) {
+        const q = particles[j];
+        const dx = p.x - q.x;
+        const dy = p.y - q.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 140) drawLine(p, q, dist);
+      }
+    }
+
+    requestAnimationFrame(tick);
+  }
+
+  resize();
+  createParticles();
+  tick();
+
+  window.addEventListener('resize', () => {
+    resize();
+    createParticles();
+  }, { passive: true });
+}
+
+/* --------------------------------------------------------------------------
    INIT ON DOM READY
    -------------------------------------------------------------------------- */
 document.addEventListener('DOMContentLoaded', () => {
+  injectPremiumCSS();
   injectGridOverlay();
+  initPageTransition();
   buildNavbar();
   buildFooter();
   initParticles();
   initScrollReveal();
   initCounters();
+  initCursor();
+  initScrollProgress();
+  injectHeroOrb();
+  // Magnetic buttons run after a slight delay so DOM is fully rendered
+  setTimeout(initMagneticButtons, 500);
 });

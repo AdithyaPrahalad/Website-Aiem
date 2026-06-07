@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://formspree.io; frame-ancestors 'none';">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://formspree.io https://formsubmit.co; form-action 'self' https://formsubmit.co; frame-ancestors 'none';">
   <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <title>Contact | Aiēm Technologies</title>
@@ -41,10 +41,12 @@
           <div class="reveal-left">
             <div class="card" style="padding:48px;">
               <h3 class="mb-32">Send Us a Message</h3>
-              <!-- Connect this form to Formspree: https://formspree.io -->
-              <!-- Replace action="#" with your Formspree endpoint -->
-              <form action="#" method="POST" novalidate>
+              <form action="https://formsubmit.co/contactus@aiemtech.com" method="POST" novalidate id="contactForm">
                 <input type="hidden" name="_subject" value="New enquiry from aiemtech.com">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_next" value="https://www.aiemtech.com/contact.html?sent=1">
+                <input type="hidden" name="_template" value="table">
+                <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
                 <div class="form-row">
                   <div class="form-grid-2">
                     <div class="form-group">
