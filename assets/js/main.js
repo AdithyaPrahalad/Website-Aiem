@@ -533,6 +533,129 @@ function injectGridOverlay() {
 }
 
 /* --------------------------------------------------------------------------
+   CAPABILITY ORBITAL NEXUS
+   -------------------------------------------------------------------------- */
+function initCapOrbit() {
+  const ring  = document.getElementById('capRing');
+  const panel = document.getElementById('capPanel');
+  if (!ring || !panel) return;
+
+  const CAPS = [
+    {
+      short: 'ERP',
+      title: 'ERP Modernization',
+      desc:  'Oracle and SAP implementations designed around your workflows, not the platform\'s defaults. We handle the full lifecycle from architecture to go-live, with zero tolerance for post-implementation surprises.',
+      href:  'capabilities.html#erp'
+    },
+    {
+      short: 'Revenue',
+      title: 'Revenue & Financial Governance',
+      desc:  'Automate revenue recognition, enforce IFRS 15 compliance, and cut month-end close time significantly. Your finance team should not be reconciling contracts in spreadsheets.',
+      href:  'capabilities.html#revenue'
+    },
+    {
+      short: 'Capital',
+      title: 'Capital Project Systems',
+      desc:  'Real-time visibility into every project — budget, milestones, cost-to-complete. Built for developers and infrastructure operators managing multiple assets simultaneously.',
+      href:  'capabilities.html#capital'
+    },
+    {
+      short: 'AI & Automation',
+      title: 'AI & Intelligent Automation',
+      desc:  'Identify the repetitive, high-volume work your teams do every day and automate it using GenAI, IoT integration, and workflow tools that fit inside your existing systems.',
+      href:  'capabilities.html#ai'
+    },
+    {
+      short: 'Cloud',
+      title: 'Cloud & Infrastructure',
+      desc:  'Cloud migrations and infrastructure builds that prioritise security, resilience, and operational efficiency — not just the fastest path to the cloud.',
+      href:  'capabilities.html#cloud'
+    },
+    {
+      short: 'Managed Services',
+      title: 'Managed Services & Support',
+      desc:  'Most implementations end at go-live. Ours don\'t. We stay on, monitoring, optimising, and supporting your systems with defined SLAs and a team that knows your environment.',
+      href:  'capabilities.html#managed'
+    }
+  ];
+
+  const spokes  = ring.querySelectorAll('.cap-spoke');
+  const nodes   = ring.querySelectorAll('.cap-node');
+  const hubNum   = document.getElementById('capHubNum');
+  const hubShort = document.getElementById('capHubShort');
+  const cpTag    = document.getElementById('cpTag');
+  const cpTitle  = document.getElementById('cpTitle');
+  const cpDesc   = document.getElementById('cpDesc');
+  const cpLink   = document.getElementById('cpLink');
+  const panelHint    = document.getElementById('capPanelHint');
+  const panelContent = document.getElementById('capPanelContent');
+
+  let leaveTimer = null;
+
+  function activate(i) {
+    clearTimeout(leaveTimer);
+    const c   = CAPS[i];
+    const num = String(i + 1).padStart(2, '0');
+
+    // Ring state
+    ring.classList.add('has-active');
+    nodes.forEach((n, j) => {
+      n.classList.toggle('active', j === i);
+      n.classList.toggle('dimmed', j !== i);
+    });
+
+    // Spokes: highlight active, dim others
+    spokes.forEach((sp, j) => {
+      sp.style.stroke      = j === i ? 'rgba(168,85,200,0.9)' : 'rgba(168,85,200,0.07)';
+      sp.style.strokeWidth = j === i ? '1.5' : '0.8';
+    });
+
+    // Hub
+    if (hubNum)   hubNum.textContent   = num;
+    if (hubShort) hubShort.textContent = c.short;
+
+    // Panel
+    if (cpTag)   cpTag.textContent   = `Capability ${num}`;
+    if (cpTitle) cpTitle.textContent = c.title;
+    if (cpDesc)  cpDesc.textContent  = c.desc;
+    if (cpLink)  { cpLink.href = c.href; cpLink.textContent = `Explore ${c.short} →`; }
+
+    panel.classList.add('active');
+    if (panelContent) panelContent.style.display = 'flex';
+  }
+
+  function deactivate() {
+    leaveTimer = setTimeout(() => {
+      ring.classList.remove('has-active');
+      nodes.forEach(n => n.classList.remove('active', 'dimmed'));
+      spokes.forEach(sp => { sp.style.stroke = ''; sp.style.strokeWidth = ''; });
+      panel.classList.remove('active');
+      if (panelContent) panelContent.style.display = '';
+    }, 200);
+  }
+
+  nodes.forEach((node, i) => {
+    node.addEventListener('mouseenter', () => activate(i));
+    node.addEventListener('mouseleave', deactivate);
+    node.addEventListener('focus',      () => activate(i));
+    node.addEventListener('blur',       deactivate);
+    node.addEventListener('click',      () => { window.location.href = CAPS[i].href; });
+  });
+
+  // Entrance: spokes draw in + nodes bloom when ring scrolls into view
+  const io = new IntersectionObserver(entries => {
+    if (!entries[0].isIntersecting) return;
+    ring.classList.add('visible');
+    spokes.forEach((sp, i) => {
+      setTimeout(() => { sp.style.strokeDashoffset = '0'; }, 300 + i * 80);
+    });
+    io.disconnect();
+  }, { threshold: 0.3 });
+
+  io.observe(ring);
+}
+
+/* --------------------------------------------------------------------------
    INJECT PREMIUM CSS
    -------------------------------------------------------------------------- */
 function injectPremiumCSS() {
@@ -814,6 +937,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initCursor();
   initScrollProgress();
   injectHeroOrb();
-  // Magnetic buttons run after a slight delay so DOM is fully rendered
+  initCapOrbit();
   setTimeout(initMagneticButtons, 500);
 });

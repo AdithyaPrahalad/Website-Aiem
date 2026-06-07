@@ -172,60 +172,174 @@
     </section>
 
     <!-- ======================================================
-         WHAT WE DO
+         WHAT WE DO — ORBITAL NEXUS
     ====================================================== -->
-    <section>
-      <div class="container">
+    <section class="cap-section">
+      <div class="container-wide">
         <div class="section-header reveal">
           <span class="eyebrow">What We Do</span>
           <h2>Six Capabilities. <span class="gradient-text">One Purpose.</span></h2>
-          <p>We've spent years inside the systems enterprises depend on. We know where they slow things down, where they break, and exactly what it takes to make them work properly, for the long term.</p>
+          <p>We've spent years inside the systems enterprises depend on. We know where they slow things down, where they break, and exactly what it takes to make them work.</p>
         </div>
 
-        <div class="pillar-grid">
-          <div class="pillar-card reveal delay-1">
-            <span class="pillar-number">01</span>
-            <span class="pillar-icon" style="color:var(--color-orchid);"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>
-            <h3>ERP Modernization</h3>
-            <p>Oracle and SAP implementations done properly, designed around your workflows, not the other way around. We handle the full lifecycle, from architecture to go-live.</p>
-            <a href="capabilities.html#erp" class="pillar-link">Explore →</a>
+        <!-- DESKTOP: Orbital Nexus -->
+        <div class="cap-nexus" role="group" aria-label="Six capability pillars — hover to explore">
+
+          <!-- LEFT: Animated ring -->
+          <div class="cap-ring" id="capRing">
+
+            <!-- SVG: rings, spokes, radar, dots -->
+            <svg class="cap-ring-svg" viewBox="0 0 560 560" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <radialGradient id="cHubGlow" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%"   stop-color="rgba(168,85,200,0.22)"/>
+                  <stop offset="100%" stop-color="rgba(168,85,200,0)"/>
+                </radialGradient>
+                <radialGradient id="cSweepGrad" cx="0%" cy="50%" r="100%" gradientUnits="objectBoundingBox">
+                  <stop offset="0%"   stop-color="rgba(168,85,200,0.28)"/>
+                  <stop offset="100%" stop-color="rgba(168,85,200,0)"/>
+                </radialGradient>
+                <clipPath id="cOrbitClip">
+                  <circle cx="280" cy="280" r="201"/>
+                </clipPath>
+              </defs>
+
+              <!-- Ambient glow halo -->
+              <circle cx="280" cy="280" r="200" fill="none" stroke="rgba(168,85,200,0.05)" stroke-width="52"/>
+
+              <!-- Main orbit ring -->
+              <circle cx="280" cy="280" r="200" fill="none" stroke="rgba(168,85,200,0.16)" stroke-width="1"/>
+
+              <!-- Dashed ring (slow spin) -->
+              <circle class="cap-dash-ring" cx="280" cy="280" r="200" fill="none"
+                      stroke="rgba(168,85,200,0.5)" stroke-width="1" stroke-dasharray="3 14"/>
+
+              <!-- Radar sweep beam -->
+              <g class="cap-radar-sweep" clip-path="url(#cOrbitClip)">
+                <path d="M280,280 L280,80 A200,200 0 0,1 393,130 Z" fill="url(#cSweepGrad)" opacity="0.7"/>
+              </g>
+
+              <!-- Inner hub glow fill + rings -->
+              <circle cx="280" cy="280" r="66" fill="url(#cHubGlow)"/>
+              <circle cx="280" cy="280" r="66" fill="none" stroke="rgba(168,85,200,0.28)" stroke-width="1"/>
+              <circle cx="280" cy="280" r="56" fill="none" stroke="rgba(168,85,200,0.08)" stroke-width="1"/>
+
+              <!-- 6 Spokes (drawn in on scroll) -->
+              <line class="cap-spoke" id="csp0" x1="280" y1="214" x2="280" y2="86"  stroke="rgba(168,85,200,0.22)" stroke-width="1" stroke-dasharray="135" stroke-dashoffset="135"/>
+              <line class="cap-spoke" id="csp1" x1="337" y1="247" x2="451" y2="181" stroke="rgba(168,85,200,0.22)" stroke-width="1" stroke-dasharray="135" stroke-dashoffset="135"/>
+              <line class="cap-spoke" id="csp2" x1="337" y1="313" x2="451" y2="379" stroke="rgba(168,85,200,0.22)" stroke-width="1" stroke-dasharray="135" stroke-dashoffset="135"/>
+              <line class="cap-spoke" id="csp3" x1="280" y1="346" x2="280" y2="474" stroke="rgba(168,85,200,0.22)" stroke-width="1" stroke-dasharray="135" stroke-dashoffset="135"/>
+              <line class="cap-spoke" id="csp4" x1="223" y1="313" x2="109" y2="379" stroke="rgba(168,85,200,0.22)" stroke-width="1" stroke-dasharray="135" stroke-dashoffset="135"/>
+              <line class="cap-spoke" id="csp5" x1="223" y1="247" x2="109" y2="181" stroke="rgba(168,85,200,0.22)" stroke-width="1" stroke-dasharray="135" stroke-dashoffset="135"/>
+
+              <!-- Pulse dots at node positions -->
+              <circle class="cap-rdot" cx="280" cy="80"  r="3.5" fill="rgba(168,85,200,0.7)"/>
+              <circle class="cap-rdot" cx="453" cy="180" r="3.5" fill="rgba(168,85,200,0.7)" style="animation-delay:0.5s"/>
+              <circle class="cap-rdot" cx="453" cy="380" r="3.5" fill="rgba(168,85,200,0.7)" style="animation-delay:1.0s"/>
+              <circle class="cap-rdot" cx="280" cy="480" r="3.5" fill="rgba(168,85,200,0.7)" style="animation-delay:1.5s"/>
+              <circle class="cap-rdot" cx="107" cy="380" r="3.5" fill="rgba(168,85,200,0.7)" style="animation-delay:2.0s"/>
+              <circle class="cap-rdot" cx="107" cy="180" r="3.5" fill="rgba(168,85,200,0.7)" style="animation-delay:2.5s"/>
+            </svg>
+
+            <!-- Center Hub -->
+            <div class="cap-hub" id="capHub">
+              <div class="cap-hub-default">
+                <img src="assets/img/logo.png" alt="" width="42" height="42" aria-hidden="true">
+                <span class="cap-hub-label">6 Pillars</span>
+              </div>
+              <div class="cap-hub-active">
+                <span class="cap-hub-num" id="capHubNum"></span>
+                <span class="cap-hub-short" id="capHubShort"></span>
+              </div>
+            </div>
+
+            <!-- Node 0: top — ERP -->
+            <button class="cap-node" data-i="0" style="left:280px;top:80px;transition-delay:.30s" aria-label="ERP Modernization">
+              <div class="cap-node-border"></div>
+              <div class="cap-node-fill">
+                <span class="cap-node-num">01</span>
+                <span class="cap-node-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>
+                <span class="cap-node-lbl">ERP</span>
+              </div>
+            </button>
+
+            <!-- Node 1: top-right — Revenue -->
+            <button class="cap-node" data-i="1" style="left:453px;top:180px;transition-delay:.45s" aria-label="Revenue and Financial Governance">
+              <div class="cap-node-border"></div>
+              <div class="cap-node-fill">
+                <span class="cap-node-num">02</span>
+                <span class="cap-node-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg></span>
+                <span class="cap-node-lbl">Revenue</span>
+              </div>
+            </button>
+
+            <!-- Node 2: bottom-right — Capital -->
+            <button class="cap-node" data-i="2" style="left:453px;top:380px;transition-delay:.60s" aria-label="Capital Project Systems">
+              <div class="cap-node-border"></div>
+              <div class="cap-node-fill">
+                <span class="cap-node-num">03</span>
+                <span class="cap-node-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></span>
+                <span class="cap-node-lbl">Capital</span>
+              </div>
+            </button>
+
+            <!-- Node 3: bottom — AI -->
+            <button class="cap-node" data-i="3" style="left:280px;top:480px;transition-delay:.75s" aria-label="AI and Intelligent Automation">
+              <div class="cap-node-border"></div>
+              <div class="cap-node-fill">
+                <span class="cap-node-num">04</span>
+                <span class="cap-node-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg></span>
+                <span class="cap-node-lbl">AI</span>
+              </div>
+            </button>
+
+            <!-- Node 4: bottom-left — Cloud -->
+            <button class="cap-node" data-i="4" style="left:107px;top:380px;transition-delay:.90s" aria-label="Cloud and Infrastructure">
+              <div class="cap-node-border"></div>
+              <div class="cap-node-fill">
+                <span class="cap-node-num">05</span>
+                <span class="cap-node-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></span>
+                <span class="cap-node-lbl">Cloud</span>
+              </div>
+            </button>
+
+            <!-- Node 5: top-left — Managed -->
+            <button class="cap-node" data-i="5" style="left:107px;top:180px;transition-delay:1.05s" aria-label="Managed Services and Support">
+              <div class="cap-node-border"></div>
+              <div class="cap-node-fill">
+                <span class="cap-node-num">06</span>
+                <span class="cap-node-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+                <span class="cap-node-lbl">Managed</span>
+              </div>
+            </button>
+          </div><!-- /cap-ring -->
+
+          <!-- RIGHT: Detail panel -->
+          <div class="cap-panel" id="capPanel">
+            <div class="cap-panel-hint" id="capPanelHint">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="rgba(168,85,200,0.4)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="4.93" y1="4.93" x2="9.17" y2="9.17"/><line x1="14.83" y1="14.83" x2="19.07" y2="19.07"/><line x1="14.83" y1="9.17" x2="19.07" y2="4.93"/><line x1="4.93" y1="19.07" x2="9.17" y2="14.83"/></svg>
+              <p>Hover any node to explore</p>
+            </div>
+            <div class="cap-panel-content" id="capPanelContent">
+              <span class="cap-panel-tag" id="cpTag"></span>
+              <h3 class="cap-panel-title" id="cpTitle"></h3>
+              <p class="cap-panel-desc" id="cpDesc"></p>
+              <a class="cap-panel-link btn btn-outline" id="cpLink" href="#">Explore capability →</a>
+            </div>
           </div>
-          <div class="pillar-card reveal delay-2">
-            <span class="pillar-number">02</span>
-            <span class="pillar-icon" style="color:var(--color-orchid);"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg></span>
-            <h3>Revenue &amp; Financial Governance</h3>
-            <p>Your finance team should not be reconciling contracts in spreadsheets at month-end. We automate revenue recognition, enforce IFRS 15 compliance, and cut close time significantly.</p>
-            <a href="capabilities.html#revenue" class="pillar-link">Explore →</a>
-          </div>
-          <div class="pillar-card reveal delay-3">
-            <span class="pillar-number">03</span>
-            <span class="pillar-icon" style="color:var(--color-orchid);"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></span>
-            <h3>Capital Project Systems</h3>
-            <p>Real-time visibility into every project, budget, milestones, cost-to-complete. Built for developers and infrastructure operators who manage multiple assets simultaneously.</p>
-            <a href="capabilities.html#capital" class="pillar-link">Explore →</a>
-          </div>
-          <div class="pillar-card reveal delay-4">
-            <span class="pillar-number">04</span>
-            <span class="pillar-icon" style="color:var(--color-orchid);"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg></span>
-            <h3>AI &amp; Intelligent Automation</h3>
-            <p>We identify the repetitive, high-volume work your teams do every day and automate it, using GenAI, IoT integration, and workflow tools that fit inside your existing systems.</p>
-            <a href="capabilities.html#ai" class="pillar-link">Explore →</a>
-          </div>
-          <div class="pillar-card reveal delay-5">
-            <span class="pillar-number">05</span>
-            <span class="pillar-icon" style="color:var(--color-orchid);"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></span>
-            <h3>Cloud &amp; Infrastructure</h3>
-            <p>Cloud migrations and infrastructure builds that prioritise security, resilience, and operational efficiency, not just the fastest path to the cloud.</p>
-            <a href="capabilities.html#cloud" class="pillar-link">Explore →</a>
-          </div>
-          <div class="pillar-card reveal delay-6">
-            <span class="pillar-number">06</span>
-            <span class="pillar-icon" style="color:var(--color-orchid);"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
-            <h3>Managed Services &amp; Support</h3>
-            <p>Most implementations end at go-live. Ours don't. We stay on, monitoring, optimising, and supporting your systems with defined SLAs and a team that knows your environment.</p>
-            <a href="capabilities.html#managed" class="pillar-link">Explore →</a>
-          </div>
+
+        </div><!-- /cap-nexus -->
+
+        <!-- MOBILE: Clean card grid -->
+        <div class="cap-mobile-grid">
+          <a href="capabilities.html#erp" class="cap-mc"><span class="cap-mc-num">01</span><span class="cap-mc-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span><strong>ERP Modernization</strong></a>
+          <a href="capabilities.html#revenue" class="cap-mc"><span class="cap-mc-num">02</span><span class="cap-mc-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg></span><strong>Revenue &amp; Financial Governance</strong></a>
+          <a href="capabilities.html#capital" class="cap-mc"><span class="cap-mc-num">03</span><span class="cap-mc-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></span><strong>Capital Project Systems</strong></a>
+          <a href="capabilities.html#ai" class="cap-mc"><span class="cap-mc-num">04</span><span class="cap-mc-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></svg></span><strong>AI &amp; Intelligent Automation</strong></a>
+          <a href="capabilities.html#cloud" class="cap-mc"><span class="cap-mc-num">05</span><span class="cap-mc-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></span><strong>Cloud &amp; Infrastructure</strong></a>
+          <a href="capabilities.html#managed" class="cap-mc"><span class="cap-mc-num">06</span><span class="cap-mc-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span><strong>Managed Services &amp; Support</strong></a>
         </div>
+
       </div>
     </section>
 

@@ -1,8 +1,362 @@
 /* ==========================================================================
    AIĒM TECHNOLOGIES — PREMIUM DESIGN LAYER
-   Version: 1.0 | Lusion-inspired enterprise upgrade
+   Version: 1.1 | Lusion-inspired + Orbital Nexus
    Loads AFTER main.css and progressively enhances the design.
    ========================================================================== */
+
+/* ==========================================================================
+   ORBITAL NEXUS — Capability Ring
+   ========================================================================== */
+
+.cap-section { overflow: hidden; }
+
+/* Desktop split layout */
+.cap-nexus {
+  display: grid;
+  grid-template-columns: 560px 1fr;
+  gap: 72px;
+  align-items: center;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+/* ── Ring container ── */
+.cap-ring {
+  position: relative;
+  width: 560px;
+  height: 560px;
+  flex-shrink: 0;
+}
+
+.cap-ring-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+/* Dashed ring slow spin */
+.cap-dash-ring {
+  transform-origin: 280px 280px;
+  animation: cap-dash-spin 28s linear infinite;
+}
+@keyframes cap-dash-spin { to { transform: rotate(360deg); } }
+
+/* Radar sweep */
+.cap-radar-sweep {
+  transform-origin: 280px 280px;
+  animation: cap-radar-spin 9s linear infinite;
+}
+@keyframes cap-radar-spin { to { transform: rotate(360deg); } }
+
+/* Spoke draw-in transition */
+.cap-spoke {
+  transition: stroke-dashoffset 0.7s cubic-bezier(0.16,1,0.3,1),
+              stroke 0.3s ease,
+              stroke-width 0.3s ease;
+}
+
+/* Ring dots pulse */
+.cap-rdot { animation: cap-rdot-pulse 2.8s ease-in-out infinite; }
+@keyframes cap-rdot-pulse {
+  0%,100% { r: 3.5; opacity: 0.55; }
+  50%      { r: 5.5; opacity: 1; }
+}
+
+/* ── Center hub ── */
+.cap-hub {
+  position: absolute;
+  left: 280px;
+  top: 280px;
+  width: 132px;
+  height: 132px;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.cap-hub-default,
+.cap-hub-active {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  text-align: center;
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.16,1,0.3,1);
+}
+
+.cap-hub-active {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.cap-ring.has-active .cap-hub-default {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+.cap-ring.has-active .cap-hub-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cap-hub-label {
+  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-orchid);
+}
+
+.cap-hub-num {
+  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+  font-size: 2rem;
+  font-weight: 700;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+
+.cap-hub-short {
+  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+  font-size: 0.52rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-gray);
+  max-width: 84px;
+  line-height: 1.35;
+}
+
+/* ── Hex nodes ── */
+.cap-node {
+  position: absolute;
+  transform: translate(-50%, -50%) scale(0.55);
+  opacity: 0;
+  width: 92px;
+  height: 92px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  z-index: 2;
+  /* transition set here — delay overridden per-node via style attr */
+  transition: transform 0.55s cubic-bezier(0.34,1.56,0.64,1),
+              opacity    0.45s ease,
+              filter     0.3s ease;
+}
+
+.cap-ring.visible .cap-node {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+/* Hexagon border layer (sits 1.5px larger than fill) */
+.cap-node-border {
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
+  background: rgba(168,85,200,0.25);
+  transition: background 0.3s ease;
+}
+
+/* Hexagon fill layer */
+.cap-node-fill {
+  position: absolute;
+  inset: 1.5px;
+  clip-path: polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
+  background: rgba(10,11,26,0.92);
+  backdrop-filter: blur(6px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  transition: background 0.3s ease;
+}
+
+/* Hover / active state */
+.cap-node:hover .cap-node-border,
+.cap-node.active .cap-node-border {
+  background: rgba(168,85,200,0.7);
+}
+
+.cap-node:hover .cap-node-fill,
+.cap-node.active .cap-node-fill {
+  background: rgba(168,85,200,0.14);
+}
+
+.cap-node:hover,
+.cap-node.active {
+  transform: translate(-50%, -50%) scale(1.14) !important;
+  filter: drop-shadow(0 0 22px rgba(168,85,200,0.65))
+          drop-shadow(0 0  8px rgba(168,85,200,0.4));
+}
+
+/* Dimmed state */
+.cap-node.dimmed {
+  opacity: 0.28 !important;
+  transform: translate(-50%, -50%) scale(0.92) !important;
+  filter: none;
+}
+
+/* Node content */
+.cap-node-num {
+  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+  font-size: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-orchid);
+  line-height: 1;
+}
+
+.cap-node-icon {
+  display: block;
+  line-height: 0;
+  color: var(--color-white);
+}
+
+.cap-node-lbl {
+  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+  font-size: 0.48rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-gray-light);
+  line-height: 1;
+}
+
+/* ── Detail panel (right side) ── */
+.cap-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 340px;
+}
+
+.cap-panel-hint {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: flex-start;
+  transition: opacity 0.3s ease;
+}
+.cap-panel-hint p {
+  font-size: 0.85rem;
+  color: var(--color-dark-gray);
+  font-style: italic;
+}
+
+.cap-panel-content {
+  display: none;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.cap-panel.active .cap-panel-hint   { display: none; }
+.cap-panel.active .cap-panel-content { display: flex; animation: cap-panel-in 0.42s cubic-bezier(0.16,1,0.3,1) both; }
+
+@keyframes cap-panel-in {
+  from { opacity: 0; transform: translateX(20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.cap-panel-tag {
+  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-orchid);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.cap-panel-tag::before {
+  content: '';
+  width: 18px;
+  height: 1px;
+  background: var(--color-orchid);
+  flex-shrink: 0;
+}
+
+.cap-panel-title {
+  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+  font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+  font-weight: 700;
+  color: var(--color-white);
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.cap-panel-desc {
+  font-size: 0.95rem;
+  color: var(--color-gray);
+  line-height: 1.75;
+  margin: 0;
+  max-width: 420px;
+}
+
+.cap-panel-link {
+  align-self: flex-start;
+}
+
+/* ── Mobile grid (shown below 1024px) ── */
+.cap-mobile-grid {
+  display: none;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin-top: 48px;
+}
+
+.cap-mc {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
+  background: rgba(22,17,42,0.65);
+  border: 1px solid rgba(168,85,200,0.1);
+  border-radius: 10px;
+  text-decoration: none;
+  color: var(--color-gray-light);
+  transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+}
+.cap-mc:hover {
+  border-color: rgba(168,85,200,0.4);
+  background: rgba(168,85,200,0.07);
+  transform: translateY(-2px);
+  color: var(--color-white);
+}
+.cap-mc-num {
+  font-family: var(--font-display, 'Space Grotesk', sans-serif);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--color-orchid);
+  flex-shrink: 0;
+}
+.cap-mc-icon { display: block; line-height: 0; flex-shrink: 0; }
+.cap-mc strong { font-size: 0.85rem; font-weight: 600; line-height: 1.35; }
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .cap-nexus       { display: none; }
+  .cap-mobile-grid { display: grid; }
+}
+
+@media (max-width: 600px) {
+  .cap-mobile-grid { grid-template-columns: 1fr; }
+}
 
 /* --------------------------------------------------------------------------
    PREMIUM FONTS — Space Grotesk (display) + Inter (body)
