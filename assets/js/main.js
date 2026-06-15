@@ -923,91 +923,6 @@ function initParticles() {
 }
 
 /* --------------------------------------------------------------------------
-   CAPABILITY MOBILE ARC CAROUSEL
-   -------------------------------------------------------------------------- */
-function initCapMobileArc() {
-  const carousel = document.getElementById('capArcCarousel');
-  if (!carousel) return;
-
-  const CAPS = [
-    { short: 'ERP',     title: 'ERP Modernization',              desc: 'Oracle and SAP implementations designed around your workflows, not the platform\'s defaults. We handle the full lifecycle from architecture to go-live, with zero tolerance for post-implementation surprises.', href: 'capabilities.html#erp' },
-    { short: 'Revenue', title: 'Revenue & Financial Governance',  desc: 'Automate revenue recognition, enforce IFRS 15 compliance, and cut month-end close time significantly. Your finance team should not be reconciling contracts in spreadsheets.', href: 'capabilities.html#revenue' },
-    { short: 'Capital', title: 'Capital Project Systems',         desc: 'Real-time visibility into every project — budget, milestones, cost-to-complete. Built for developers and infrastructure operators managing multiple assets simultaneously.', href: 'capabilities.html#capital' },
-    { short: 'AI',      title: 'AI & Intelligent Automation',     desc: 'Identify the repetitive, high-volume work your teams do every day and automate it using GenAI, IoT integration, and workflow tools that fit inside your existing systems.', href: 'capabilities.html#ai' },
-    { short: 'Cloud',   title: 'Cloud & Infrastructure',          desc: 'Cloud migrations and infrastructure builds that prioritise security, resilience, and operational efficiency — not just the fastest path to the cloud.', href: 'capabilities.html#cloud' },
-    { short: 'Managed', title: 'Managed Services & Support',      desc: 'Most implementations end at go-live. Ours don\'t. We stay on, monitoring, optimising, and supporting your systems with defined SLAs and a team that knows your environment.', href: 'capabilities.html#managed' }
-  ];
-
-  const DOT_COORDS = [
-    { x: 25,    y: 210  },
-    { x: 54.6,  y: 118.9 },
-    { x: 132.1, y: 62.6  },
-    { x: 227.9, y: 62.6  },
-    { x: 305.4, y: 118.9 },
-    { x: 335,   y: 210   }
-  ];
-
-  const slidesWrap  = document.getElementById('capArcSlides');
-  const counter     = document.getElementById('capArcCounter');
-  const prevBtn     = document.getElementById('capArcPrev');
-  const nextBtn     = document.getElementById('capArcNext');
-  const activeHalo  = document.getElementById('mArcActiveDot');
-  const activeSpoke = document.getElementById('mArcSpoke');
-  const svgDots     = carousel.querySelectorAll('.cap-arc-dot');
-
-  if (!slidesWrap) return;
-
-  let current  = 0;
-  let autoTimer = null;
-
-  CAPS.forEach((c, i) => {
-    const slide = document.createElement('div');
-    slide.className = 'cap-arc-slide' + (i === 0 ? ' active' : '');
-    slide.innerHTML = `
-      <span class="cap-arc-slide-tag">— Capability ${String(i + 1).padStart(2, '0')}</span>
-      <h3 class="cap-arc-slide-title">${c.title}</h3>
-      <p class="cap-arc-slide-desc">${c.desc}</p>
-      <a href="${c.href}" class="btn btn-outline cap-arc-slide-link">Explore ${c.short} →</a>
-    `;
-    slidesWrap.appendChild(slide);
-  });
-
-  function goTo(i) {
-    const slides = slidesWrap.querySelectorAll('.cap-arc-slide');
-    const n      = ((i % CAPS.length) + CAPS.length) % CAPS.length;
-    slides[current].classList.remove('active');
-    svgDots[current]?.classList.remove('arc-dot-active');
-    current = n;
-    slides[current].classList.add('active');
-    svgDots[current]?.classList.add('arc-dot-active');
-    const pos = DOT_COORDS[current];
-    if (activeHalo)  { activeHalo.setAttribute('cx', pos.x);  activeHalo.setAttribute('cy', pos.y); }
-    if (activeSpoke) { activeSpoke.setAttribute('x2', pos.x); activeSpoke.setAttribute('y2', pos.y); }
-    if (counter) counter.textContent = `${String(current + 1).padStart(2, '0')} / 06`;
-  }
-
-  prevBtn?.addEventListener('click', () => { clearTimeout(autoTimer); goTo(current - 1); startAuto(); });
-  nextBtn?.addEventListener('click', () => { clearTimeout(autoTimer); goTo(current + 1); startAuto(); });
-
-  svgDots.forEach((dot, i) => {
-    dot.style.cursor = 'pointer';
-    dot.addEventListener('click', () => { clearTimeout(autoTimer); goTo(i); startAuto(); });
-  });
-
-  let touchStartX = 0;
-  slidesWrap.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
-  slidesWrap.addEventListener('touchend',   e => {
-    const dx = e.changedTouches[0].clientX - touchStartX;
-    if (Math.abs(dx) > 40) { clearTimeout(autoTimer); goTo(current + (dx < 0 ? 1 : -1)); startAuto(); }
-  });
-
-  function startAuto() { autoTimer = setTimeout(() => { goTo(current + 1); startAuto(); }, 5000); }
-
-  goTo(0);
-  startAuto();
-}
-
-/* --------------------------------------------------------------------------
    CONTACT FORM SUCCESS DETECTION
    -------------------------------------------------------------------------- */
 function initContactSuccess() {
@@ -1015,9 +930,8 @@ function initContactSuccess() {
   const banner = document.getElementById('contactSuccessBanner');
   if (!banner) return;
   banner.style.display = '';
-  banner.classList.add('visible');
-  const form = document.getElementById('contactForm');
-  if (form) form.closest('.reveal-left')?.style && (form.closest('.reveal-left').style.display = 'none');
+  const formWrap = document.getElementById('contactForm')?.closest('.reveal-left');
+  if (formWrap) formWrap.style.display = 'none';
   setTimeout(() => banner.scrollIntoView({ behavior: 'smooth', block: 'center' }), 400);
 }
 
@@ -1037,7 +951,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollProgress();
   injectHeroOrb();
   initCapOrbit();
-  initCapMobileArc();
   initContactSuccess();
   setTimeout(initMagneticButtons, 500);
 });
