@@ -530,6 +530,15 @@ function injectGridOverlay() {
   grid.className = 'site-grid';
   grid.setAttribute('aria-hidden', 'true');
   document.body.prepend(grid);
+
+  // Inject a more visible tech grid specifically inside the hero
+  const hero = document.querySelector('.hero');
+  if (hero) {
+    const techGrid = document.createElement('div');
+    techGrid.className = 'hero-tech-grid';
+    techGrid.setAttribute('aria-hidden', 'true');
+    hero.prepend(techGrid);
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -661,7 +670,7 @@ function initCapOrbit() {
 function injectPremiumCSS() {
   const link = document.createElement('link');
   link.rel = 'stylesheet';
-  link.href = 'assets/css/premium.css?v=3';
+  link.href = 'assets/css/premium.css?v=4';
   document.head.appendChild(link);
 }
 
