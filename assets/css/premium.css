@@ -555,18 +555,272 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 /* --------------------------------------------------------------------------
-   PREMIUM DESIGN TOKENS
+   PREMIUM DESIGN TOKENS + GLOBAL COLOUR REBALANCE
+   Orchid purple is kept (matches logo) but pink is replaced with electric
+   blue/cyan for an Iron Man arc-reactor feel.  Gold stays as warm accent.
    -------------------------------------------------------------------------- */
 :root {
   --font-display:    'Space Grotesk', 'Inter', sans-serif;
-  --glow-orchid:     0 0 30px rgba(168, 85, 200, 0.35), 0 0 60px rgba(168, 85, 200, 0.15);
-  --glow-pink:       0 0 30px rgba(232, 121, 192, 0.35), 0 0 60px rgba(232, 121, 192, 0.15);
-  --glow-gold:       0 0 30px rgba(212, 166, 68, 0.35), 0 0 60px rgba(212, 166, 68, 0.15);
-  --glass-bg:        rgba(255, 255, 255, 0.04);
-  --glass-border:    rgba(255, 255, 255, 0.08);
+
+  /* ── Arc-reactor electric blue (replaces pink globally) ── */
+  --color-arc:       #00c8ff;
+  --color-arc-dim:   #0ea5e9;
+
+  /* ── Shift --color-pink → electric blue so all pink usage goes cool ── */
+  --color-pink:      #00c8ff;
+
+  /* ── Tighten orchid to a richer violet-indigo so it reads as tech, not candy ── */
+  --color-orchid:    #7c3aed;
+
+  /* ── Gradient now purple → electric blue instead of purple → pink ── */
+  --gradient-primary: linear-gradient(135deg, #7c3aed 0%, #00c8ff 100%);
+  --gradient-subtle:  linear-gradient(135deg, rgba(124,58,237,0.10) 0%, rgba(0,200,255,0.05) 100%);
+
+  /* ── Borders pick up the cooler blue hue ── */
+  --color-border:       rgba(0, 200, 255, 0.12);
+  --color-border-hover: rgba(0, 200, 255, 0.35);
+
+  /* ── Backgrounds — shift purple tint to deep navy ── */
+  --color-bg:  #03070f;
+  --color-bg2: #060d1a;
+  --color-bg3: #0a1626;
+
+  /* ── Glows ── */
+  --glow-orchid: 0 0 28px rgba(124, 58,237,0.40), 0 0 56px rgba(124, 58,237,0.15);
+  --glow-arc:    0 0 28px rgba(  0,200,255,0.45), 0 0 56px rgba(  0,200,255,0.18);
+  --glow-pink:   0 0 28px rgba(  0,200,255,0.35), 0 0 56px rgba(  0,200,255,0.15);
+  --glow-gold:   0 0 28px rgba(212,166, 68,0.35), 0 0 56px rgba(212,166, 68,0.15);
+
+  --glass-bg:        rgba(255, 255, 255, 0.03);
+  --glass-border:    rgba(0, 200, 255, 0.07);
   --glass-blur:      blur(20px);
   --transition-spring: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
   --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --------------------------------------------------------------------------
+   IRON MAN HUD — What We Do section overlay
+   -------------------------------------------------------------------------- */
+
+/* Wraps the entire cap-section for positioning */
+.cap-section { isolation: isolate; }
+
+/* The full HUD overlay sits inside .cap-section at z-index 0 */
+.cap-hud-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+/* ── Corner brackets ── */
+.cap-hud-corner {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  opacity: 0.55;
+}
+.cap-hud-corner::before,
+.cap-hud-corner::after {
+  content: '';
+  position: absolute;
+  background: var(--color-arc);
+  border-radius: 1px;
+}
+/* Horizontal bar */
+.cap-hud-corner::before { width: 100%; height: 2px; }
+/* Vertical bar */
+.cap-hud-corner::after  { width: 2px; height: 100%; }
+
+.cap-hud-tl { top: 24px; left: 24px; }
+.cap-hud-tl::before { top: 0; left: 0; }
+.cap-hud-tl::after  { top: 0; left: 0; }
+
+.cap-hud-tr { top: 24px; right: 24px; transform: scaleX(-1); }
+.cap-hud-tr::before { top: 0; left: 0; }
+.cap-hud-tr::after  { top: 0; left: 0; }
+
+.cap-hud-bl { bottom: 24px; left: 24px; transform: scaleY(-1); }
+.cap-hud-bl::before { top: 0; left: 0; }
+.cap-hud-bl::after  { top: 0; left: 0; }
+
+.cap-hud-br { bottom: 24px; right: 24px; transform: scale(-1); }
+.cap-hud-br::before { top: 0; left: 0; }
+.cap-hud-br::after  { top: 0; left: 0; }
+
+/* ── Status badge (top-left of ring area) ── */
+.cap-hud-status {
+  position: absolute;
+  top: 28px;
+  left: 68px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: var(--color-arc);
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+.cap-hud-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-arc);
+  box-shadow: 0 0 8px var(--color-arc);
+  animation: hud-blink 1.8s ease-in-out infinite;
+  flex-shrink: 0;
+}
+@keyframes hud-blink {
+  0%,100% { opacity: 1; }
+  50%      { opacity: 0.2; }
+}
+
+/* ── Coordinate readout (bottom-left of ring area) ── */
+.cap-hud-coords {
+  position: absolute;
+  bottom: 28px;
+  left: 68px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.52rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  color: rgba(0, 200, 255, 0.45);
+  text-transform: uppercase;
+}
+
+/* ── Data tags beside the ring ── */
+.cap-hud-tag {
+  position: absolute;
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: rgba(0, 200, 255, 0.4);
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  line-height: 1.6;
+}
+.cap-hud-tag-tl { top:  22%; left: 2%; }
+.cap-hud-tag-tr { top:  22%; right: 2%; text-align: right; }
+.cap-hud-tag-bl { bottom: 20%; left: 2%; }
+.cap-hud-tag-br { bottom: 20%; right: 2%; text-align: right; }
+
+/* ── Horizontal scan line that sweeps through the ring ── */
+.cap-hud-scan {
+  position: absolute;
+  left: 0;
+  width: 55%;          /* covers only the ring half */
+  height: 1px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(0,200,255,0.08) 20%,
+    rgba(0,200,255,0.55) 50%,
+    rgba(0,200,255,0.08) 80%,
+    transparent 100%
+  );
+  animation: hud-scan-sweep 5s cubic-bezier(0.4,0,0.6,1) infinite;
+  top: 0;
+}
+@keyframes hud-scan-sweep {
+  0%   { top: 10%;  opacity: 0; }
+  8%   { opacity: 1; }
+  92%  { opacity: 1; }
+  100% { top: 90%;  opacity: 0; }
+}
+
+/* ── Extra concentric arc-reactor rings around the hub ── */
+.cap-hub-arc {
+  position: absolute;
+  left: 280px;
+  top: 280px;
+  transform: translate(-50%,-50%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+.cap-hub-arc-1 {
+  width: 108px; height: 108px;
+  border: 1px solid rgba(0,200,255,0.18);
+  animation: arc-ring-pulse 3s ease-in-out infinite;
+}
+.cap-hub-arc-2 {
+  width: 124px; height: 124px;
+  border: 1px dashed rgba(0,200,255,0.10);
+  animation: arc-ring-pulse 3s ease-in-out 0.8s infinite;
+}
+.cap-hub-arc-3 {
+  width: 144px; height: 144px;
+  border: 1px solid rgba(124,58,237,0.14);
+  animation: arc-ring-pulse 3s ease-in-out 1.6s infinite;
+}
+@keyframes arc-ring-pulse {
+  0%,100% { opacity: 0.5; transform: translate(-50%,-50%) scale(1); }
+  50%      { opacity: 1;   transform: translate(-50%,-50%) scale(1.04); }
+}
+
+/* ── Arc-reactor glow on the hub center ── */
+.cap-hub-default img {
+  filter: drop-shadow(0 0 10px rgba(0,200,255,0.5)) drop-shadow(0 0 24px rgba(124,58,237,0.5));
+  animation: arc-logo-pulse 3s ease-in-out infinite;
+}
+@keyframes arc-logo-pulse {
+  0%,100% { filter: drop-shadow(0 0 8px rgba(0,200,255,0.4)) drop-shadow(0 0 20px rgba(124,58,237,0.4)); }
+  50%      { filter: drop-shadow(0 0 18px rgba(0,200,255,0.9)) drop-shadow(0 0 36px rgba(124,58,237,0.7)); }
+}
+
+/* Update cap-section sweep to use arc blue */
+@keyframes cap-bg-sweep {
+  to { transform: translate(0,-50%) rotate(360deg); }
+}
+
+/* Re-tint the radar dots to the new arc palette */
+.cap-rdot { fill: rgba(0,200,255,0.8) !important; }
+
+/* Re-tint node orbit ring */
+.cap-dash-ring { stroke: rgba(0,200,255,0.6) !important; }
+
+/* Panel tag accent */
+.cap-panel-tag { color: var(--color-arc); }
+.cap-panel-tag::before { background: var(--color-arc); }
+
+/* Cursor dot → arc blue */
+#cursor-dot { background: var(--color-arc); }
+#cursor-ring { border-color: rgba(0,200,255,0.5); }
+body.cursor-hover #cursor-dot { background: var(--color-gold-light, #f5c842); }
+body.cursor-hover #cursor-ring { border-color: rgba(212,166,68,0.6); }
+
+/* Scroll progress bar → arc blue */
+#scroll-progress {
+  background: linear-gradient(90deg, #7c3aed, #00c8ff);
+  box-shadow: 0 0 10px rgba(0,200,255,0.7);
+}
+
+/* ── Mobile grid cards — blue borders instead of pink ── */
+.cap-mc { border-color: rgba(0,200,255,0.08); }
+.cap-mc:hover { border-color: rgba(0,200,255,0.38); background: rgba(0,200,255,0.05); }
+
+/* ── Buttons — shift outline to arc blue ── */
+.btn-outline {
+  border-color: rgba(0,200,255,0.35) !important;
+  color: var(--color-arc) !important;
+}
+.btn-outline:hover {
+  border-color: var(--color-arc) !important;
+  background: rgba(0,200,255,0.07) !important;
+  box-shadow: 0 0 18px rgba(0,200,255,0.25) !important;
+}
+
+@media (max-width: 900px) {
+  .cap-hud-tag { display: none; }
+  .cap-hud-scan { width: 100%; }
 }
 
 /* --------------------------------------------------------------------------

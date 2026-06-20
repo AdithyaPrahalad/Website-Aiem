@@ -923,6 +923,41 @@ function initParticles() {
 }
 
 /* --------------------------------------------------------------------------
+   IRON MAN HUD — inject overlay into cap-section
+   -------------------------------------------------------------------------- */
+function injectCapHUD() {
+  const section = document.querySelector('.cap-section');
+  const ring    = document.getElementById('capRing');
+  if (!section || !ring) return;
+
+  /* HUD overlay */
+  const hud = document.createElement('div');
+  hud.className = 'cap-hud-overlay';
+  hud.setAttribute('aria-hidden', 'true');
+  hud.innerHTML = `
+    <div class="cap-hud-corner cap-hud-tl"></div>
+    <div class="cap-hud-corner cap-hud-tr"></div>
+    <div class="cap-hud-corner cap-hud-bl"></div>
+    <div class="cap-hud-corner cap-hud-br"></div>
+    <div class="cap-hud-status"><span class="cap-hud-dot"></span>NEXUS ONLINE</div>
+    <div class="cap-hud-coords"><span>SYS · 6 PILLARS ACTIVE</span><span>PWR · 100%</span></div>
+    <div class="cap-hud-tag cap-hud-tag-tl"><span>ARCH · ENTERPRISE</span><span>VER · 2.0</span></div>
+    <div class="cap-hud-tag cap-hud-tag-tr"><span>HOVER NODE</span><span>TO ENGAGE</span></div>
+    <div class="cap-hud-tag cap-hud-tag-bl"><span>UAE · IND</span><span>DUAL-SHORE</span></div>
+    <div class="cap-hud-tag cap-hud-tag-br"><span>AI · ERP · CLOUD</span><span>REVENUE · CAPITAL</span></div>
+    <div class="cap-hud-scan"></div>
+  `;
+  section.prepend(hud);
+
+  /* Arc-reactor rings layered on top of the hub */
+  ['cap-hub-arc-1','cap-hub-arc-2','cap-hub-arc-3'].forEach(cls => {
+    const el = document.createElement('div');
+    el.className = `cap-hub-arc ${cls}`;
+    ring.appendChild(el);
+  });
+}
+
+/* --------------------------------------------------------------------------
    CONTACT FORM SUCCESS DETECTION
    -------------------------------------------------------------------------- */
 function initContactSuccess() {
@@ -951,6 +986,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollProgress();
   injectHeroOrb();
   initCapOrbit();
+  injectCapHUD();
   initContactSuccess();
   setTimeout(initMagneticButtons, 500);
 });
