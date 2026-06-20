@@ -8,7 +8,73 @@
    ORBITAL NEXUS — Capability Ring
    ========================================================================== */
 
-.cap-section { overflow: hidden; }
+/* ==========================================================================
+   CAP SECTION — Vibrant radar-themed background
+   ========================================================================== */
+.cap-section {
+  overflow: hidden;
+  position: relative;
+  background:
+    /* Deep radar glow centred on the ring */
+    radial-gradient(ellipse 55% 75% at 29% 62%, rgba(120,40,180,0.32) 0%, transparent 60%),
+    /* Soft pink accent top-right */
+    radial-gradient(ellipse 35% 40% at 78% 25%, rgba(232,121,192,0.1) 0%, transparent 55%),
+    /* Gold warm undertone bottom */
+    radial-gradient(ellipse 45% 30% at 50% 100%, rgba(180,120,40,0.08) 0%, transparent 60%),
+    /* Section base — noticeably darker/richer than surrounding page */
+    linear-gradient(180deg,
+      rgba(8,5,22,0) 0%,
+      rgba(12,7,30,0.97) 6%,
+      rgba(14,8,34,1) 50%,
+      rgba(12,7,30,0.97) 94%,
+      rgba(8,5,22,0) 100%
+    );
+  padding-top: 96px;
+  padding-bottom: 96px;
+}
+
+/* Fine grid overlay mimicking a radar grid */
+.cap-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    linear-gradient(rgba(168,85,200,0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(168,85,200,0.045) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse 70% 80% at 30% 55%, rgba(0,0,0,0.7) 0%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 80% at 30% 55%, rgba(0,0,0,0.7) 0%, transparent 75%);
+}
+
+/* Sweeping ambient glow that slowly rotates, centred on ring position */
+.cap-section::after {
+  content: '';
+  position: absolute;
+  /* Roughly where the ring sits: ~560px wide, left-aligned in a 1080px grid */
+  left: calc(50% - 560px);
+  top: 50%;
+  width: 560px;
+  height: 560px;
+  transform: translate(0, -50%);
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    rgba(168,85,200,0.07) 30deg,
+    rgba(232,121,192,0.12) 60deg,
+    transparent 90deg,
+    transparent 360deg
+  );
+  animation: cap-bg-sweep 16s linear infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+@keyframes cap-bg-sweep { to { transform: translate(0,-50%) rotate(360deg); } }
+
+/* Lift content above pseudo-elements */
+.cap-section > * { position: relative; z-index: 1; }
 
 /* Desktop split layout */
 .cap-nexus {
@@ -36,19 +102,27 @@
   overflow: visible;
 }
 
-/* Dashed ring slow spin */
+/* Dashed ring slow spin — brighter */
 .cap-dash-ring {
   transform-origin: 280px 280px;
   animation: cap-dash-spin 28s linear infinite;
+  stroke: rgba(168,85,200,0.75) !important;
+  stroke-width: 1.5px !important;
 }
 @keyframes cap-dash-spin { to { transform: rotate(360deg); } }
 
-/* Radar sweep */
+/* Radar sweep — more saturated */
 .cap-radar-sweep {
   transform-origin: 280px 280px;
   animation: cap-radar-spin 9s linear infinite;
+  opacity: 1 !important;
 }
 @keyframes cap-radar-spin { to { transform: rotate(360deg); } }
+
+/* Pulse the ring dots more visibly */
+.cap-rdot {
+  filter: drop-shadow(0 0 4px rgba(168,85,200,0.9));
+}
 
 /* Spoke draw-in transition */
 .cap-spoke {
@@ -136,6 +210,59 @@
   max-width: 84px;
   line-height: 1.35;
 }
+
+/* ── Per-node colour tokens ── */
+:root {
+  --cn0: #a855c8; /* 01 ERP      — orchid   */
+  --cn1: #e879c0; /* 02 Revenue  — pink     */
+  --cn2: #d4a644; /* 03 Capital  — gold     */
+  --cn3: #22d3ee; /* 04 AI       — cyan     */
+  --cn4: #6366f1; /* 05 Cloud    — indigo   */
+  --cn5: #34d399; /* 06 Managed  — emerald  */
+}
+
+/* Node border tinted by capability colour */
+.cap-node[data-i="0"] .cap-node-border { background: rgba(168, 85,200,0.35); }
+.cap-node[data-i="1"] .cap-node-border { background: rgba(232,121,192,0.35); }
+.cap-node[data-i="2"] .cap-node-border { background: rgba(212,166, 68,0.35); }
+.cap-node[data-i="3"] .cap-node-border { background: rgba( 34,211,238,0.35); }
+.cap-node[data-i="4"] .cap-node-border { background: rgba( 99,102,241,0.35); }
+.cap-node[data-i="5"] .cap-node-border { background: rgba( 52,211,153,0.35); }
+
+/* Node number coloured */
+.cap-node[data-i="0"] .cap-node-num { color: var(--cn0); }
+.cap-node[data-i="1"] .cap-node-num { color: var(--cn1); }
+.cap-node[data-i="2"] .cap-node-num { color: var(--cn2); }
+.cap-node[data-i="3"] .cap-node-num { color: var(--cn3); }
+.cap-node[data-i="4"] .cap-node-num { color: var(--cn4); }
+.cap-node[data-i="5"] .cap-node-num { color: var(--cn5); }
+
+/* Hover / active: glow uses the node's own colour */
+.cap-node[data-i="0"]:hover, .cap-node[data-i="0"].active { filter: drop-shadow(0 0 20px rgba(168, 85,200,0.75)) drop-shadow(0 0 8px rgba(168, 85,200,0.5)); }
+.cap-node[data-i="1"]:hover, .cap-node[data-i="1"].active { filter: drop-shadow(0 0 20px rgba(232,121,192,0.75)) drop-shadow(0 0 8px rgba(232,121,192,0.5)); }
+.cap-node[data-i="2"]:hover, .cap-node[data-i="2"].active { filter: drop-shadow(0 0 20px rgba(212,166, 68,0.75)) drop-shadow(0 0 8px rgba(212,166, 68,0.5)); }
+.cap-node[data-i="3"]:hover, .cap-node[data-i="3"].active { filter: drop-shadow(0 0 20px rgba( 34,211,238,0.75)) drop-shadow(0 0 8px rgba( 34,211,238,0.5)); }
+.cap-node[data-i="4"]:hover, .cap-node[data-i="4"].active { filter: drop-shadow(0 0 20px rgba( 99,102,241,0.75)) drop-shadow(0 0 8px rgba( 99,102,241,0.5)); }
+.cap-node[data-i="5"]:hover, .cap-node[data-i="5"].active { filter: drop-shadow(0 0 20px rgba( 52,211,153,0.75)) drop-shadow(0 0 8px rgba( 52,211,153,0.5)); }
+
+/* Active fill tinted */
+.cap-node[data-i="0"]:hover .cap-node-fill, .cap-node[data-i="0"].active .cap-node-fill { background: rgba(168, 85,200,0.18); }
+.cap-node[data-i="1"]:hover .cap-node-fill, .cap-node[data-i="1"].active .cap-node-fill { background: rgba(232,121,192,0.18); }
+.cap-node[data-i="2"]:hover .cap-node-fill, .cap-node[data-i="2"].active .cap-node-fill { background: rgba(212,166, 68,0.18); }
+.cap-node[data-i="3"]:hover .cap-node-fill, .cap-node[data-i="3"].active .cap-node-fill { background: rgba( 34,211,238,0.18); }
+.cap-node[data-i="4"]:hover .cap-node-fill, .cap-node[data-i="4"].active .cap-node-fill { background: rgba( 99,102,241,0.18); }
+.cap-node[data-i="5"]:hover .cap-node-fill, .cap-node[data-i="5"].active .cap-node-fill { background: rgba( 52,211,153,0.18); }
+
+/* Active border brightened */
+.cap-node[data-i="0"]:hover .cap-node-border, .cap-node[data-i="0"].active .cap-node-border { background: rgba(168, 85,200,0.85); }
+.cap-node[data-i="1"]:hover .cap-node-border, .cap-node[data-i="1"].active .cap-node-border { background: rgba(232,121,192,0.85); }
+.cap-node[data-i="2"]:hover .cap-node-border, .cap-node[data-i="2"].active .cap-node-border { background: rgba(212,166, 68,0.85); }
+.cap-node[data-i="3"]:hover .cap-node-border, .cap-node[data-i="3"].active .cap-node-border { background: rgba( 34,211,238,0.85); }
+.cap-node[data-i="4"]:hover .cap-node-border, .cap-node[data-i="4"].active .cap-node-border { background: rgba( 99,102,241,0.85); }
+.cap-node[data-i="5"]:hover .cap-node-border, .cap-node[data-i="5"].active .cap-node-border { background: rgba( 52,211,153,0.85); }
+
+/* Radar dots — each tinted to its node colour */
+#csp0 ~ .cap-rdot:nth-of-type(1) { fill: var(--cn0); }
 
 /* ── Hex nodes ── */
 .cap-node {
