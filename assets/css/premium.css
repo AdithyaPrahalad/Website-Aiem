@@ -565,51 +565,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
 /* --------------------------------------------------------------------------
-   PREMIUM DESIGN TOKENS + GLOBAL COLOUR REBALANCE
-   Orchid purple is kept (matches logo) but pink is replaced with electric
-   blue/cyan for an Iron Man arc-reactor feel.  Gold stays as warm accent.
+   PREMIUM FONTS + What We Do section tokens only
+   Global site colors revert to main.css defaults.
    -------------------------------------------------------------------------- */
 :root {
-  --font-display:    'Space Grotesk', 'Inter', sans-serif;
-
-  /* ── Midnight Violet palette ── */
-  /* Primary violet (logo family) */
-  --color-orchid:    #6d28d9;
-  /* Lighter violet for accents */
-  --color-orchid-lt: #8b5cf6;
-  /* Cyan frost — the electric contrast */
-  --color-arc:       #22d3ee;
-  --color-arc-dim:   #06b6d4;
-  /* Gold accent */
-  --color-gold:      #d4a644;
-
-  /* ── Replace pink with cyan frost globally ── */
-  --color-pink:      #22d3ee;
-
-  /* ── Gradient: violet → cyan frost ── */
-  --gradient-primary: linear-gradient(135deg, #6d28d9 0%, #22d3ee 100%);
-  --gradient-subtle:  linear-gradient(135deg, rgba(109,40,217,0.12) 0%, rgba(34,211,238,0.05) 100%);
-
-  /* ── Borders in violet hue ── */
-  --color-border:       rgba(139, 92, 246, 0.14);
-  --color-border-hover: rgba(34, 211, 238, 0.40);
-
-  /* ── Deep indigo backgrounds (not pure navy) ── */
-  --color-bg:  #050210;
-  --color-bg2: #0d0a25;
-  --color-bg3: #130e32;
-
-  /* ── Glows ── */
-  --glow-orchid: 0 0 28px rgba(109,40,217,0.45), 0 0 56px rgba(109,40,217,0.18);
-  --glow-arc:    0 0 28px rgba( 34,211,238,0.40), 0 0 56px rgba( 34,211,238,0.15);
-  --glow-pink:   0 0 28px rgba( 34,211,238,0.35), 0 0 56px rgba( 34,211,238,0.12);
-  --glow-gold:   0 0 28px rgba(212,166, 68,0.35), 0 0 56px rgba(212,166, 68,0.15);
-
-  --glass-bg:        rgba(109, 40, 217, 0.04);
-  --glass-border:    rgba(139, 92, 246, 0.08);
-  --glass-blur:      blur(20px);
-  --transition-spring: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-  --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --font-display: 'Space Grotesk', 'Inter', sans-serif;
+  /* Used only within the What We Do HUD section */
+  --color-arc:     #22d3ee;
+  --color-arc-dim: #06b6d4;
 }
 
 /* --------------------------------------------------------------------------
@@ -805,32 +768,6 @@
 .cap-panel-tag { color: var(--color-arc); }
 .cap-panel-tag::before { background: var(--color-arc); }
 
-/* Cursor dot → arc blue */
-#cursor-dot { background: var(--color-arc); }
-#cursor-ring { border-color: rgba(0,200,255,0.5); }
-body.cursor-hover #cursor-dot { background: var(--color-gold-light, #f5c842); }
-body.cursor-hover #cursor-ring { border-color: rgba(212,166,68,0.6); }
-
-/* Scroll progress bar → violet → cyan */
-#scroll-progress {
-  background: linear-gradient(90deg, #6d28d9, #22d3ee);
-  box-shadow: 0 0 10px rgba(34,211,238,0.65);
-}
-
-/* ── Mobile grid cards — violet borders ── */
-.cap-mc { border-color: rgba(109,40,217,0.12); }
-.cap-mc:hover { border-color: rgba(34,211,238,0.40); background: rgba(109,40,217,0.07); }
-
-/* ── Buttons — shift outline to cyan frost ── */
-.btn-outline {
-  border-color: rgba(34,211,238,0.35) !important;
-  color: var(--color-arc) !important;
-}
-.btn-outline:hover {
-  border-color: var(--color-arc) !important;
-  background: rgba(34,211,238,0.07) !important;
-  box-shadow: 0 0 18px rgba(34,211,238,0.22) !important;
-}
 
 @media (max-width: 900px) {
   .cap-hud-tag { display: none; }
