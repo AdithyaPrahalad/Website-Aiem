@@ -15,19 +15,19 @@
   overflow: hidden;
   position: relative;
   background:
-    /* Deep radar glow centred on the ring */
-    radial-gradient(ellipse 55% 75% at 29% 62%, rgba(120,40,180,0.32) 0%, transparent 60%),
-    /* Soft pink accent top-right */
-    radial-gradient(ellipse 35% 40% at 78% 25%, rgba(232,121,192,0.1) 0%, transparent 55%),
+    /* Deep violet glow centred on the ring */
+    radial-gradient(ellipse 55% 75% at 29% 62%, rgba(109,40,217,0.35) 0%, transparent 60%),
+    /* Cyan frost accent top-right */
+    radial-gradient(ellipse 35% 40% at 78% 25%, rgba(34,211,238,0.07) 0%, transparent 55%),
     /* Gold warm undertone bottom */
-    radial-gradient(ellipse 45% 30% at 50% 100%, rgba(180,120,40,0.08) 0%, transparent 60%),
-    /* Section base — noticeably darker/richer than surrounding page */
+    radial-gradient(ellipse 45% 30% at 50% 100%, rgba(212,166,68,0.07) 0%, transparent 60%),
+    /* Section base — deep indigo */
     linear-gradient(180deg,
-      rgba(8,5,22,0) 0%,
-      rgba(12,7,30,0.97) 6%,
-      rgba(14,8,34,1) 50%,
-      rgba(12,7,30,0.97) 94%,
-      rgba(8,5,22,0) 100%
+      rgba(5,2,16,0) 0%,
+      rgba(10,6,32,0.97) 6%,
+      rgba(13,10,37,1) 50%,
+      rgba(10,6,32,0.97) 94%,
+      rgba(5,2,16,0) 100%
     );
   padding-top: 96px;
   padding-bottom: 96px;
@@ -41,8 +41,8 @@
   pointer-events: none;
   z-index: 0;
   background-image:
-    linear-gradient(rgba(168,85,200,0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(168,85,200,0.045) 1px, transparent 1px);
+    linear-gradient(rgba(109,40,217,0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(109,40,217,0.055) 1px, transparent 1px);
   background-size: 44px 44px;
   mask-image: radial-gradient(ellipse 70% 80% at 30% 55%, rgba(0,0,0,0.7) 0%, transparent 75%);
   -webkit-mask-image: radial-gradient(ellipse 70% 80% at 30% 55%, rgba(0,0,0,0.7) 0%, transparent 75%);
@@ -62,8 +62,8 @@
   background: conic-gradient(
     from 0deg,
     transparent 0deg,
-    rgba(168,85,200,0.07) 30deg,
-    rgba(232,121,192,0.12) 60deg,
+    rgba(109,40,217,0.09) 30deg,
+    rgba(34,211,238,0.10) 60deg,
     transparent 90deg,
     transparent 360deg
   );
@@ -106,7 +106,7 @@
 .cap-dash-ring {
   transform-origin: 280px 280px;
   animation: cap-dash-spin 28s linear infinite;
-  stroke: rgba(168,85,200,0.75) !important;
+  stroke: rgba(109,40,217,0.75) !important;
   stroke-width: 1.5px !important;
 }
 @keyframes cap-dash-spin { to { transform: rotate(360deg); } }
@@ -121,7 +121,7 @@
 
 /* Pulse the ring dots more visibly */
 .cap-rdot {
-  filter: drop-shadow(0 0 4px rgba(168,85,200,0.9));
+  filter: drop-shadow(0 0 4px rgba(34,211,238,0.9));
 }
 
 /* Spoke draw-in transition */
@@ -222,12 +222,22 @@
 }
 
 /* Node border tinted by capability colour */
-.cap-node[data-i="0"] .cap-node-border { background: rgba(168, 85,200,0.35); }
-.cap-node[data-i="1"] .cap-node-border { background: rgba(232,121,192,0.35); }
+.cap-node[data-i="0"] .cap-node-border { background: rgba(109, 40,217,0.35); }
+.cap-node[data-i="1"] .cap-node-border { background: rgba(139, 92,246,0.35); }
 .cap-node[data-i="2"] .cap-node-border { background: rgba(212,166, 68,0.35); }
 .cap-node[data-i="3"] .cap-node-border { background: rgba( 34,211,238,0.35); }
 .cap-node[data-i="4"] .cap-node-border { background: rgba( 99,102,241,0.35); }
 .cap-node[data-i="5"] .cap-node-border { background: rgba( 52,211,153,0.35); }
+
+/* Per-node colour tokens — Midnight Violet palette */
+:root {
+  --cn0: #8b5cf6; /* 01 ERP      — violet-lt  */
+  --cn1: #22d3ee; /* 02 Revenue  — cyan frost  */
+  --cn2: #d4a644; /* 03 Capital  — gold        */
+  --cn3: #34d399; /* 04 AI       — emerald     */
+  --cn4: #6d28d9; /* 05 Cloud    — violet-dk   */
+  --cn5: #60a5fa; /* 06 Managed  — sky blue    */
+}
 
 /* Node number coloured */
 .cap-node[data-i="0"] .cap-node-num { color: var(--cn0); }
@@ -292,7 +302,7 @@
   position: absolute;
   inset: 0;
   clip-path: polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
-  background: rgba(168,85,200,0.25);
+  background: rgba(109,40,217,0.30);
   transition: background 0.3s ease;
 }
 
@@ -314,19 +324,19 @@
 /* Hover / active state */
 .cap-node:hover .cap-node-border,
 .cap-node.active .cap-node-border {
-  background: rgba(168,85,200,0.7);
+  background: rgba(109,40,217,0.75);
 }
 
 .cap-node:hover .cap-node-fill,
 .cap-node.active .cap-node-fill {
-  background: rgba(168,85,200,0.14);
+  background: rgba(109,40,217,0.16);
 }
 
 .cap-node:hover,
 .cap-node.active {
   transform: translate(-50%, -50%) scale(1.14) !important;
-  filter: drop-shadow(0 0 22px rgba(168,85,200,0.65))
-          drop-shadow(0 0  8px rgba(168,85,200,0.4));
+  filter: drop-shadow(0 0 22px rgba(109,40,217,0.70))
+          drop-shadow(0 0  8px rgba(34,211,238,0.40));
 }
 
 /* Dimmed state */
@@ -495,8 +505,8 @@
   display: flex;
   gap: 32px;
   align-items: flex-start;
-  background: rgba(22,17,42,0.8);
-  border: 1px solid rgba(168,85,200,0.3);
+  background: rgba(13,10,37,0.85);
+  border: 1px solid rgba(109,40,217,0.35);
   border-radius: 20px;
   padding: 48px;
   position: relative;
@@ -507,26 +517,26 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(168,85,200,0.1) 0%, transparent 60%);
+  background: linear-gradient(135deg, rgba(109,40,217,0.12) 0%, rgba(34,211,238,0.04) 60%, transparent 100%);
   pointer-events: none;
 }
 .contact-success-icon {
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  background: rgba(168,85,200,0.2);
-  border: 2px solid rgba(168,85,200,0.6);
+  background: rgba(109,40,217,0.22);
+  border: 2px solid rgba(109,40,217,0.65);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-orchid, #a855c8);
+  color: var(--color-orchid-lt, #8b5cf6);
   flex-shrink: 0;
-  box-shadow: 0 0 24px rgba(168,85,200,0.4);
+  box-shadow: 0 0 24px rgba(109,40,217,0.45);
   animation: success-pulse 2.5s ease-in-out infinite;
 }
 @keyframes success-pulse {
-  0%,100% { box-shadow: 0 0 24px rgba(168,85,200,0.4); }
-  50%      { box-shadow: 0 0 40px rgba(168,85,200,0.7); }
+  0%,100% { box-shadow: 0 0 24px rgba(109,40,217,0.45); }
+  50%      { box-shadow: 0 0 42px rgba(109,40,217,0.75), 0 0 18px rgba(34,211,238,0.25); }
 }
 .contact-success-content { flex: 1; }
 .contact-success-content h2 {
@@ -536,7 +546,7 @@
   margin: 0 0 14px;
 }
 .contact-success-content p { color: rgba(180,170,210,0.85); line-height: 1.7; margin: 0 0 10px; }
-.contact-success-cta { font-weight: 600; color: rgba(168,85,200,0.9) !important; margin-top: 18px !important; }
+.contact-success-cta { font-weight: 600; color: rgba(139,92,246,0.9) !important; margin-top: 18px !important; }
 .contact-success-links {
   display: flex;
   flex-wrap: wrap;
@@ -562,37 +572,41 @@
 :root {
   --font-display:    'Space Grotesk', 'Inter', sans-serif;
 
-  /* ── Arc-reactor electric blue (replaces pink globally) ── */
-  --color-arc:       #00c8ff;
-  --color-arc-dim:   #0ea5e9;
+  /* ── Midnight Violet palette ── */
+  /* Primary violet (logo family) */
+  --color-orchid:    #6d28d9;
+  /* Lighter violet for accents */
+  --color-orchid-lt: #8b5cf6;
+  /* Cyan frost — the electric contrast */
+  --color-arc:       #22d3ee;
+  --color-arc-dim:   #06b6d4;
+  /* Gold accent */
+  --color-gold:      #d4a644;
 
-  /* ── Shift --color-pink → electric blue so all pink usage goes cool ── */
-  --color-pink:      #00c8ff;
+  /* ── Replace pink with cyan frost globally ── */
+  --color-pink:      #22d3ee;
 
-  /* ── Tighten orchid to a richer violet-indigo so it reads as tech, not candy ── */
-  --color-orchid:    #7c3aed;
+  /* ── Gradient: violet → cyan frost ── */
+  --gradient-primary: linear-gradient(135deg, #6d28d9 0%, #22d3ee 100%);
+  --gradient-subtle:  linear-gradient(135deg, rgba(109,40,217,0.12) 0%, rgba(34,211,238,0.05) 100%);
 
-  /* ── Gradient now purple → electric blue instead of purple → pink ── */
-  --gradient-primary: linear-gradient(135deg, #7c3aed 0%, #00c8ff 100%);
-  --gradient-subtle:  linear-gradient(135deg, rgba(124,58,237,0.10) 0%, rgba(0,200,255,0.05) 100%);
+  /* ── Borders in violet hue ── */
+  --color-border:       rgba(139, 92, 246, 0.14);
+  --color-border-hover: rgba(34, 211, 238, 0.40);
 
-  /* ── Borders pick up the cooler blue hue ── */
-  --color-border:       rgba(0, 200, 255, 0.12);
-  --color-border-hover: rgba(0, 200, 255, 0.35);
-
-  /* ── Backgrounds — shift purple tint to deep navy ── */
-  --color-bg:  #03070f;
-  --color-bg2: #060d1a;
-  --color-bg3: #0a1626;
+  /* ── Deep indigo backgrounds (not pure navy) ── */
+  --color-bg:  #050210;
+  --color-bg2: #0d0a25;
+  --color-bg3: #130e32;
 
   /* ── Glows ── */
-  --glow-orchid: 0 0 28px rgba(124, 58,237,0.40), 0 0 56px rgba(124, 58,237,0.15);
-  --glow-arc:    0 0 28px rgba(  0,200,255,0.45), 0 0 56px rgba(  0,200,255,0.18);
-  --glow-pink:   0 0 28px rgba(  0,200,255,0.35), 0 0 56px rgba(  0,200,255,0.15);
+  --glow-orchid: 0 0 28px rgba(109,40,217,0.45), 0 0 56px rgba(109,40,217,0.18);
+  --glow-arc:    0 0 28px rgba( 34,211,238,0.40), 0 0 56px rgba( 34,211,238,0.15);
+  --glow-pink:   0 0 28px rgba( 34,211,238,0.35), 0 0 56px rgba( 34,211,238,0.12);
   --glow-gold:   0 0 28px rgba(212,166, 68,0.35), 0 0 56px rgba(212,166, 68,0.15);
 
-  --glass-bg:        rgba(255, 255, 255, 0.03);
-  --glass-border:    rgba(0, 200, 255, 0.07);
+  --glass-bg:        rgba(109, 40, 217, 0.04);
+  --glass-border:    rgba(139, 92, 246, 0.08);
   --glass-blur:      blur(20px);
   --transition-spring: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
   --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -691,7 +705,7 @@
   font-size: 0.52rem;
   font-weight: 600;
   letter-spacing: 0.14em;
-  color: rgba(0, 200, 255, 0.45);
+  color: rgba(34, 211, 238, 0.45);
   text-transform: uppercase;
 }
 
@@ -702,7 +716,7 @@
   font-size: 0.5rem;
   font-weight: 700;
   letter-spacing: 0.16em;
-  color: rgba(0, 200, 255, 0.4);
+  color: rgba(34, 211, 238, 0.4);
   text-transform: uppercase;
   display: flex;
   flex-direction: column;
@@ -722,9 +736,9 @@
   height: 1px;
   background: linear-gradient(90deg,
     transparent 0%,
-    rgba(0,200,255,0.08) 20%,
-    rgba(0,200,255,0.55) 50%,
-    rgba(0,200,255,0.08) 80%,
+    rgba(34,211,238,0.07) 20%,
+    rgba(34,211,238,0.50) 50%,
+    rgba(34,211,238,0.07) 80%,
     transparent 100%
   );
   animation: hud-scan-sweep 5s cubic-bezier(0.4,0,0.6,1) infinite;
@@ -748,17 +762,17 @@
 }
 .cap-hub-arc-1 {
   width: 108px; height: 108px;
-  border: 1px solid rgba(0,200,255,0.18);
+  border: 1px solid rgba(34,211,238,0.20);
   animation: arc-ring-pulse 3s ease-in-out infinite;
 }
 .cap-hub-arc-2 {
   width: 124px; height: 124px;
-  border: 1px dashed rgba(0,200,255,0.10);
+  border: 1px dashed rgba(139,92,246,0.14);
   animation: arc-ring-pulse 3s ease-in-out 0.8s infinite;
 }
 .cap-hub-arc-3 {
   width: 144px; height: 144px;
-  border: 1px solid rgba(124,58,237,0.14);
+  border: 1px solid rgba(109,40,217,0.18);
   animation: arc-ring-pulse 3s ease-in-out 1.6s infinite;
 }
 @keyframes arc-ring-pulse {
@@ -768,12 +782,12 @@
 
 /* ── Arc-reactor glow on the hub center ── */
 .cap-hub-default img {
-  filter: drop-shadow(0 0 10px rgba(0,200,255,0.5)) drop-shadow(0 0 24px rgba(124,58,237,0.5));
+  filter: drop-shadow(0 0 10px rgba(109,40,217,0.55)) drop-shadow(0 0 24px rgba(34,211,238,0.35));
   animation: arc-logo-pulse 3s ease-in-out infinite;
 }
 @keyframes arc-logo-pulse {
-  0%,100% { filter: drop-shadow(0 0 8px rgba(0,200,255,0.4)) drop-shadow(0 0 20px rgba(124,58,237,0.4)); }
-  50%      { filter: drop-shadow(0 0 18px rgba(0,200,255,0.9)) drop-shadow(0 0 36px rgba(124,58,237,0.7)); }
+  0%,100% { filter: drop-shadow(0 0 8px rgba(109,40,217,0.45)) drop-shadow(0 0 20px rgba(34,211,238,0.30)); }
+  50%      { filter: drop-shadow(0 0 18px rgba(109,40,217,0.90)) drop-shadow(0 0 36px rgba(34,211,238,0.65)); }
 }
 
 /* Update cap-section sweep to use arc blue */
@@ -781,11 +795,11 @@
   to { transform: translate(0,-50%) rotate(360deg); }
 }
 
-/* Re-tint the radar dots to the new arc palette */
-.cap-rdot { fill: rgba(0,200,255,0.8) !important; }
+/* Re-tint the radar dots to cyan frost */
+.cap-rdot { fill: rgba(34,211,238,0.80) !important; }
 
-/* Re-tint node orbit ring */
-.cap-dash-ring { stroke: rgba(0,200,255,0.6) !important; }
+/* Re-tint node orbit ring to violet */
+.cap-dash-ring { stroke: rgba(109,40,217,0.70) !important; }
 
 /* Panel tag accent */
 .cap-panel-tag { color: var(--color-arc); }
@@ -797,25 +811,25 @@
 body.cursor-hover #cursor-dot { background: var(--color-gold-light, #f5c842); }
 body.cursor-hover #cursor-ring { border-color: rgba(212,166,68,0.6); }
 
-/* Scroll progress bar → arc blue */
+/* Scroll progress bar → violet → cyan */
 #scroll-progress {
-  background: linear-gradient(90deg, #7c3aed, #00c8ff);
-  box-shadow: 0 0 10px rgba(0,200,255,0.7);
+  background: linear-gradient(90deg, #6d28d9, #22d3ee);
+  box-shadow: 0 0 10px rgba(34,211,238,0.65);
 }
 
-/* ── Mobile grid cards — blue borders instead of pink ── */
-.cap-mc { border-color: rgba(0,200,255,0.08); }
-.cap-mc:hover { border-color: rgba(0,200,255,0.38); background: rgba(0,200,255,0.05); }
+/* ── Mobile grid cards — violet borders ── */
+.cap-mc { border-color: rgba(109,40,217,0.12); }
+.cap-mc:hover { border-color: rgba(34,211,238,0.40); background: rgba(109,40,217,0.07); }
 
-/* ── Buttons — shift outline to arc blue ── */
+/* ── Buttons — shift outline to cyan frost ── */
 .btn-outline {
-  border-color: rgba(0,200,255,0.35) !important;
+  border-color: rgba(34,211,238,0.35) !important;
   color: var(--color-arc) !important;
 }
 .btn-outline:hover {
   border-color: var(--color-arc) !important;
-  background: rgba(0,200,255,0.07) !important;
-  box-shadow: 0 0 18px rgba(0,200,255,0.25) !important;
+  background: rgba(34,211,238,0.07) !important;
+  box-shadow: 0 0 18px rgba(34,211,238,0.22) !important;
 }
 
 @media (max-width: 900px) {
