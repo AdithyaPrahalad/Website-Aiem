@@ -670,7 +670,7 @@ function initCapOrbit() {
 function injectPremiumCSS() {
   const link = document.createElement('link');
   link.rel = 'stylesheet';
-  link.href = 'assets/css/premium.css?v=4';
+  link.href = 'assets/css/premium.css?v=5';
   document.head.appendChild(link);
 }
 

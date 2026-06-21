@@ -575,6 +575,14 @@
   --color-arc-dim: #06b6d4;
 }
 
+/* Trusted-by logos: brighter white text for legibility */
+.trust-item {
+  color: rgba(255, 255, 255, 0.82);
+}
+.trust-item:hover {
+  color: #ffffff;
+}
+
 /* --------------------------------------------------------------------------
    HERO — Refined tech-grid background
    Reduces the blob gradients, adds a visible dot/line grid so the dark
