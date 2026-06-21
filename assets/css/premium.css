@@ -577,10 +577,10 @@
 
 /* Trusted-by logos: brighter white text for legibility */
 .trust-item {
-  color: rgba(255, 255, 255, 0.82);
+  color: rgba(255, 255, 255, 0.9) !important;
 }
 .trust-item:hover {
-  color: #ffffff;
+  color: #ffffff !important;
 }
 
 /* --------------------------------------------------------------------------
