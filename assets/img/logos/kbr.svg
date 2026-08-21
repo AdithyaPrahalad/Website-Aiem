@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 40" role="img" aria-label="KBR">
-  <!-- KBR bold wordmark, white, matching their clean sans-serif style -->
-  <text x="50" y="30" text-anchor="middle"
+  <!-- KBR brand red #BE0000 — bold wordmark -->
+  <text x="4" y="30"
         font-family="'Arial Black',Arial,sans-serif"
-        font-size="30" font-weight="900"
-        fill="white" letter-spacing="1">KBR</text>
+        font-size="32" font-weight="900"
+        fill="#BE0000" letter-spacing="1">KBR</text>
 </svg>

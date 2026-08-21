@@ -1,11 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 44" role="img" aria-label="SAP Partners">
-  <!-- SAP badge -->
-  <rect x="2" y="5" width="72" height="34" rx="5" fill="none" stroke="white" stroke-width="2"/>
-  <text x="38" y="28" text-anchor="middle"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 44" role="img" aria-label="SAP Partners">
+  <!-- SAP rounded badge in SAP brand blue #009FDB -->
+  <rect x="2" y="4" width="76" height="36" rx="5" fill="#009FDB"/>
+  <!-- SAP in white inside badge -->
+  <text x="40" y="28" text-anchor="middle"
         font-family="'Arial Black',Arial,sans-serif"
-        font-size="22" font-weight="900" fill="white">SAP</text>
-  <!-- Partners — spaced comfortably to the right -->
-  <text x="86" y="28"
+        font-size="22" font-weight="900"
+        fill="white">SAP</text>
+  <!-- Partners in SAP blue to the right -->
+  <text x="90" y="28"
         font-family="Arial,sans-serif"
-        font-size="13" font-weight="600" fill="white" opacity="0.85">Partners</text>
+        font-size="14" font-weight="600"
+        fill="#009FDB">Partners</text>
 </svg>

@@ -576,140 +576,120 @@
 }
 
 /* ==========================================================================
-   TRUSTED-BY — monochrome white logo row
-   SVG logos are pre-rendered white on transparent; no colour filter needed.
+   TRUSTED-BY — brand-colour logo grid
+   5 columns on desktop → 3 on tablet → 2 on mobile.
+   Logos use their official colours directly on the dark background.
    ========================================================================== */
 
-/* Trust bar: increase vertical padding slightly for logo breathing room */
 .trust-bar {
-  padding: 36px 0 !important;
+  padding: 40px 0 48px !important;
 }
 
-/* Inner row: keep label left-aligned, logos wrap naturally */
+/* Stack label above the grid */
 .trust-bar-inner {
-  align-items: center !important;
-  gap: 32px 56px !important;
-  flex-wrap: wrap !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 24px !important;
+  flex-wrap: nowrap !important;
 }
 
-/* TRUSTED BY label — white to match logos */
+/* TRUSTED BY label — bright white */
 .trust-label {
   white-space: nowrap;
-  flex-shrink: 0;
-  color: rgba(255, 255, 255, 0.85) !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+  letter-spacing: 0.14em;
 }
 
-/* Logos row */
+/* CSS Grid: 5 equal columns, equal gutters */
 .trust-items {
-  display: flex !important;
-  flex-direction: row !important;
+  display: grid !important;
+  grid-template-columns: repeat(5, 1fr) !important;
+  column-gap: 0 !important;
+  row-gap: 36px !important;
   align-items: center !important;
-  flex-wrap: wrap !important;
-  gap: 36px 56px !important;
-  justify-content: flex-start !important;
+  justify-items: center !important;
+  width: 100% !important;
 }
 
-/* Each logo link */
+/* Each logo cell — centred, no decoration */
 .trust-item {
-  display: inline-flex !important;
+  display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  flex-direction: row !important;
-  gap: 0 !important;
+  width: 100% !important;
+  height: 64px !important;         /* uniform cell height */
   text-decoration: none !important;
   color: transparent !important;
-  height: 52px; /* tall enough for logos with sub-labels */
+  padding: 0 12px !important;       /* horizontal breathing room inside cell */
+  box-sizing: border-box !important;
 }
 
-/* The logo image — full white, opacity for restraint */
+/* Logo image — brand colours, contained, consistent cap-height */
 .trust-logo {
   display: block;
-  height: 36px;
+  height: 36px;                     /* cap-height anchor for all logos */
   width: auto;
-  max-width: 220px;   /* generous — SVG aspect ratio does the real capping */
+  max-width: 100%;                  /* never overflow cell */
   object-fit: contain;
-  opacity: 0.92;
-  transition: opacity 0.25s ease;
+  opacity: 0.82;
+  transition: opacity 0.25s ease, transform 0.25s ease;
 }
 
-/* Hover: full white */
 .trust-item:hover .trust-logo {
   opacity: 1;
+  transform: scale(1.04);
 }
 
-/* ---- Per-logo optical sizing ---- */
-/* Eagle Hills: mark + two text rows */
-.trust-logo[alt*="Eagle Hills"] {
-  height: 52px;
-  max-width: 170px;
-}
-/* Neni: monogram + two-line label */
-.trust-logo[alt*="Neni"] {
-  height: 44px;
-  max-width: 240px;
-}
-/* TCS: ring + sub-label */
-.trust-logo[alt*="TCS"] {
-  height: 52px;
-  max-width: 170px;
-}
-/* KBR: compact bold wordmark */
-.trust-logo[alt*="KBR"] {
-  height: 30px;
-  max-width: 100px;
-}
-/* Wood: light-weight wide wordmark */
-.trust-logo[alt*="Wood"] {
-  height: 28px;
-  max-width: 150px;
-}
-/* Oracle: ellipse + two text lines */
-.trust-logo[alt*="Oracle"] {
-  height: 44px;
-  max-width: 220px;
-}
-/* ServiceNow: wide wordmark */
-.trust-logo[alt*="ServiceNow"] {
-  height: 26px;
-  max-width: 220px;
-}
-/* SAP: badge + "Partners" */
-.trust-logo[alt*="SAP"] {
-  height: 38px;
-  max-width: 220px;
-}
+/* ---- Per-logo cap-height overrides (optical balance) ---- */
+/* Eagle Hills: mark + stacked text — taller than wordmarks */
+.trust-logo[alt*="Eagle Hills"] { height: 52px; }
+
+/* Neni: compact monogram block */
+.trust-logo[alt*="Neni"]        { height: 44px; }
+
+/* TCS: ring icon + subtext */
+.trust-logo[alt*="TCS"]         { height: 56px; }
+
+/* KBR: bold 3-letter wordmark — reduce so visual weight matches */
+.trust-logo[alt*="KBR"]         { height: 28px; }
+
+/* Wood: thin-weight wordmark */
+.trust-logo[alt*="Wood"]        { height: 26px; }
+
+/* Oracle: ellipse mark + two text lines */
+.trust-logo[alt*="Oracle"]      { height: 44px; }
+
+/* ServiceNow: wide wordmark — shorter letterform height */
+.trust-logo[alt*="ServiceNow"]  { height: 28px; }
+
+/* SAP: compact badge + label */
+.trust-logo[alt*="SAP"]         { height: 36px; }
+
 /* IBM: stripe letters + sub-label */
-.trust-logo[alt*="IBM"] {
-  height: 50px;
-  max-width: 220px;
-}
+.trust-logo[alt*="IBM"]         { height: 52px; }
 
 /* --------------------------------------------------------------------------
    RESPONSIVE
    -------------------------------------------------------------------------- */
-@media (max-width: 900px) {
-  .trust-bar-inner {
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 20px !important;
-  }
+@media (max-width: 960px) {
   .trust-items {
-    gap: 28px 36px !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    row-gap: 28px !important;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 560px) {
   .trust-items {
-    gap: 24px 28px !important;
-    justify-content: center !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    row-gap: 24px !important;
   }
-  .trust-logo {
-    height: 26px !important;
-  }
-  .trust-logo[alt*="TCS"] { height: 36px !important; }
-  .trust-logo[alt*="Eagle Hills"] { height: 40px !important; }
-  .trust-logo[alt*="Oracle"] { height: 32px !important; }
-  .trust-logo[alt*="ServiceNow"] { height: 22px !important; }
+  .trust-logo            { height: 28px; }
+  .trust-logo[alt*="Eagle Hills"] { height: 42px; }
+  .trust-logo[alt*="TCS"]        { height: 46px; }
+  .trust-logo[alt*="Oracle"]     { height: 36px; }
+  .trust-logo[alt*="Neni"]       { height: 36px; }
+  .trust-logo[alt*="IBM"]        { height: 42px; }
 }
 
 /* --------------------------------------------------------------------------

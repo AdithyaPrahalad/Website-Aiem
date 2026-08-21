@@ -1,12 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 44" role="img" aria-label="Wood PLC">
-  <!-- wood. wordmark — lowercase with period, matching WOOD brand style -->
-  <text x="8" y="33"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 38" role="img" aria-label="Wood PLC">
+  <!-- Wood brand: clean navy/teal on dark — use their brand cyan #00A9CE -->
+  <text x="4" y="28"
         font-family="'Helvetica Neue',Helvetica,Arial,sans-serif"
         font-size="30" font-weight="300"
-        fill="white" letter-spacing="-0.5">wood.</text>
-  <!-- PLC subscript -->
-  <text x="107" y="38"
+        fill="#00A9CE" letter-spacing="-0.5">wood.</text>
+  <!-- plc micro-label -->
+  <text x="118" y="36"
         font-family="Arial,sans-serif"
         font-size="9" font-weight="600"
-        fill="white" opacity="0.7" letter-spacing="1">plc</text>
+        fill="#00A9CE" opacity="0.7">plc</text>
 </svg>

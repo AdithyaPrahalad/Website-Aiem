@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 40" role="img" aria-label="ServiceNow">
-  <!-- ServiceNow wordmark — lowercase, matching their open sans style -->
-  <text x="4" y="29"
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 36" role="img" aria-label="ServiceNow Ecosystem">
+  <!-- ServiceNow brand green #62D84E — wordmark in mixed case matching their identity -->
+  <text x="2" y="27"
         font-family="'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif"
-        font-size="24" font-weight="600"
-        fill="white" letter-spacing="-0.3">ServiceNow</text>
+        font-size="26" font-weight="700"
+        fill="#62D84E" letter-spacing="-0.3">ServiceNow</text>
 </svg>

@@ -1,27 +1,25 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 52" role="img" aria-label="Eagle Hills UAE">
-  <!-- Stylised eagle silhouette (abstract wing spread) -->
-  <g transform="translate(70,18)" fill="white">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 60" role="img" aria-label="Eagle Hills UAE">
+  <!-- Eagle Hills brand gold #C9A84C — eagle silhouette + wordmark -->
+  <g transform="translate(75,18)" fill="#C9A84C">
     <!-- Body -->
     <ellipse cx="0" cy="0" rx="5" ry="7"/>
     <!-- Left wing -->
-    <path d="M-5,-2 C-20,-8 -36,-2 -40,6 C-30,2 -18,4 -5,2 Z"/>
+    <path d="M-5,-2 C-22,-10 -40,-3 -44,6 C-32,2 -18,4 -5,2 Z"/>
     <!-- Right wing -->
-    <path d="M5,-2 C20,-8 36,-2 40,6 C30,2 18,4 5,2 Z"/>
+    <path d="M5,-2 C22,-10 40,-3 44,6 C32,2 18,4 5,2 Z"/>
     <!-- Head -->
-    <circle cx="0" cy="-9" r="4"/>
+    <circle cx="0" cy="-10" r="4.5"/>
     <!-- Beak -->
-    <path d="M3,-9 L7,-7 L3,-7 Z"/>
+    <path d="M3.5,-10 L8,-7.5 L3.5,-7.5 Z"/>
   </g>
-  <!-- EAGLE HILLS wordmark -->
-  <text x="70" y="38"
-        text-anchor="middle"
+  <!-- EAGLE HILLS wordmark in gold -->
+  <text x="75" y="42" text-anchor="middle"
         font-family="'Helvetica Neue',Helvetica,Arial,sans-serif"
-        font-size="12" font-weight="700"
-        fill="white" letter-spacing="2.5">EAGLE HILLS</text>
-  <!-- UAE sub-label -->
-  <text x="70" y="50"
-        text-anchor="middle"
+        font-size="13" font-weight="700"
+        fill="#C9A84C" letter-spacing="2.5">EAGLE HILLS</text>
+  <!-- UAE in muted gold -->
+  <text x="75" y="55" text-anchor="middle"
         font-family="Arial,sans-serif"
-        font-size="8" font-weight="400"
-        fill="white" opacity="0.6" letter-spacing="2">UAE</text>
+        font-size="8.5" font-weight="400"
+        fill="#C9A84C" opacity="0.65" letter-spacing="3">UAE</text>
 </svg>
