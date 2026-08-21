@@ -1,10 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 52" role="img" aria-label="TCS">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 52" role="img" aria-label="TCS">
   <!-- TCS swoosh ring -->
-  <circle cx="50" cy="22" r="19" fill="none" stroke="white" stroke-width="2.5" opacity="0.9"/>
+  <circle cx="60" cy="22" r="19" fill="none" stroke="white" stroke-width="2.5" opacity="0.9"/>
   <!-- Swoosh arc highlight -->
-  <path d="M31,22 A19,19 0 0 1 69,22" fill="none" stroke="white" stroke-width="4.5" stroke-linecap="round" opacity="0.5"/>
+  <path d="M41,22 A19,19 0 0 1 79,22" fill="none" stroke="white" stroke-width="4.5" stroke-linecap="round" opacity="0.5"/>
   <!-- tcs wordmark -->
-  <text x="50" y="28" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="700" fill="white" letter-spacing="-0.5">tcs</text>
+  <text x="60" y="28" text-anchor="middle"
+        font-family="Arial,Helvetica,sans-serif"
+        font-size="16" font-weight="700"
+        fill="white" letter-spacing="-0.5">tcs</text>
   <!-- full name beneath -->
-  <text x="50" y="48" text-anchor="middle" font-family="Arial,sans-serif" font-size="7.5" fill="white" opacity="0.65" letter-spacing="1.8">TATA CONSULTANCY</text>
+  <text x="60" y="47" text-anchor="middle"
+        font-family="Arial,sans-serif"
+        font-size="7.5" fill="white" opacity="0.75" letter-spacing="1.8">TATA CONSULTANCY</text>
 </svg>

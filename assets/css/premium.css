@@ -626,64 +626,64 @@
   display: block;
   height: 32px;
   width: auto;
-  max-width: 140px;
+  max-width: 180px;
   object-fit: contain;
-  /* SVGs are already white — just set opacity for restraint */
-  opacity: 0.65;
+  opacity: 0.88;
   transition: opacity 0.25s ease;
-  /* No filter: SVG logos are pre-coloured white */
 }
 
-/* Subtle hover: brighten slightly */
+/* Subtle hover: full brightness */
 .trust-item:hover .trust-logo {
-  opacity: 0.92;
+  opacity: 1;
 }
 
-/* Per-logo optical size adjustments — give each equal visual weight */
-/* TCS has a tall circular mark — keep compact */
+/* Per-logo optical size adjustments */
 .trust-logo[alt*="TCS"] {
-  height: 44px;
-  max-width: 72px;
+  height: 48px;
+  max-width: 90px;
 }
-/* ServiceNow wordmark is wide — cap max-width more generously */
 .trust-logo[alt*="ServiceNow"] {
-  height: 26px;
-  max-width: 160px;
+  height: 28px;
+  max-width: 200px;
 }
-/* Oracle has mark + two text lines — allow more height */
 .trust-logo[alt*="Oracle"] {
-  height: 38px;
-  max-width: 160px;
+  height: 42px;
+  max-width: 200px;
 }
 /* SAP has badge — keep uniform size */
 .trust-logo[alt*="SAP"] {
   height: 34px;
   max-width: 130px;
 }
-/* IBM stripes — moderate size */
+/* IBM stripes */
 .trust-logo[alt*="IBM"] {
-  height: 36px;
+  height: 40px;
+  max-width: 200px;
+}
+/* Wood wordmark */
+.trust-logo[alt*="Wood"] {
+  height: 30px;
+  max-width: 140px;
+}
+/* Eagle Hills — mark + two text rows */
+.trust-logo[alt*="Eagle Hills"] {
+  height: 52px;
   max-width: 160px;
 }
-/* Wood wordmark is wide with light weight — boost height slightly */
-.trust-logo[alt*="Wood"] {
-  height: 28px;
-  max-width: 120px;
-}
-/* Eagle Hills has mark + text rows — allow taller */
-.trust-logo[alt*="Eagle Hills"] {
-  height: 48px;
-  max-width: 130px;
-}
-/* Neni — medium size */
+/* Neni — monogram + text */
 .trust-logo[alt*="Neni"] {
-  height: 36px;
-  max-width: 150px;
+  height: 42px;
+  max-width: 200px;
 }
-/* KBR is a short bold wordmark — keep compact */
+/* KBR — short bold wordmark */
 .trust-logo[alt*="KBR"] {
-  height: 28px;
-  max-width: 80px;
+  height: 30px;
+  max-width: 90px;
+}
+/* SAP badge */
+.trust-logo[alt*="SAP"] {
+  height: 38px;
+  max-width: 160px;
 }
 
 /* --------------------------------------------------------------------------
