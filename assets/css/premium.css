@@ -592,23 +592,24 @@
   flex-wrap: wrap !important;
 }
 
-/* Label stays as-is — just ensure it doesn't get hidden on reflow */
+/* TRUSTED BY label — white to match logos */
 .trust-label {
   white-space: nowrap;
   flex-shrink: 0;
+  color: rgba(255, 255, 255, 0.85) !important;
 }
 
-/* Logos row — generous horizontal gap, vertically centred, wraps at tablet */
+/* Logos row */
 .trust-items {
   display: flex !important;
   flex-direction: row !important;
   align-items: center !important;
   flex-wrap: wrap !important;
-  gap: 36px 52px !important;
+  gap: 36px 56px !important;
   justify-content: flex-start !important;
 }
 
-/* Each logo link — no decoration, just the image */
+/* Each logo link */
 .trust-item {
   display: inline-flex !important;
   align-items: center !important;
@@ -617,73 +618,70 @@
   gap: 0 !important;
   text-decoration: none !important;
   color: transparent !important;
-  /* optical height anchor for all logos */
-  height: 36px;
+  height: 52px; /* tall enough for logos with sub-labels */
 }
 
-/* The logo image itself */
+/* The logo image — full white, opacity for restraint */
 .trust-logo {
   display: block;
-  height: 32px;
+  height: 36px;
   width: auto;
-  max-width: 180px;
+  max-width: 220px;   /* generous — SVG aspect ratio does the real capping */
   object-fit: contain;
-  opacity: 0.88;
+  opacity: 0.92;
   transition: opacity 0.25s ease;
 }
 
-/* Subtle hover: full brightness */
+/* Hover: full white */
 .trust-item:hover .trust-logo {
   opacity: 1;
 }
 
-/* Per-logo optical size adjustments */
-.trust-logo[alt*="TCS"] {
-  height: 48px;
-  max-width: 90px;
-}
-.trust-logo[alt*="ServiceNow"] {
-  height: 28px;
-  max-width: 200px;
-}
-.trust-logo[alt*="Oracle"] {
-  height: 42px;
-  max-width: 200px;
-}
-/* SAP has badge — keep uniform size */
-.trust-logo[alt*="SAP"] {
-  height: 34px;
-  max-width: 130px;
-}
-/* IBM stripes */
-.trust-logo[alt*="IBM"] {
-  height: 40px;
-  max-width: 200px;
-}
-/* Wood wordmark */
-.trust-logo[alt*="Wood"] {
-  height: 30px;
-  max-width: 140px;
-}
-/* Eagle Hills — mark + two text rows */
+/* ---- Per-logo optical sizing ---- */
+/* Eagle Hills: mark + two text rows */
 .trust-logo[alt*="Eagle Hills"] {
   height: 52px;
-  max-width: 160px;
+  max-width: 170px;
 }
-/* Neni — monogram + text */
+/* Neni: monogram + two-line label */
 .trust-logo[alt*="Neni"] {
-  height: 42px;
-  max-width: 200px;
+  height: 44px;
+  max-width: 240px;
 }
-/* KBR — short bold wordmark */
+/* TCS: ring + sub-label */
+.trust-logo[alt*="TCS"] {
+  height: 52px;
+  max-width: 170px;
+}
+/* KBR: compact bold wordmark */
 .trust-logo[alt*="KBR"] {
   height: 30px;
-  max-width: 90px;
+  max-width: 100px;
 }
-/* SAP badge */
+/* Wood: light-weight wide wordmark */
+.trust-logo[alt*="Wood"] {
+  height: 28px;
+  max-width: 150px;
+}
+/* Oracle: ellipse + two text lines */
+.trust-logo[alt*="Oracle"] {
+  height: 44px;
+  max-width: 220px;
+}
+/* ServiceNow: wide wordmark */
+.trust-logo[alt*="ServiceNow"] {
+  height: 26px;
+  max-width: 220px;
+}
+/* SAP: badge + "Partners" */
 .trust-logo[alt*="SAP"] {
   height: 38px;
-  max-width: 160px;
+  max-width: 220px;
+}
+/* IBM: stripe letters + sub-label */
+.trust-logo[alt*="IBM"] {
+  height: 50px;
+  max-width: 220px;
 }
 
 /* --------------------------------------------------------------------------
