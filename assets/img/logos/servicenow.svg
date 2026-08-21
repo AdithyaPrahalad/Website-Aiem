@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 40" role="img" aria-label="ServiceNow">
+  <!-- ServiceNow wordmark — lowercase, matching their open sans style -->
+  <text x="4" y="29"
+        font-family="'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif"
+        font-size="24" font-weight="600"
+        fill="white" letter-spacing="-0.3">ServiceNow</text>
+</svg>

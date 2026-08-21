@@ -575,27 +575,143 @@
   --color-arc-dim: #06b6d4;
 }
 
-/* Trusted-by: logo + name stacked, bright white */
-.trust-item {
+/* ==========================================================================
+   TRUSTED-BY — monochrome white logo row
+   SVG logos are pre-rendered white on transparent; no colour filter needed.
+   ========================================================================== */
+
+/* Trust bar: increase vertical padding slightly for logo breathing room */
+.trust-bar {
+  padding: 36px 0 !important;
+}
+
+/* Inner row: keep label left-aligned, logos wrap naturally */
+.trust-bar-inner {
+  align-items: center !important;
+  gap: 32px 56px !important;
+  flex-wrap: wrap !important;
+}
+
+/* Label stays as-is — just ensure it doesn't get hidden on reflow */
+.trust-label {
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Logos row — generous horizontal gap, vertically centred, wraps at tablet */
+.trust-items {
   display: flex !important;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  color: rgba(255, 255, 255, 0.9) !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  flex-wrap: wrap !important;
+  gap: 36px 52px !important;
+  justify-content: flex-start !important;
 }
-.trust-item:hover {
-  color: #ffffff !important;
+
+/* Each logo link — no decoration, just the image */
+.trust-item {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-direction: row !important;
+  gap: 0 !important;
+  text-decoration: none !important;
+  color: transparent !important;
+  /* optical height anchor for all logos */
+  height: 36px;
 }
+
+/* The logo image itself */
 .trust-logo {
-  height: 28px;
+  display: block;
+  height: 32px;
   width: auto;
-  max-width: 72px;
+  max-width: 140px;
   object-fit: contain;
-  filter: grayscale(1) brightness(10) opacity(0.7);
-  transition: opacity 0.2s, filter 0.2s;
+  /* SVGs are already white — just set opacity for restraint */
+  opacity: 0.65;
+  transition: opacity 0.25s ease;
+  /* No filter: SVG logos are pre-coloured white */
 }
+
+/* Subtle hover: brighten slightly */
 .trust-item:hover .trust-logo {
-  filter: grayscale(1) brightness(10) opacity(1);
+  opacity: 0.92;
+}
+
+/* Per-logo optical size adjustments — give each equal visual weight */
+/* TCS has a tall circular mark — keep compact */
+.trust-logo[alt*="TCS"] {
+  height: 44px;
+  max-width: 72px;
+}
+/* ServiceNow wordmark is wide — cap max-width more generously */
+.trust-logo[alt*="ServiceNow"] {
+  height: 26px;
+  max-width: 160px;
+}
+/* Oracle has mark + two text lines — allow more height */
+.trust-logo[alt*="Oracle"] {
+  height: 38px;
+  max-width: 160px;
+}
+/* SAP has badge — keep uniform size */
+.trust-logo[alt*="SAP"] {
+  height: 34px;
+  max-width: 130px;
+}
+/* IBM stripes — moderate size */
+.trust-logo[alt*="IBM"] {
+  height: 36px;
+  max-width: 160px;
+}
+/* Wood wordmark is wide with light weight — boost height slightly */
+.trust-logo[alt*="Wood"] {
+  height: 28px;
+  max-width: 120px;
+}
+/* Eagle Hills has mark + text rows — allow taller */
+.trust-logo[alt*="Eagle Hills"] {
+  height: 48px;
+  max-width: 130px;
+}
+/* Neni — medium size */
+.trust-logo[alt*="Neni"] {
+  height: 36px;
+  max-width: 150px;
+}
+/* KBR is a short bold wordmark — keep compact */
+.trust-logo[alt*="KBR"] {
+  height: 28px;
+  max-width: 80px;
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .trust-bar-inner {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 20px !important;
+  }
+  .trust-items {
+    gap: 28px 36px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .trust-items {
+    gap: 24px 28px !important;
+    justify-content: center !important;
+  }
+  .trust-logo {
+    height: 26px !important;
+  }
+  .trust-logo[alt*="TCS"] { height: 36px !important; }
+  .trust-logo[alt*="Eagle Hills"] { height: 40px !important; }
+  .trust-logo[alt*="Oracle"] { height: 32px !important; }
+  .trust-logo[alt*="ServiceNow"] { height: 22px !important; }
 }
 
 /* --------------------------------------------------------------------------
