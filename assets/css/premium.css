@@ -1705,3 +1705,162 @@ h3 {
   body { cursor: auto !important; }
   a, button { cursor: pointer !important; }
 }
+
+/* ==========================================================================
+   ISO CERTIFICATION — hero pill + footer strip
+   Enterprise placement: subtle trust signal near CTA, canonical strip above
+   footer copyright. Matches Accenture / Infosys / TCS convention exactly.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   HERO CERTIFICATION PILL
+   Appears below the CTA buttons as a quiet trust signal.
+   -------------------------------------------------------------------------- */
+.hero-cert-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 20px;
+  padding: 7px 14px;
+  border: 1px solid rgba(168, 85, 247, 0.28);   /* purple accent, very muted */
+  border-radius: 100px;
+  background: rgba(168, 85, 247, 0.05);
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  transition: border-color 0.25s, color 0.25s, background 0.25s;
+  cursor: pointer;
+}
+
+.hero-cert-pill:hover {
+  border-color: rgba(168, 85, 247, 0.55);
+  background: rgba(168, 85, 247, 0.10);
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.cert-pill-icon {
+  opacity: 0.7;
+  flex-shrink: 0;
+  color: #a855f7;  /* purple accent */
+}
+
+.hero-cert-pill:hover .cert-pill-icon {
+  opacity: 1;
+}
+
+.cert-pill-text {
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   FOOTER CERTIFICATION STRIP
+   Sits between the link grid and the copyright line — the canonical position
+   used by Infosys, Wipro, TCS, Accenture, IBM, etc.
+   -------------------------------------------------------------------------- */
+.footer-certifications {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 20px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.footer-cert-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  white-space: nowrap;
+  flex-shrink: 0;
+  min-width: 72px;
+}
+
+.footer-cert-badges {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+/* Individual certification badge */
+.cert-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  text-decoration: none;
+  transition: border-color 0.25s, background 0.25s;
+  cursor: pointer;
+}
+
+.cert-badge:hover {
+  border-color: rgba(168, 85, 247, 0.45);
+  background: rgba(168, 85, 247, 0.07);
+}
+
+.cert-badge-icon {
+  color: rgba(168, 85, 247, 0.8);  /* purple accent — subtle */
+  flex-shrink: 0;
+  transition: color 0.25s;
+}
+
+.cert-badge:hover .cert-badge-icon {
+  color: #a855f7;
+}
+
+.cert-badge-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.cert-badge-standard {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.88);
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+.cert-badge-name {
+  font-size: 0.68rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.42);
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+/* Certificate number — right side, monospaced for credibility */
+.cert-badge-num {
+  font-size: 0.64rem;
+  font-family: 'Courier New', Courier, monospace;
+  color: rgba(255, 255, 255, 0.28);
+  letter-spacing: 0.04em;
+  border-left: 1px solid rgba(255, 255, 255, 0.10);
+  padding-left: 12px;
+  white-space: nowrap;
+}
+
+.cert-badge:hover .cert-badge-num {
+  color: rgba(255, 255, 255, 0.50);
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE
+   -------------------------------------------------------------------------- */
+@media (max-width: 600px) {
+  .hero-cert-pill { font-size: 0.66rem; }
+  .cert-pill-text { white-space: normal; }
+  .footer-certifications { gap: 16px; }
+  .cert-badge { padding: 9px 12px; gap: 10px; }
+  .cert-badge-num { display: none; }  /* hide cert number on mobile, badge still shows */
+}

@@ -341,6 +341,29 @@ function buildFooter() {
           </div>
         </div>
 
+        <!-- Certification strip — above copyright line (enterprise standard placement) -->
+        <div class="footer-certifications">
+          <span class="footer-cert-label">CERTIFIED</span>
+          <div class="footer-cert-badges">
+            <a href="https://www.ukcertifications.org.uk/verify"
+               target="_blank" rel="noopener noreferrer"
+               class="cert-badge"
+               aria-label="Verify ISO/IEC 42001:2023 AI Management System certification — Certificate UQ-2026081025">
+              <svg class="cert-badge-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+                   aria-hidden="true">
+                <path d="M12 2L3 7v5c0 5.25 3.75 10.15 9 11.35C17.25 22.15 21 17.25 21 12V7L12 2z"/>
+                <polyline points="9 12 11 14 15 10"/>
+              </svg>
+              <div class="cert-badge-text">
+                <span class="cert-badge-standard">ISO/IEC 42001:2023</span>
+                <span class="cert-badge-name">AI Management System</span>
+              </div>
+              <span class="cert-badge-num">UQ-2026081025</span>
+            </a>
+          </div>
+        </div>
+
         <div class="footer-bottom">
           <p>&copy; 2025 Aiēm Technologies FZE LLC. All rights reserved.</p>
           <div class="footer-bottom-links">
@@ -670,7 +693,7 @@ function initCapOrbit() {
 function injectPremiumCSS() {
   const link = document.createElement('link');
   link.rel = 'stylesheet';
-  link.href = 'assets/css/premium.css?v=11';
+  link.href = 'assets/css/premium.css?v=12';
   document.head.appendChild(link);
 }
 
