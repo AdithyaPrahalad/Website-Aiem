@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 48" role="img" aria-label="Tech Solutions Plus">
+  <!-- Diamond mark (four rotated squares), brand blue lifted for dark backgrounds -->
+  <g transform="translate(22,24) rotate(45)" fill="#4f7cff">
+    <rect x="-13" y="-13" width="11" height="11" rx="1.5"/>
+    <rect x="2"   y="-13" width="11" height="11" rx="1.5" opacity="0.75"/>
+    <rect x="-13" y="2"   width="11" height="11" rx="1.5" opacity="0.75"/>
+    <rect x="2"   y="2"   width="11" height="11" rx="1.5"/>
+  </g>
+  <text x="46" y="24"
+        font-family="'Montserrat','Helvetica Neue',Helvetica,Arial,sans-serif"
+        font-size="18" font-weight="800" fill="#ffffff" letter-spacing="1">TECH</text>
+  <text x="46" y="39"
+        font-family="'Helvetica Neue',Helvetica,Arial,sans-serif"
+        font-size="10" font-weight="600" fill="#4f7cff" letter-spacing="1.6">SOLUTIONS PLUS</text>
+</svg>
