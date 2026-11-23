@@ -342,7 +342,7 @@ function buildFooter() {
         </div>
 
         <!-- Certification strip — above copyright line (enterprise standard placement) -->
-        <div class="footer-certifications">
+        <div class="footer-certifications" id="certifications">
           <span class="footer-cert-label">CERTIFIED</span>
           <div class="footer-cert-badges">
             <a href="https://www.ukcertifications.org.uk/verify"
@@ -360,6 +360,22 @@ function buildFooter() {
                 <span class="cert-badge-name">AI Management System</span>
               </div>
               <span class="cert-badge-num">UQ-2026081025</span>
+            </a>
+            <a href="https://www.qrocert.org"
+               target="_blank" rel="noopener noreferrer"
+               class="cert-badge"
+               aria-label="Verify ISO/IEC 27001:2022 Information Security Management System certification — Certificate 305026112137IS">
+              <svg class="cert-badge-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                   stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"
+                   aria-hidden="true">
+                <rect x="4" y="11" width="16" height="10" rx="2"/>
+                <path d="M8 11V7a4 4 0 0 1 8 0v4"/>
+              </svg>
+              <div class="cert-badge-text">
+                <span class="cert-badge-standard">ISO/IEC 27001:2022</span>
+                <span class="cert-badge-name">Information Security Management</span>
+              </div>
+              <span class="cert-badge-num">305026112137IS</span>
             </a>
           </div>
         </div>
@@ -693,7 +709,7 @@ function initCapOrbit() {
 function injectPremiumCSS() {
   const link = document.createElement('link');
   link.rel = 'stylesheet';
-  link.href = 'assets/css/premium.css?v=13';
+  link.href = 'assets/css/premium.css?v=14';
   document.head.appendChild(link);
 }
 
